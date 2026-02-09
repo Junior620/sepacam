@@ -83,18 +83,31 @@ export function ProductsSection({ products: sanityProducts }: Props) {
     const sectionRef = useRef<HTMLDivElement>(null);
     const headerRef = useRef<HTMLDivElement>(null);
 
+    // Helper to get fallback assets based on slug
+    const getFallbackAssets = (slug: string) => {
+        if (slug.includes('liqueur')) return { image: "/images/products/liquor.jpg", color: "bg-[#3E2723]" };
+        if (slug.includes('beurre')) return { image: null, color: "bg-[#F5DEB3]" };
+        if (slug.includes('poudre')) return { image: null, color: "bg-[#795548]" };
+        if (slug.includes('tourteau')) return { image: null, color: "bg-[#4E342E]" };
+        if (slug.includes('gru')) return { image: null, color: "bg-[#5D4037]" };
+        return { image: null, color: "bg-neutral-200" };
+    };
+
     // Prepare display products
     const displayProducts = (sanityProducts && sanityProducts.length > 0)
-        ? sanityProducts.map(p => ({
-            key: p._id,
-            slug: p.slug.current,
-            name: p.name,
-            description: p.description,
-            image: p.heroImage ? urlFor(p.heroImage).width(600).height(750).url() : null,
-            color: "bg-neutral-200", // Default bg for sanity images if needed
-            badge: null,
-            isFallback: false
-        }))
+        ? sanityProducts.map(p => {
+            const fallback = getFallbackAssets(p.slug.current);
+            return {
+                key: p._id,
+                slug: p.slug.current,
+                name: p.name,
+                description: p.description,
+                image: p.heroImage ? urlFor(p.heroImage).width(600).height(750).url() : fallback.image,
+                color: fallback.color,
+                badge: null,
+                isFallback: false
+            };
+        })
         : fallbackProducts;
 
     useGSAP(
