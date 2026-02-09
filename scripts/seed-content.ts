@@ -4,8 +4,11 @@
  * This file contains the seed data structure for initial content.
  * Run this script to populate your Sanity dataset with initial content.
  * 
- * Usage: npx sanity exec scripts/seed-content.ts --with-user-token
+ * Usage: npx tsx scripts/seed-content.ts
  */
+
+import { config } from "dotenv";
+config({ path: ".env.local" });
 
 import { createClient } from "@sanity/client";
 
