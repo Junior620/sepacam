@@ -103,7 +103,7 @@ export function HeroSection() {
                                 {t("cta_primary")}
                             </Button>
                         </Link>
-                        <Link href="/contact?subject=sample" className="w-full sm:w-auto">
+                        <Link href={{ pathname: "/contact", query: { subject: "sample" } } as any} className="w-full sm:w-auto">
                             <Button
                                 variant="outline"
                                 size="lg"
