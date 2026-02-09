@@ -11,6 +11,16 @@ export const productsQuery = `*[_type == "product"] | order(name asc) {
   heroImage
 }`;
 
+export const latestProductsQuery = `*[_type == "product"] | order(name asc)[0...5] {
+  _id,
+  name,
+  slug,
+  category,
+  productType,
+  description,
+  heroImage
+}`;
+
 export const productBySlugQuery = `*[_type == "product" && slug.current == $slug][0] {
   _id,
   name,

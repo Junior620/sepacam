@@ -5,9 +5,11 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { PolesSection } from "@/components/home/PolesSection";
 import { StatsSection } from "@/components/home/StatsSection";
 import { ProcessTimeline } from "@/components/home/ProcessTimeline";
-import { ProductsSection } from "@/components/home/ProductsSection";
+import { ProductsSection, type SanityProduct } from "@/components/home/ProductsSection";
 import { QualitySection } from "@/components/home/QualitySection";
 import { CTABanner } from "@/components/home/CTABanner";
+import { sanityFetch } from "@/lib/sanity";
+import { latestProductsQuery } from "@/lib/sanity.queries";
 
 type Props = {
     params: Promise<{ locale: string }>;
@@ -17,6 +19,11 @@ export default async function HomePage({ params }: Props) {
     const { locale } = await params;
     setRequestLocale(locale);
 
+    const products = await sanityFetch<SanityProduct[]>({
+        query: latestProductsQuery,
+        tags: ["product"],
+    });
+
     return (
         <>
             <Header />
@@ -25,7 +32,7 @@ export default async function HomePage({ params }: Props) {
                 <PolesSection />
                 <StatsSection />
                 <ProcessTimeline />
-                <ProductsSection />
+                <ProductsSection products={products} />
                 <QualitySection />
                 <CTABanner />
             </main>

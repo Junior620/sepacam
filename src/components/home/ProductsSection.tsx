@@ -10,49 +10,92 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import { urlFor } from "@/lib/sanity";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Product definitions with colors/gradients for fallback
-const products = [
+// Fallback products for development or if Sanity is empty
+const fallbackProducts = [
     {
         key: "liquor",
         slug: "liqueur-cacao",
+        name: "Liqueur de Cacao",
+        description: "Liqueur de cacao pure et riche",
         image: "/images/products/liquor.jpg",
-        color: "bg-[#3E2723]", // Dark brown
+        color: "bg-[#3E2723]",
         badge: "Best Seller",
+        isFallback: true
     },
     {
         key: "butter",
         slug: "beurre-cacao",
-        image: null, // Pending generation
-        color: "bg-[#F5DEB3]", // Pale yellow
+        name: "Beurre de Cacao",
+        description: "Beurre de cacao naturel pressé",
+        image: null,
+        color: "bg-[#F5DEB3]",
         badge: "Premium",
+        isFallback: true
     },
     {
         key: "powder",
         slug: "poudre-cacao",
-        image: null, // Pending generation
-        color: "bg-[#795548]", // Cocoa brown
+        name: "Poudre de Cacao",
+        description: "Poudre de cacao fine",
+        image: null,
+        color: "bg-[#795548]",
+        isFallback: true
     },
     {
         key: "cake",
         slug: "tourteau-cacao",
-        image: null, // Pending generation
-        color: "bg-[#4E342E]", // Very dark brown
+        name: "Tourteau de Cacao",
+        description: "Tourteau de cacao riche",
+        image: null,
+        color: "bg-[#4E342E]",
+        isFallback: true
     },
     {
         key: "nibs",
         slug: "grues-cacao",
-        image: null, // Pending generation
-        color: "bg-[#5D4037]", // Bean color
+        name: "Grués de Cacao",
+        description: "Éclats de fèves torréfiées",
+        image: null,
+        color: "bg-[#5D4037]",
+        isFallback: true
     },
 ];
 
-export function ProductsSection() {
+export type SanityProduct = {
+    _id: string;
+    name: string;
+    slug: { current: string };
+    description: string;
+    heroImage: any;
+    productType?: string;
+};
+
+type Props = {
+    products?: SanityProduct[];
+};
+
+export function ProductsSection({ products: sanityProducts }: Props) {
     const t = useTranslations("products");
     const sectionRef = useRef<HTMLDivElement>(null);
     const headerRef = useRef<HTMLDivElement>(null);
+
+    // Prepare display products
+    const displayProducts = (sanityProducts && sanityProducts.length > 0)
+        ? sanityProducts.map(p => ({
+            key: p._id,
+            slug: p.slug.current,
+            name: p.name,
+            description: p.description,
+            image: p.heroImage ? urlFor(p.heroImage).width(600).height(750).url() : null,
+            color: "bg-neutral-200", // Default bg for sanity images if needed
+            badge: null,
+            isFallback: false
+        }))
+        : fallbackProducts;
 
     useGSAP(
         () => {
@@ -107,7 +150,7 @@ export function ProductsSection() {
 
                 {/* Products Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                    {products.map((product) => (
+                    {displayProducts.map((product) => (
                         <Card
                             key={product.key}
                             href={`/produits-cacao/${product.slug}`}
@@ -117,14 +160,14 @@ export function ProductsSection() {
                                 {product.image ? (
                                     <Image
                                         src={product.image}
-                                        alt={t(`items.${product.key}.name`)}
+                                        alt={product.isFallback ? t(`items.${product.key}.name`) : product.name}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
                                 ) : (
                                     <div className={`absolute inset-0 ${product.color} flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity`}>
                                         <span className="text-white/20 text-6xl font-display font-bold rotate-12 select-none">
-                                            {product.key.charAt(0).toUpperCase()}
+                                            {(product.isFallback ? product.key : product.name).charAt(0).toUpperCase()}
                                         </span>
                                     </div>
                                 )}
@@ -145,10 +188,10 @@ export function ProductsSection() {
                             <CardBody className="p-5 flex flex-col h-full justify-between">
                                 <div>
                                     <h3 className="font-heading text-lg font-semibold text-neutral-900 mb-2 group-hover:text-primary transition-colors">
-                                        {t(`items.${product.key}.name`)}
+                                        {product.isFallback ? t(`items.${product.key}.name`) : product.name}
                                     </h3>
                                     <p className="text-small text-neutral-500 line-clamp-3 mb-4">
-                                        {t(`items.${product.key}.description`)}
+                                        {product.isFallback ? t(`items.${product.key}.description`) : product.description}
                                     </p>
                                 </div>
                                 <div className="mt-auto">
