@@ -157,6 +157,32 @@
             "error_message": "Une erreur est survenue. Veuillez réessayer ou nous contacter par email."
         }
     },
+    "process_timeline": {
+        "title": "Du champ à l'usine : Notre processus de transformation",
+        "subtitle": "Un processus méticuleux garantissant traçabilité et qualité à chaque étape.",
+        "steps": {
+            "beans": {
+                "title": "Fèves de Cacao",
+                "description": "Sélection rigoureuse des meilleures fèves trinitario du Cameroun."
+            },
+            "liquor": {
+                "title": "Liqueur de Cacao",
+                "description": "Broyage fin pour une liqueur pure et aromatique, base de tous nos produits."
+            },
+            "butter": {
+                "title": "Beurre de Cacao",
+                "description": "Pressage mécanique pour extraire un beurre d'exception, filtré et désodorisé."
+            },
+            "powder": {
+                "title": "Poudre de Cacao",
+                "description": "Broyage du tourteau pour obtenir une poudre fine, naturelle ou alcalinisée."
+            },
+            "cake": {
+                "title": "Tourteau de Cacao",
+                "description": "Le résidu solide après pressage, riche en saveurs pour diverses applications."
+            }
+        }
+    },
     "quality_page": {
         "title": "Qualité & Laboratoire",
         "subtitle": "Un contrôle qualité rigoureux pour des produits d'excellence.",

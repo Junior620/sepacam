@@ -157,6 +157,32 @@
             "error_message": "An error occurred. Please try again or contact us by email."
         }
     },
+    "process_timeline": {
+        "title": "From Farm to Factory: Our Processing Journey",
+        "subtitle": "A meticulous process ensuring traceability and quality at every step.",
+        "steps": {
+            "beans": {
+                "title": "Cocoa Beans",
+                "description": "Rigorous selection of the finest Cameroonian Trinitario beans."
+            },
+            "liquor": {
+                "title": "Cocoa Liquor",
+                "description": "Fine grinding for a pure and aromatic liquor, the base of all our products."
+            },
+            "butter": {
+                "title": "Cocoa Butter",
+                "description": "Mechanical pressing to extract exceptional butter, filtered and deodorized."
+            },
+            "powder": {
+                "title": "Cocoa Powder",
+                "description": "Grinding of the cake to obtain fine powder, natural or alkalized."
+            },
+            "cake": {
+                "title": "Cocoa Cake",
+                "description": "Solid residue after pressing, rich in flavor for various applications."
+            }
+        }
+    },
     "quality_page": {
         "title": "Quality & Lab",
         "subtitle": "Rigorous quality control for excellent products.",

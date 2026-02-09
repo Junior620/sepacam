@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
 import { PolesSection } from "@/components/home/PolesSection";
 import { StatsSection } from "@/components/home/StatsSection";
+import { ProcessTimeline } from "@/components/home/ProcessTimeline";
 import { ProductsSection } from "@/components/home/ProductsSection";
 import { QualitySection } from "@/components/home/QualitySection";
 import { CTABanner } from "@/components/home/CTABanner";
@@ -23,6 +24,7 @@ export default async function HomePage({ params }: Props) {
                 <HeroSection />
                 <PolesSection />
                 <StatsSection />
+                <ProcessTimeline />
                 <ProductsSection />
                 <QualitySection />
                 <CTABanner />
