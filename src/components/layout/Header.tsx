@@ -43,7 +43,6 @@ export function Header() {
         { href: "/cafe", label: t("coffee") },
         { href: "/transit", label: t("transit") },
         { href: "/services", label: t("services") },
-        { href: "/insights", label: t("insights") },
     ];
 
     return (
