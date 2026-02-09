@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/Button";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function HeroSection() {
     const t = useTranslations("hero");
@@ -15,33 +19,40 @@ export function HeroSection() {
         () => {
             const tl = gsap.timeline();
 
-            tl.from(".hero-title", {
-                opacity: 0,
+            // Initial reveal animation
+            tl.from(".hero-content > *", {
                 y: 30,
-                duration: 0.8,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.15,
                 ease: "power3.out",
-            })
-                .from(
-                    ".hero-subtitle",
-                    {
-                        opacity: 0,
-                        y: 20,
-                        duration: 0.6,
-                        ease: "power3.out",
-                    },
-                    "-=0.4"
-                )
-                .from(
-                    ".hero-cta",
-                    {
-                        opacity: 0,
-                        y: 20,
-                        duration: 0.6,
-                        stagger: 0.15,
-                        ease: "power3.out",
-                    },
-                    "-=0.3"
-                );
+                delay: 0.2
+            });
+
+            // Parallax effect for background
+            gsap.to(".hero-bg", {
+                yPercent: 30,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+
+            // Parallax effect for content (slower than bg)
+            gsap.to(".hero-content", {
+                yPercent: 10,
+                opacity: 0,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top top",
+                    end: "50% top",
+                    scrub: true
+                }
+            });
         },
         { scope: containerRef }
     );
@@ -49,105 +60,88 @@ export function HeroSection() {
     return (
         <section
             ref={containerRef}
-            className="relative min-h-screen flex items-center pt-[var(--header-height)] gradient-hero overflow-hidden"
+            className="relative min-h-[90vh] flex items-center overflow-hidden"
         >
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full blur-3xl" />
-                <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent rounded-full blur-3xl" />
+            {/* Background Image with Parallax */}
+            <div className="absolute inset-0 z-0 hero-bg scale-110">
+                <Image
+                    src="/hero-bg.png"
+                    alt="Cacao beans and powder"
+                    fill
+                    className="object-cover"
+                    priority
+                    quality={90}
+                />
+                <div className="absolute inset-0 bg-neutral-900/40 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent opacity-80" />
             </div>
 
-            <div className="container-main relative z-10">
-                <div className="max-w-4xl mx-auto text-center py-16 lg:py-24">
+            <div className="container-main relative z-10 hero-content">
+                <div className="max-w-4xl mx-auto text-center py-20 lg:py-32">
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-full border border-primary/10 mb-8">
-                        <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                        <span className="text-small font-medium text-primary">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-8 shadow-lg">
+                        <span className="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_10px_theme(colors.primary.DEFAULT)]" />
+                        <span className="text-small font-semibold text-white tracking-wide uppercase">
                             Cameroun • Cacao Transformé • Export B2B
                         </span>
                     </div>
 
                     {/* Title */}
-                    <h1 className="hero-title font-heading text-display-sm lg:text-display text-neutral-900 mb-6">
+                    <h1 className="font-heading text-display-sm md:text-display lg:text-[5rem] leading-[1.1] text-white mb-8 drop-shadow-2xl">
                         {t("title")}
                     </h1>
 
                     {/* Subtitle */}
-                    <p className="hero-subtitle text-body lg:text-lg text-neutral-600 max-w-2xl mx-auto mb-10">
+                    <p className="text-lg md:text-xl text-neutral-200 max-w-2xl mx-auto mb-12 font-light leading-relaxed drop-shadow-md">
                         {t("subtitle")}
                     </p>
 
                     {/* CTAs */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/contact" className="hero-cta w-full sm:w-auto">
-                            <Button variant="primary" size="lg" fullWidth className="sm:w-auto">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                        <Link href="/contact" className="w-full sm:w-auto">
+                            <Button variant="primary" size="lg" fullWidth className="sm:min-w-[200px] shadow-xl hover:shadow-primary/20 shadow-primary/10 transition-shadow">
                                 {t("cta_primary")}
                             </Button>
                         </Link>
-                        <Link href="/contact" className="hero-cta w-full sm:w-auto">
-                            <Button variant="secondary" size="lg" fullWidth className="sm:w-auto">
+                        <Link href="/contact?subject=sample" className="w-full sm:w-auto">
+                            <Button
+                                variant="outline"
+                                size="lg"
+                                fullWidth
+                                className="sm:min-w-[200px] bg-white/5 border-white/20 text-white hover:bg-white/10 backdrop-blur-sm shadow-xl"
+                            >
                                 {t("cta_secondary")}
                             </Button>
                         </Link>
                     </div>
 
                     {/* Trust indicators */}
-                    <div className="mt-16 pt-8 border-t border-neutral-200">
-                        <p className="text-small text-neutral-500 mb-4">
-                            Conforme aux standards internationaux
-                        </p>
-                        <div className="flex items-center justify-center gap-8 flex-wrap">
-                            <div className="flex items-center gap-2 text-neutral-400">
-                                <svg
-                                    className="w-5 h-5"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
-                                <span className="text-small">Traçabilité lot</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-neutral-400">
-                                <svg
-                                    className="w-5 h-5"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
-                                <span className="text-small">COA disponibles</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-neutral-400">
-                                <svg
-                                    className="w-5 h-5"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
-                                <span className="text-small">Export FOB/CIF</span>
-                            </div>
+                    <div className="mt-20 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                        <div className="flex flex-col items-center gap-2">
+                            <span className="font-display text-2xl text-white">100%</span>
+                            <span className="text-xs text-neutral-300 uppercase tracking-wider">Origine Cameroun</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2">
+                            <span className="font-display text-2xl text-white">ISO</span>
+                            <span className="text-xs text-neutral-300 uppercase tracking-wider">Certifié 22000</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2">
+                            <span className="font-display text-2xl text-white">FOB</span>
+                            <span className="text-xs text-neutral-300 uppercase tracking-wider">Livraison Douala</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2">
+                            <span className="font-display text-2xl text-white">24h</span>
+                            <span className="text-xs text-neutral-300 uppercase tracking-wider">Support Client</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* Scroll indicator */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce cursor-pointer z-20 opacity-70 hover:opacity-100 transition-opacity">
+                <span className="text-xs text-white/60 uppercase tracking-widest">Découvrir</span>
                 <svg
-                    className="w-6 h-6 text-neutral-400"
+                    className="w-6 h-6 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -155,7 +149,7 @@ export function HeroSection() {
                     <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={2}
+                        strokeWidth={1.5}
                         d="M19 14l-7 7m0 0l-7-7m7 7V3"
                     />
                 </svg>
