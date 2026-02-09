@@ -142,6 +142,12 @@ const config: Config = {
                 "scale-in": "scaleIn 0.2s ease-out",
                 "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
             },
+            backgroundImage: {
+                "dots-pattern": "radial-gradient(#2d5016 1px, transparent 1px)",
+            },
+            backgroundSize: {
+                "dots-pattern": "24px 24px",
+            },
             keyframes: {
                 fadeIn: {
                     "0%": { opacity: "0" },

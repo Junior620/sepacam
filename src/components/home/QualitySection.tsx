@@ -118,7 +118,7 @@ export function QualitySection() {
                                     {t("cta")}
                                 </Button>
                             </Link>
-                            <Link href="/contact?subject=technical">
+                            <Link href={{ pathname: "/contact", query: { subject: "technical" } }}>
                                 <Button variant="outline" size="lg">
                                     Demander une fiche technique
                                 </Button>
