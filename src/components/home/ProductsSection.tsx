@@ -9,35 +9,43 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Product definitions with colors/gradients for fallback
 const products = [
     {
         key: "liquor",
         slug: "liqueur-cacao",
         image: "/images/products/liquor.jpg",
+        color: "bg-[#3E2723]", // Dark brown
         badge: "Best Seller",
     },
     {
         key: "butter",
         slug: "beurre-cacao",
-        image: "/images/products/butter.jpg",
+        image: null, // Pending generation
+        color: "bg-[#F5DEB3]", // Pale yellow
+        badge: "Premium",
     },
     {
         key: "powder",
         slug: "poudre-cacao",
-        image: "/images/products/powder.jpg",
+        image: null, // Pending generation
+        color: "bg-[#795548]", // Cocoa brown
     },
     {
         key: "cake",
         slug: "tourteau-cacao",
-        image: "/images/products/cake.jpg",
+        image: null, // Pending generation
+        color: "bg-[#4E342E]", // Very dark brown
     },
     {
         key: "nibs",
         slug: "grues-cacao",
-        image: "/images/products/nibs.jpg",
+        image: null, // Pending generation
+        color: "bg-[#5D4037]", // Bean color
     },
 ];
 
@@ -78,7 +86,7 @@ export function ProductsSection() {
     );
 
     return (
-        <section ref={sectionRef} className="section-spacing bg-neutral-50">
+        <section ref={sectionRef} className="section-spacing bg-white">
             <div className="container-main">
                 {/* Section Header */}
                 <div ref={headerRef} className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
@@ -103,43 +111,51 @@ export function ProductsSection() {
                         <Card
                             key={product.key}
                             href={`/produits-cacao/${product.slug}`}
-                            className="group product-card"
+                            className="group product-card h-full"
                         >
-                            <CardImage aspectRatio="aspect-square">
-                                {/* Placeholder image */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-neutral-200 to-neutral-300 flex items-center justify-center">
-                                    <svg
-                                        className="w-12 h-12 text-neutral-400"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={1}
-                                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                                        />
-                                    </svg>
-                                </div>
+                            <CardImage aspectRatio="aspect-[4/5]" className={product.color}>
+                                {product.image ? (
+                                    <Image
+                                        src={product.image}
+                                        alt={t(`items.${product.key}.name`)}
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+                                ) : (
+                                    <div className={`absolute inset-0 ${product.color} flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity`}>
+                                        <span className="text-white/20 text-6xl font-display font-bold rotate-12 select-none">
+                                            {product.key.charAt(0).toUpperCase()}
+                                        </span>
+                                    </div>
+                                )}
+
+                                {/* Overlay gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+
                                 {/* Badge */}
                                 {product.badge && (
-                                    <div className="absolute top-3 left-3">
-                                        <Badge variant="accent" size="sm">
+                                    <div className="absolute top-3 left-3 z-10">
+                                        <Badge variant="accent" size="sm" className="shadow-md">
                                             {product.badge}
                                         </Badge>
                                     </div>
                                 )}
-                                {/* Hover overlay */}
-                                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors" />
                             </CardImage>
-                            <CardBody className="p-4">
-                                <h3 className="font-heading text-h4 text-neutral-900 mb-1 group-hover:text-primary transition-colors">
-                                    {t(`items.${product.key}.name`)}
-                                </h3>
-                                <p className="text-small text-neutral-500 line-clamp-2">
-                                    {t(`items.${product.key}.description`)}
-                                </p>
+
+                            <CardBody className="p-5 flex flex-col h-full justify-between">
+                                <div>
+                                    <h3 className="font-heading text-lg font-semibold text-neutral-900 mb-2 group-hover:text-primary transition-colors">
+                                        {t(`items.${product.key}.name`)}
+                                    </h3>
+                                    <p className="text-small text-neutral-500 line-clamp-3 mb-4">
+                                        {t(`items.${product.key}.description`)}
+                                    </p>
+                                </div>
+                                <div className="mt-auto">
+                                    <span className="text-xs font-medium text-primary uppercase tracking-wider group-hover:underline decoration-primary underline-offset-4">
+                                        Découvrir &rarr;
+                                    </span>
+                                </div>
                             </CardBody>
                         </Card>
                     ))}
@@ -148,4 +164,3 @@ export function ProductsSection() {
         </section>
     );
 }
-
