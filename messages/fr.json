@@ -1,0 +1,250 @@
+{
+    "title": "SEPACAM - Cacao du Cameroun",
+    "hero": {
+        "title": "Du cacao camerounais transformé, tracé, conforme export",
+        "subtitle": "SEPACAM transforme le cacao camerounais en produits fiables, traçables et conformes aux standards internationaux.",
+        "cta_primary": "Demander un devis",
+        "cta_secondary": "Demander un échantillon"
+    },
+    "nav": {
+        "home": "Accueil",
+        "processing": "Transformation",
+        "products": "Produits Cacao",
+        "quality": "Qualité & Laboratoire",
+        "traceability": "Traçabilité",
+        "sustainability": "Durabilité",
+        "kakaora": "KAKAORA",
+        "coffee": "Café",
+        "transit": "Transit",
+        "services": "Services",
+        "insights": "Insights",
+        "about": "À propos",
+        "contact": "Contact"
+    },
+    "poles": {
+        "title": "Nos pôles d'activité",
+        "agro": {
+            "title": "Agro-Industrie",
+            "description": "Transformation du cacao camerounais en produits export-ready: liqueur, beurre, poudre, tourteau et grué."
+        },
+        "transit": {
+            "title": "Transit",
+            "description": "Services de transit import/export, formalités douanières et accompagnement logistique au port de Douala."
+        },
+        "services": {
+            "title": "Prestations de services",
+            "description": "Rénovation intérieure/extérieure, désinsectisation et nettoyage professionnel pour entreprises."
+        }
+    },
+    "stats": {
+        "title": "SEPACAM en chiffres",
+        "producers": {
+            "value": "500+",
+            "label": "Producteurs partenaires",
+            "note": "À confirmer"
+        },
+        "capacity": {
+            "value": "2,000",
+            "label": "Tonnes/an",
+            "unit": "T",
+            "note": "À confirmer"
+        },
+        "regions": {
+            "value": "5",
+            "label": "Régions d'approvisionnement"
+        },
+        "experience": {
+            "value": "4+",
+            "label": "Années d'expérience"
+        }
+    },
+    "products": {
+        "title": "Nos produits cacao",
+        "subtitle": "Découvrez notre gamme de produits transformés, du grué à la poudre fine.",
+        "view_all": "Voir tous les produits",
+        "items": {
+            "liquor": {
+                "name": "Liqueur de cacao",
+                "description": "Masse de cacao pur 100%, base pour chocolat et confiserie."
+            },
+            "butter": {
+                "name": "Beurre de cacao",
+                "description": "Matière grasse naturelle extraite des fèves, pour chocolaterie et cosmétique."
+            },
+            "powder": {
+                "name": "Poudre de cacao",
+                "description": "Poudre dégraissée pour boissons, pâtisserie et industrie alimentaire."
+            },
+            "cake": {
+                "name": "Tourteau de cacao",
+                "description": "Résidu de pressage, utilisé pour la production de poudre."
+            },
+            "nibs": {
+                "name": "Grué de cacao",
+                "description": "Éclats de fèves torréfiées, pour snacking et industrie."
+            }
+        }
+    },
+    "quality": {
+        "title": "Qualité & Traçabilité",
+        "subtitle": "Chaque lot est contrôlé, documenté et traçable de la fève au produit fini.",
+        "points": {
+            "lab": "Laboratoire interne avec contrôles qualité systématiques",
+            "coa": "Certificats d'analyse (COA) pour chaque expédition",
+            "traceability": "Traçabilité lot par lot jusqu'aux coopératives",
+            "compliance": "Conformité aux standards export internationaux"
+        },
+        "cta": "En savoir plus"
+    },
+    "insights": {
+        "title": "Insights",
+        "subtitle": "Analyses de marché, tendances export et actualités du cacao.",
+        "view_all": "Tous les articles"
+    },
+    "cta_banner": {
+        "title": "Intéressé par nos produits ?",
+        "subtitle": "Recevez un devis personnalisé ou demandez un échantillon.",
+        "placeholder": "Votre email professionnel",
+        "button": "Envoyer"
+    },
+    "footer": {
+        "description": "SEPACAM transforme le cacao camerounais en produits fiables, traçables et conformes export.",
+        "quick_links": "Liens rapides",
+        "products_title": "Produits",
+        "legal": "Légal",
+        "contact_us": "Nous contacter",
+        "legal_links": {
+            "mentions": "Mentions légales",
+            "privacy": "Confidentialité",
+            "cookies": "Cookies",
+            "conduct": "Code de conduite"
+        },
+        "copyright": "© 2024 SEPACAM. Tous droits réservés."
+    },
+    "contact": {
+        "title": "Contactez-nous",
+        "subtitle": "Notre équipe commerciale vous répond sous 24-48 heures ouvrées.",
+        "form": {
+            "first_name": "Prénom",
+            "last_name": "Nom",
+            "email": "Email professionnel",
+            "company": "Entreprise",
+            "phone": "Téléphone (optionnel)",
+            "subject": "Sujet de votre demande",
+            "subject_options": {
+                "select": "Sélectionnez un sujet",
+                "quote": "Demande de devis",
+                "sample": "Demande d'échantillon",
+                "partnership": "Partenariat",
+                "technical": "Question technique",
+                "other": "Autre"
+            },
+            "message": "Votre message",
+            "consent": "J'accepte que SEPACAM utilise mes données pour traiter ma demande conformément à la politique de confidentialité.",
+            "submit": "Envoyer la demande",
+            "success_message": "Merci pour votre demande ! Notre équipe vous contactera sous 24-48h ouvrées.",
+            "error_message": "Une erreur est survenue. Veuillez réessayer ou nous contacter par email."
+        }
+    },
+    "quality_page": {
+        "title": "Qualité & Laboratoire",
+        "subtitle": "Un contrôle qualité rigoureux pour des produits d'excellence.",
+        "description": "Notre laboratoire interne assure une surveillance constante de la qualité, de la fève au produit fini. Nous garantissons la conformité aux standards internationaux.",
+        "certifications": "Nos Certifications",
+        "lab_features": {
+            "title": "Équipements de pointe",
+            "items": [
+                "Analyses physico-chimiques",
+                "Contrôle microbiologique",
+                "Tests organoleptiques",
+                "Mesure de la granulométrie"
+            ]
+        }
+    },
+    "kakaora_page": {
+        "title": "KAKAORA",
+        "subtitle": "La marque premium de SEPACAM.",
+        "description": "KAKAORA incarne l'excellence du cacao camerounais. Une sélection rigoureuse des fèves pour des produits d'exception destinés aux chocolatiers les plus exigeants.",
+        "features": [
+            "Fèves Grand Cru",
+            "Fermentation maîtrisée",
+            "Traçabilité totale",
+            "Profil aromatique unique"
+        ]
+    },
+    "coffee_page": {
+        "title": "Café",
+        "subtitle": "L'expertise SEPACAM au service du café.",
+        "description": "Nous sélectionnons et transformons également les meilleurs cafés du Cameroun (Robusta et Arabica), avec le même souci de qualité que pour notre cacao.",
+        "varieties": "Nos Variétés",
+        "processing": "Processus de transformation"
+    },
+    "transit_page": {
+        "title": "Transit & Logistique",
+        "subtitle": "Des solutions logistiques intégrées pour l'import/export.",
+        "description": "Notre pôle transit prend en charge toutes vos opérations douanières et logistiques au port de Douala, garantissant rapidité et conformité.",
+        "services": [
+            "Dédouanement Import/Export",
+            "Fret maritime et aérien",
+            "Entreposage sous douane",
+            "Conseil en commerce international"
+        ]
+    },
+    "services_page": {
+        "title": "Services aux Entreprises",
+        "subtitle": "Au-delà de l'agro-industrie.",
+        "description": "SEPACAM propose une gamme de services professionnels pour répondre aux besoins des entreprises au Cameroun.",
+        "offerings": [
+            "Rénovation immobilière",
+            "Désinsectisation et dératisation",
+            "Nettoyage industriel",
+            "Maintenance multiservice"
+        ]
+    },
+    "insights_page": {
+        "title": "Insights & Actualités",
+        "subtitle": "Restez informé sur le marché du cacao et nos activités.",
+        "description": "Découvrez nos analyses et actualités sur le marché du cacao.",
+        "no_posts": "Aucun article disponible pour le moment."
+    },
+    "legal_pages": {
+        "mentions": {
+            "title": "Mentions Légales",
+            "content": "Contenu des mentions légales à rédiger..."
+        },
+        "privacy": {
+            "title": "Politique de Confidentialité",
+            "content": "Contenu de la politique de confidentialité à rédiger..."
+        },
+        "conduct": {
+            "title": "Code de Conduite",
+            "content": "Contenu du code de conduite à rédiger sur l'éthique et la conformité."
+        }
+    },
+    "meta": {
+        "home": {
+            "title": "SEPACAM - Transformation et Export de Cacao Camerounais",
+            "description": "SEPACAM transforme le cacao camerounais en produits fiables, traçables et conformes aux standards internationaux."
+        },
+        "contact": {
+            "title": "Contact - SEPACAM",
+            "description": "Contactez l'équipe SEPACAM pour vos demandes de devis, échantillons ou partenariat."
+        },
+        "about": {
+            "title": "À propos - SEPACAM",
+            "description": "Découvrez SEPACAM, entreprise camerounaise de transformation et d'export de cacao."
+        },
+        "products": {
+            "title": "Produits Cacao - SEPACAM",
+            "description": "Découvrez notre gamme de produits cacao transformés: liqueur, beurre, poudre, tourteau et grué."
+        }
+    },
+    "common": {
+        "learn_more": "En savoir plus",
+        "view_details": "Voir les détails",
+        "download": "Télécharger",
+        "loading": "Chargement...",
+        "error": "Une erreur est survenue",
+        "required": "Champ obligatoire"
+    }
+}

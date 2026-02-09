@@ -1,0 +1,250 @@
+{
+    "title": "SEPACAM - Cameroon Cocoa",
+    "hero": {
+        "title": "Processed, traceable, export-compliant Cameroon cocoa",
+        "subtitle": "SEPACAM transforms Cameroonian cocoa into reliable, traceable products compliant with international standards.",
+        "cta_primary": "Request a quote",
+        "cta_secondary": "Request a sample"
+    },
+    "nav": {
+        "home": "Home",
+        "processing": "Processing",
+        "products": "Cocoa Products",
+        "quality": "Quality & Lab",
+        "traceability": "Traceability",
+        "sustainability": "Sustainability",
+        "kakaora": "KAKAORA",
+        "coffee": "Coffee",
+        "transit": "Transit",
+        "services": "Services",
+        "insights": "Insights",
+        "about": "About",
+        "contact": "Contact"
+    },
+    "poles": {
+        "title": "Our business lines",
+        "agro": {
+            "title": "Agro-Industry",
+            "description": "Processing Cameroonian cocoa into export-ready products: liquor, butter, powder, cake and nibs."
+        },
+        "transit": {
+            "title": "Transit",
+            "description": "Import/export transit services, customs formalities and logistics support at the Port of Douala."
+        },
+        "services": {
+            "title": "Service Provider",
+            "description": "Interior/exterior renovation, pest control and professional cleaning for businesses."
+        }
+    },
+    "stats": {
+        "title": "SEPACAM in numbers",
+        "producers": {
+            "value": "500+",
+            "label": "Partner producers",
+            "note": "To be confirmed"
+        },
+        "capacity": {
+            "value": "2,000",
+            "label": "Tons/year",
+            "unit": "T",
+            "note": "To be confirmed"
+        },
+        "regions": {
+            "value": "5",
+            "label": "Supply regions"
+        },
+        "experience": {
+            "value": "4+",
+            "label": "Years of experience"
+        }
+    },
+    "products": {
+        "title": "Our cocoa products",
+        "subtitle": "Discover our range of processed products, from nibs to fine powder.",
+        "view_all": "View all products",
+        "items": {
+            "liquor": {
+                "name": "Cocoa Liquor",
+                "description": "Pure 100% cocoa mass, base for chocolate and confectionery."
+            },
+            "butter": {
+                "name": "Cocoa Butter",
+                "description": "Natural fat extracted from beans, for chocolate and cosmetics."
+            },
+            "powder": {
+                "name": "Cocoa Powder",
+                "description": "Defatted powder for beverages, pastry and food industry."
+            },
+            "cake": {
+                "name": "Cocoa Cake",
+                "description": "Press residue, used for powder production."
+            },
+            "nibs": {
+                "name": "Cocoa Nibs",
+                "description": "Roasted bean fragments, for snacking and industry."
+            }
+        }
+    },
+    "quality": {
+        "title": "Quality & Traceability",
+        "subtitle": "Every batch is controlled, documented and traceable from bean to finished product.",
+        "points": {
+            "lab": "In-house laboratory with systematic quality controls",
+            "coa": "Certificates of Analysis (COA) for each shipment",
+            "traceability": "Batch-by-batch traceability to cooperatives",
+            "compliance": "Compliance with international export standards"
+        },
+        "cta": "Learn more"
+    },
+    "insights": {
+        "title": "Insights",
+        "subtitle": "Market analysis, export trends and cocoa news.",
+        "view_all": "All articles"
+    },
+    "cta_banner": {
+        "title": "Interested in our products?",
+        "subtitle": "Get a personalized quote or request a sample.",
+        "placeholder": "Your professional email",
+        "button": "Submit"
+    },
+    "footer": {
+        "description": "SEPACAM transforms Cameroonian cocoa into reliable, traceable and export-compliant products.",
+        "quick_links": "Quick links",
+        "products_title": "Products",
+        "legal": "Legal",
+        "contact_us": "Contact us",
+        "legal_links": {
+            "mentions": "Legal notice",
+            "privacy": "Privacy",
+            "cookies": "Cookies",
+            "conduct": "Code of conduct"
+        },
+        "copyright": "© 2024 SEPACAM. All rights reserved."
+    },
+    "contact": {
+        "title": "Contact us",
+        "subtitle": "Our sales team responds within 24-48 business hours.",
+        "form": {
+            "first_name": "First name",
+            "last_name": "Last name",
+            "email": "Professional email",
+            "company": "Company",
+            "phone": "Phone (optional)",
+            "subject": "Subject of your request",
+            "subject_options": {
+                "select": "Select a subject",
+                "quote": "Quote request",
+                "sample": "Sample request",
+                "partnership": "Partnership",
+                "technical": "Technical question",
+                "other": "Other"
+            },
+            "message": "Your message",
+            "consent": "I agree that SEPACAM uses my data to process my request in accordance with the privacy policy.",
+            "submit": "Send request",
+            "success_message": "Thank you for your request! Our team will contact you within 24-48 business hours.",
+            "error_message": "An error occurred. Please try again or contact us by email."
+        }
+    },
+    "quality_page": {
+        "title": "Quality & Lab",
+        "subtitle": "Rigorous quality control for excellent products.",
+        "description": "Our in-house laboratory ensures constant quality monitoring, from bean to finished product. We guarantee compliance with international standards.",
+        "certifications": "Our Certifications",
+        "lab_features": {
+            "title": "State-of-the-art Equipment",
+            "items": [
+                "Physico-chemical analysis",
+                "Microbiological control",
+                "Organoleptic tests",
+                "Particle size measurement"
+            ]
+        }
+    },
+    "kakaora_page": {
+        "title": "KAKAORA",
+        "subtitle": "SEPACAM's premium brand.",
+        "description": "KAKAORA embodies the excellence of Cameroonian cocoa. A rigorous selection of beans for exceptional products intended for the most demanding chocolatiers.",
+        "features": [
+            "Grand Cru Beans",
+            "Controlled fermentation",
+            "Total traceability",
+            "Unique aromatic profile"
+        ]
+    },
+    "coffee_page": {
+        "title": "Coffee",
+        "subtitle": "SEPACAM expertise in coffee.",
+        "description": "We also select and process the best coffees from Cameroon (Robusta and Arabica), with the same attention to quality as for our cocoa.",
+        "varieties": "Our Varieties",
+        "processing": "Processing process"
+    },
+    "transit_page": {
+        "title": "Transit & Logistics",
+        "subtitle": "Integrated logistics solutions for import/export.",
+        "description": "Our transit division handles all your customs and logistics operations at the port of Douala, ensuring speed and compliance.",
+        "services": [
+            "Import/Export Customs Clearance",
+            "Sea and Air Freight",
+            "Bonded Warehousing",
+            "International Trade Consulting"
+        ]
+    },
+    "services_page": {
+        "title": "Business Services",
+        "subtitle": "Beyond agro-industry.",
+        "description": "SEPACAM offers a range of professional services to meet the needs of businesses in Cameroon.",
+        "offerings": [
+            "Real Estate Renovation",
+            "Pest Control",
+            "Industrial Cleaning",
+            "Multiservice Maintenance"
+        ]
+    },
+    "insights_page": {
+        "title": "Insights & News",
+        "subtitle": "Stay informed about the cocoa market and our activities.",
+        "description": "Discover our insights and news about the cocoa market.",
+        "no_posts": "No articles available at the moment."
+    },
+    "legal_pages": {
+        "mentions": {
+            "title": "Legal Notice",
+            "content": "Legal notice content to be written..."
+        },
+        "privacy": {
+            "title": "Privacy Policy",
+            "content": "Privacy policy content to be written..."
+        },
+        "conduct": {
+            "title": "Code of Conduct",
+            "content": "Code of conduct content to be written regarding ethics and compliance."
+        }
+    },
+    "meta": {
+        "home": {
+            "title": "SEPACAM - Cameroon Cocoa Processing & Export",
+            "description": "SEPACAM processes Cameroonian cocoa into reliable, traceable products compliant with international standards."
+        },
+        "contact": {
+            "title": "Contact - SEPACAM",
+            "description": "Contact the SEPACAM team for quote requests, samples or partnerships."
+        },
+        "about": {
+            "title": "About - SEPACAM",
+            "description": "Discover SEPACAM, a Cameroonian cocoa processing and export company."
+        },
+        "products": {
+            "title": "Cocoa Products - SEPACAM",
+            "description": "Discover our range of processed cocoa products: liquor, butter, powder, cake and nibs."
+        }
+    },
+    "common": {
+        "learn_more": "Learn more",
+        "view_details": "View details",
+        "download": "Download",
+        "loading": "Loading...",
+        "error": "An error occurred",
+        "required": "Required field"
+    }
+}
