@@ -112,8 +112,18 @@
         "description": "SEPACAM transforme le cacao camerounais en produits fiables, traçables et conformes export.",
         "quick_links": "Liens rapides",
         "products_title": "Produits",
+        "company_title": "Entreprise",
         "legal": "Légal",
         "contact_us": "Nous contacter",
+        "certifications": "Nos certifications",
+        "request_quote": "Demander un devis",
+        "newsletter": {
+            "title": "Restez informé",
+            "description": "Recevez nos actualités et tendances du marché du cacao.",
+            "placeholder": "Votre email professionnel",
+            "button": "S'inscrire",
+            "success": "Inscription réussie !"
+        },
         "legal_links": {
             "mentions": "Mentions légales",
             "privacy": "Confidentialité",

@@ -112,8 +112,18 @@
         "description": "SEPACAM transforms Cameroonian cocoa into reliable, traceable and export-compliant products.",
         "quick_links": "Quick links",
         "products_title": "Products",
+        "company_title": "Company",
         "legal": "Legal",
         "contact_us": "Contact us",
+        "certifications": "Our certifications",
+        "request_quote": "Request a quote",
+        "newsletter": {
+            "title": "Stay informed",
+            "description": "Receive our news and cocoa market trends.",
+            "placeholder": "Your business email",
+            "button": "Subscribe",
+            "success": "Successfully subscribed!"
+        },
         "legal_links": {
             "mentions": "Legal notice",
             "privacy": "Privacy",
