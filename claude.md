@@ -609,19 +609,19 @@ Pour toute question sur le projet, consulter les fichiers source ou la documenta
 | `/contact` | ✅ Complète | Formulaire de contact + coordonnées |
 | `/transformation` | ✅ Complète | Processus de transformation en 6 étapes |
 | `/studio` | ✅ Complète | **Sanity Studio** pour gestion de contenu |
-| `/qualite-laboratoire` | 🟡 À créer | CMS: Schéma `page` prêt |
+| `/qualite-laboratoire` | ✅ Complète | Page Qualité & Laboratoire |
+| `/kakaora` | ✅ Complète | Marque premium KAKAORA |
+| `/cafe` | ✅ Complète | Activité café |
+| `/transit` | ✅ Complète | Services de transit & logistique |
+| `/services` | ✅ Complète | Prestations aux entreprises |
+| `/insights` | ✅ Complète | Blog/Articles (contenu via CMS) |
+| `/mentions-legales` | ✅ Complète | Mentions légales |
+| `/confidentialite` | ✅ Complète | Politique de confidentialité |
+| `/code-conduite` | ✅ Complète | Code de conduite |
 | `/tracabilite-conformite` | 🟡 À créer | CMS: Schéma `page` prêt |
 | `/durabilite` | 🟡 À créer | CMS: Schéma `page` prêt |
-| `/kakaora` | 🟡 À créer | Marque premium (CMS: Schéma `page` prêt) |
-| `/cafe` | 🟡 À créer | Activité café (CMS: Schéma `page` prêt) |
-| `/transit` | 🟡 À créer | Services de transit (CMS: Schéma `page` prêt) |
-| `/services` | 🟡 À créer | Prestations diverses (CMS: Schéma `page` prêt) |
-| `/insights` | 🟡 À créer | Blog/Articles (CMS: Schéma `article` prêt) |
 | `/insights/[slug]` | 🟡 À créer | Pages articles individuelles |
 | `/merci` | ❌ À créer | Page de confirmation formulaire |
-| `/mentions-legales` | ❌ À créer | Mentions légales |
-| `/confidentialite` | ❌ À créer | Politique de confidentialité |
-| `/code-conduite` | ❌ À créer | Code de conduite |
 
 ---
 
@@ -630,12 +630,14 @@ Pour toute question sur le projet, consulter les fichiers source ou la documenta
 ### Priorité Haute
 - [ ] **API Route `/api/contact`** - Traitement du formulaire de contact avec Resend (Partiellement fait : helper `resend.ts` prêt)
 - [ ] **reCAPTCHA v3** - Protection spam sur formulaire contact
-- [ ] **Pages légales** - Mentions légales, confidentialité, cookies
+- [x] **Pages légales** - Mentions légales, confidentialité, code de conduite ✅
 
 ### Priorité Moyenne
-- [ ] **Pages manquantes** - Voir tableau ci-dessus
+- [x] **Pages manquantes** - Qualité, Kakaora, Café, Transit, Services, Insights ✅
 - [x] **Sanity CMS** - Intégration complète (Schémas, Studio, Types, Clients) ✅
 - [x] **Sitemap.xml** - Génération automatique via `next-sitemap` ✅
+- [x] **Webhooks ISR** - `/api/revalidate` pour revalidation Sanity ✅
+- [x] **Image Optimization** - Pipeline d'optimisation images Sanity ✅
 - [ ] **robots.txt** - Configuration SEO (généré par next-sitemap)
 - [ ] **Images réelles** - Remplacer les placeholders
 
