@@ -97,6 +97,25 @@
         },
         "cta": "Learn more"
     },
+    "traceability_section": {
+        "title": "Traceability & EUDR Compliance",
+        "subtitle": "Thanks to our advanced geolocation system, we guarantee the origin of every bean and zero deforestation.",
+        "features": {
+            "eudr": {
+                "title": "EUDR Compliance",
+                "desc": "Zero deforestation, farm geolocation."
+            },
+            "child_labor": {
+                "title": "Social Ethics",
+                "desc": "Fight against child labor."
+            },
+            "digital": {
+                "title": "Digital Tracking",
+                "desc": "Real-time accessible data."
+            }
+        },
+        "cta": "See our CSR commitments"
+    },
     "insights": {
         "title": "Insights",
         "subtitle": "Market analysis, export trends and cocoa news.",

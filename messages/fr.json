@@ -97,6 +97,25 @@
         },
         "cta": "En savoir plus"
     },
+    "traceability_section": {
+        "title": "Traçabilité & Conformité EUDR",
+        "subtitle": "Grâce à notre système de géolocalisation avancé, nous garantissons l'origine de chaque fève et l'absence de déforestation.",
+        "features": {
+            "eudr": {
+                "title": "Conformité EUDR",
+                "desc": "Zéro déforestation, géolocalisation des parcelles."
+            },
+            "child_labor": {
+                "title": "Éthique Sociale",
+                "desc": "Lutte contre le travail des enfants."
+            },
+            "digital": {
+                "title": "Suivi Digital",
+                "desc": "Data accessible en temps réel."
+            }
+        },
+        "cta": "Voir nos engagements RSE"
+    },
     "insights": {
         "title": "Insights",
         "subtitle": "Analyses de marché, tendances export et actualités du cacao.",
