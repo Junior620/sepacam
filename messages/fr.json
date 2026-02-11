@@ -116,6 +116,19 @@
         },
         "cta": "Voir nos engagements RSE"
     },
+    "key_figures": {
+        "badge": "Chiffres Clés",
+        "title": "SEPACAM en Chiffres",
+        "subtitle": "Notre capacité industrielle au service de la filière cacao camerounaise.",
+        "figures": {
+            "capacity": "Capacité de transformation annuelle",
+            "products": "Produits semi-finis dérivés",
+            "export_countries": "Pays d'exportation",
+            "certifications": "Certifications internationales",
+            "employees": "Collaborateurs",
+            "surface_area": "Surface industrielle"
+        }
+    },
     "origins_map": {
         "badge": "Nos Origines",
         "title": "Carte des Origines du Cacao",

@@ -9,6 +9,7 @@ import { ProductsSection, type SanityProduct } from "@/components/home/ProductsS
 import { QualitySection } from "@/components/home/QualitySection";
 import { TraceabilitySection } from "@/components/home/TraceabilitySection";
 import { OriginsMap } from "@/components/home/OriginsMap";
+import { KeyFigures } from "@/components/home/KeyFigures";
 import { CTABanner } from "@/components/home/CTABanner";
 import { sanityFetch } from "@/lib/sanity";
 import { latestProductsQuery } from "@/lib/sanity.queries";
@@ -38,6 +39,7 @@ export default async function HomePage({ params }: Props) {
                 <QualitySection />
                 <TraceabilitySection />
                 <OriginsMap />
+                <KeyFigures />
                 <CTABanner />
             </main>
             <Footer />

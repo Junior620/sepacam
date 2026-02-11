@@ -116,6 +116,19 @@
         },
         "cta": "See our CSR commitments"
     },
+    "key_figures": {
+        "badge": "Key Figures",
+        "title": "SEPACAM by the Numbers",
+        "subtitle": "Our industrial capacity serving Cameroon's cocoa sector.",
+        "figures": {
+            "capacity": "Annual processing capacity",
+            "products": "Cocoa-derived products",
+            "export_countries": "Export countries",
+            "certifications": "International certifications",
+            "employees": "Team members",
+            "surface_area": "Industrial surface area"
+        }
+    },
     "origins_map": {
         "badge": "Our Origins",
         "title": "Cocoa Origins Map",
