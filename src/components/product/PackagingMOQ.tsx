@@ -369,7 +369,7 @@ export function PackagingMOQ({
                                 Incoterms
                             </h3>
                             <div className="space-y-3">
-                                {(sanityIncoterms
+                                {(typeof sanityIncoterms === "string" && sanityIncoterms
                                     ? sanityIncoterms
                                         .split(",")
                                         .map((i) => i.trim())
