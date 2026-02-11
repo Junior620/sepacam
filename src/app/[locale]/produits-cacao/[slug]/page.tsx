@@ -2,12 +2,10 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
-import Image from "next/image";
 import type { Metadata } from "next";
-import { sanityFetch, urlFor, getOptimizedImageUrl } from "@/lib/sanity";
+import { sanityFetch, getOptimizedImageUrl } from "@/lib/sanity";
+import { ProductHero } from "@/components/product/ProductHero";
 import {
     productBySlugQuery,
     productsQuery,
@@ -308,144 +306,20 @@ export default async function ProductDetailPage({
                 </div>
 
                 {/* Product Hero */}
-                <section className="section-spacing bg-white">
-                    <div className="container-main">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-                            {/* Image */}
-                            <div className="aspect-square rounded-2xl overflow-hidden border border-neutral-200 bg-gradient-to-br from-primary/5 to-accent/5 relative">
-                                {heroImageUrl ? (
-                                    <Image
-                                        src={heroImageUrl}
-                                        alt={name}
-                                        fill
-                                        className="object-cover"
-                                        quality={90}
-                                        priority
-                                    />
-                                ) : (
-                                    <div className="w-full h-full flex items-center justify-center">
-                                        <div className="text-center p-8">
-                                            <svg className="w-24 h-24 text-primary/30 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                                            </svg>
-                                            <p className="text-neutral-500 text-small">{name}</p>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* Info */}
-                            <div>
-                                {badge && (
-                                    <Badge variant="accent" size="lg" className="mb-4">
-                                        {badge}
-                                    </Badge>
-                                )}
-
-                                <h1 className="font-heading text-h1-sm lg:text-h1 text-neutral-900 mb-4">
-                                    {name}
-                                </h1>
-
-                                <p className="text-body lg:text-lg text-neutral-600 mb-6">
-                                    {description}
-                                </p>
-
-                                {longDescription && (
-                                    <p className="text-body text-neutral-500 mb-8">
-                                        {longDescription}
-                                    </p>
-                                )}
-
-                                {/* Applications */}
-                                {applications && applications.length > 0 && (
-                                    <div className="mb-8">
-                                        <h3 className="font-heading font-semibold text-neutral-900 mb-3">
-                                            {isFr ? "Applications" : "Applications"}
-                                        </h3>
-                                        <div className="flex flex-wrap gap-2">
-                                            {applications.map((app) => (
-                                                <Badge key={app} variant="secondary" size="sm">
-                                                    {app}
-                                                </Badge>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Technical Specs */}
-                                <div className="bg-neutral-50 rounded-2xl p-6 mb-8">
-                                    <h3 className="font-heading font-semibold text-neutral-900 mb-4">
-                                        {isFr ? "Spécifications techniques" : "Technical specifications"}
-                                    </h3>
-                                    <div className="grid grid-cols-2 gap-4">
-                                        {specs.map((spec) => (
-                                            <div key={spec.label}>
-                                                <p className="text-xs text-neutral-500 mb-1">{spec.label}</p>
-                                                <p className="font-medium text-neutral-900">{spec.value}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Certifications */}
-                                {certifications && certifications.length > 0 && (
-                                    <div className="mb-8">
-                                        <h3 className="font-heading font-semibold text-neutral-900 mb-3">
-                                            {isFr ? "Certifications" : "Certifications"}
-                                        </h3>
-                                        <div className="flex flex-wrap gap-2">
-                                            {certifications.map((cert) => (
-                                                <Badge key={cert} variant="outline">
-                                                    {cert}
-                                                </Badge>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Order info */}
-                                <div className="flex flex-wrap items-center gap-6 mb-8 text-small text-neutral-600">
-                                    {moq && (
-                                        <div className="flex items-center gap-2">
-                                            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                                            </svg>
-                                            <span>MOQ: {moq}</span>
-                                        </div>
-                                    )}
-                                    <div className="flex items-center gap-2">
-                                        <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                        <span>{isFr ? "Délai" : "Lead time"}: {leadTime}</span>
-                                    </div>
-                                    {packaging.length > 0 && (
-                                        <div className="flex items-center gap-2">
-                                            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8" />
-                                            </svg>
-                                            <span>{packaging.join(", ")}</span>
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* CTAs */}
-                                <div className="flex flex-wrap gap-4">
-                                    <Link href="/contact">
-                                        <Button variant="primary" size="lg">
-                                            {isFr ? "Demander un devis" : "Request a quote"}
-                                        </Button>
-                                    </Link>
-                                    <Link href="/contact">
-                                        <Button variant="secondary" size="lg">
-                                            {isFr ? "Demander un échantillon" : "Request a sample"}
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <ProductHero
+                    name={name}
+                    description={description}
+                    longDescription={longDescription}
+                    heroImageUrl={heroImageUrl}
+                    applications={applications}
+                    badge={badge}
+                    certifications={certifications}
+                    specs={specs}
+                    moq={moq}
+                    leadTime={leadTime}
+                    packaging={packaging}
+                    locale={locale}
+                />
 
                 {/* Documents */}
                 <section className="py-12 lg:py-16 bg-neutral-50 border-t border-neutral-200">
