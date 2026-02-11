@@ -23,6 +23,7 @@ import {
 import { FormField, FormTextarea, FormSelect } from "@/components/forms/FormField";
 import { ProductSelector } from "@/components/forms/ProductSelector";
 import { IncotermSelector } from "@/components/forms/IncotermSelector";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
 
 // ─── Types ───────────────────────────────────────────────
 export type LeadFormProps = {
@@ -120,6 +121,7 @@ export function LeadForm({
 
     const [formType, setFormType] = useState<LeadFormType>(initialType);
     const [status, setStatus] = useState<FormStatus>("idle");
+    const { execute: executeRecaptcha } = useRecaptcha();
 
     const config = FORM_TYPE_CONFIG[formType];
     const currentSchema = SCHEMA_MAP[formType];
@@ -156,12 +158,16 @@ export function LeadForm({
         async (data: any) => {
             setStatus("submitting");
             try {
+                // Generate reCAPTCHA token
+                const recaptchaToken = await executeRecaptcha(`lead_${formType}`);
+
                 const res = await fetch("/api/lead", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         formType,
                         ...data,
+                        recaptchaToken,
                         locale,
                         submittedAt: new Date().toISOString(),
                     }),
@@ -173,7 +179,7 @@ export function LeadForm({
                 setStatus("error");
             }
         },
-        [formType, locale, onSuccess]
+        [formType, locale, onSuccess, executeRecaptcha]
     );
 
     // ── Success screen ──
@@ -591,6 +597,35 @@ export function LeadForm({
                                     : "We respond within 24 business hours."}
                             </p>
                         </div>
+
+                        {/* reCAPTCHA privacy notice (required when badge is hidden) */}
+                        <p className="text-[11px] text-neutral-400 leading-relaxed">
+                            {isFr ? (
+                                <>
+                                    Ce site est protégé par reCAPTCHA et les{" "}
+                                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-neutral-600">
+                                        Règles de confidentialité
+                                    </a>{" "}
+                                    et les{" "}
+                                    <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-neutral-600">
+                                        Conditions d&apos;utilisation
+                                    </a>{" "}
+                                    de Google s&apos;appliquent.
+                                </>
+                            ) : (
+                                <>
+                                    This site is protected by reCAPTCHA and the Google{" "}
+                                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-neutral-600">
+                                        Privacy Policy
+                                    </a>{" "}
+                                    and{" "}
+                                    <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-neutral-600">
+                                        Terms of Service
+                                    </a>{" "}
+                                    apply.
+                                </>
+                            )}
+                        </p>
 
                         {status === "error" && (
                             <motion.div

@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 import { Analytics } from "@/components/ui/Analytics";
+import Script from "next/script";
 
 // Font configurations
 const inter = Inter({
@@ -149,6 +150,8 @@ export default async function LocaleLayout({
                 <link rel="preconnect" href="https://cdn.sanity.io" />
                 <link rel="preconnect" href="https://api.mapbox.com" />
                 <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+                <link rel="preconnect" href="https://www.google.com" />
+                <link rel="preconnect" href="https://www.gstatic.com" crossOrigin="anonymous" />
 
                 {/* Favicon */}
                 <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -163,6 +166,13 @@ export default async function LocaleLayout({
                     {children}
                     <Analytics />
                 </NextIntlClientProvider>
+                {/* reCAPTCHA v3 – loaded globally, consumed by useRecaptcha hook */}
+                {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+                    <Script
+                        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+                        strategy="afterInteractive"
+                    />
+                )}
             </body>
         </html>
     );

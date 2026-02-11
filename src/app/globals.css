@@ -410,3 +410,17 @@ select:focus-visible {
 .sticky-cta.is-visible {
   transform: translateY(0);
 }
+
+/* ========================================
+   reCAPTCHA v3 Badge
+   Hide the floating badge — we show inline
+   notice in each form per Google's terms.
+   ======================================== */
+
+.grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+}
