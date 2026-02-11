@@ -9,6 +9,7 @@ import { ProductHero } from "@/components/product/ProductHero";
 import { TechnicalSpecs } from "@/components/product/TechnicalSpecs";
 import { ApplicationsSection } from "@/components/product/ApplicationsSection";
 import { PackagingMOQ } from "@/components/product/PackagingMOQ";
+import { DownloadableDocuments } from "@/components/product/DownloadableDocuments";
 import {
     productBySlugQuery,
     productsQuery,
@@ -348,75 +349,13 @@ export default async function ProductDetailPage({
                     sanityIncoterms={sanityProduct?.incoterms}
                 />
 
-                {/* Documents */}
-                <section className="py-12 lg:py-16 bg-neutral-50 border-t border-neutral-200">
-                    <div className="container-main">
-                        <h3 className="font-heading font-semibold text-neutral-900 mb-6">
-                            {isFr ? "Documents disponibles" : "Available documents"}
-                        </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                            {/* Show Sanity documents if available */}
-                            {documents.length > 0 ? (
-                                documents.map((doc) => (
-                                    <a
-                                        key={doc.title}
-                                        href={doc.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="bg-white p-4 rounded-xl border border-neutral-200 flex items-center gap-4 hover:border-primary/30 transition-colors group"
-                                    >
-                                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                                            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p className="font-medium text-neutral-900">{doc.title}</p>
-                                            <p className="text-xs text-neutral-500">{doc.documentType}</p>
-                                        </div>
-                                    </a>
-                                ))
-                            ) : (
-                                /* Static document placeholders */
-                                <>
-                                    <div className="bg-white p-4 rounded-xl border border-neutral-200 flex items-center gap-4">
-                                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                                            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p className="font-medium text-neutral-900">{isFr ? "Fiche technique" : "Technical sheet"}</p>
-                                            <p className="text-xs text-neutral-500">{isFr ? "Sur demande" : "On request"}</p>
-                                        </div>
-                                    </div>
-                                    <div className="bg-white p-4 rounded-xl border border-neutral-200 flex items-center gap-4">
-                                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                                            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p className="font-medium text-neutral-900">COA</p>
-                                            <p className="text-xs text-neutral-500">{isFr ? "Par lot" : "Per batch"}</p>
-                                        </div>
-                                    </div>
-                                    <div className="bg-white p-4 rounded-xl border border-neutral-200 flex items-center gap-4">
-                                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                                            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p className="font-medium text-neutral-900">{isFr ? "Certificats export" : "Export certificates"}</p>
-                                            <p className="text-xs text-neutral-500">{isFr ? "Sur demande" : "On request"}</p>
-                                        </div>
-                                    </div>
-                                </>
-                            )}
-                        </div>
-                    </div>
-                </section>
+                {/* Downloadable Documents */}
+                <DownloadableDocuments
+                    productName={name}
+                    productKey={staticData?.key || sanityProduct?.productType || ""}
+                    locale={locale}
+                    sanityDocuments={documents}
+                />
             </main>
             <Footer />
         </>
