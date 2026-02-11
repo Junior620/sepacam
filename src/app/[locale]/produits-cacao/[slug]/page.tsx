@@ -8,6 +8,7 @@ import { sanityFetch, getOptimizedImageUrl } from "@/lib/sanity";
 import { ProductHero } from "@/components/product/ProductHero";
 import { TechnicalSpecs } from "@/components/product/TechnicalSpecs";
 import { ApplicationsSection } from "@/components/product/ApplicationsSection";
+import { PackagingMOQ } from "@/components/product/PackagingMOQ";
 import {
     productBySlugQuery,
     productsQuery,
@@ -336,6 +337,15 @@ export default async function ProductDetailPage({
                     productKey={staticData?.key || sanityProduct?.productType || ""}
                     locale={locale}
                     sanityApplications={applications}
+                />
+
+                {/* Packaging & MOQ */}
+                <PackagingMOQ
+                    productKey={staticData?.key || sanityProduct?.productType || ""}
+                    locale={locale}
+                    sanityPackaging={sanityProduct?.packaging}
+                    sanityMoq={sanityProduct?.moq}
+                    sanityIncoterms={sanityProduct?.incoterms}
                 />
 
                 {/* Documents */}
