@@ -31,7 +31,7 @@ export const routing = defineRouting({
         },
         "/tracabilite-conformite": {
             fr: "/tracabilite-conformite",
-            en: "/traceability-compliance",
+            en: "/traceability",
         },
         "/durabilite": {
             fr: "/durabilite",
