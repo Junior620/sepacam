@@ -149,6 +149,30 @@
         "subtitle": "Analyses de marché, tendances export et actualités du cacao.",
         "view_all": "Tous les articles"
     },
+    "lead_form": {
+        "badge": "Demande Rapide",
+        "title": "Recevez un devis personnalisé",
+        "subtitle": "Décrivez votre besoin et nous vous répondrons sous 24h.",
+        "email": "Email professionnel",
+        "email_placeholder": "nom@entreprise.com",
+        "product_type": "Produit d'intérêt",
+        "product_select": "Sélectionnez un produit",
+        "products": {
+            "liqueur": "Liqueur de cacao",
+            "beurre": "Beurre de cacao",
+            "poudre": "Poudre de cacao",
+            "tourteau": "Tourteau de cacao",
+            "nibs": "Nibs de cacao",
+            "masse": "Masse de cacao",
+            "autre": "Autre / Plusieurs produits"
+        },
+        "description": "Décrivez votre besoin",
+        "description_placeholder": "Volumes, spécifications, délais souhaités...",
+        "submit": "Envoyer ma demande",
+        "success": "Demande envoyée avec succès ! Nous vous contacterons sous 24h.",
+        "error": "Une erreur est survenue. Veuillez réessayer.",
+        "privacy_note": "En soumettant ce formulaire, vous acceptez notre politique de confidentialité. Ce site est protégé par reCAPTCHA."
+    },
     "cta_banner": {
         "title": "Intéressé par nos produits ?",
         "subtitle": "Recevez un devis personnalisé ou demandez un échantillon.",

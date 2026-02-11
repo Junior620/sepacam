@@ -149,6 +149,30 @@
         "subtitle": "Market analysis, export trends and cocoa news.",
         "view_all": "All articles"
     },
+    "lead_form": {
+        "badge": "Quick Inquiry",
+        "title": "Get a Personalized Quote",
+        "subtitle": "Describe your needs and we'll respond within 24 hours.",
+        "email": "Professional email",
+        "email_placeholder": "name@company.com",
+        "product_type": "Product of interest",
+        "product_select": "Select a product",
+        "products": {
+            "liqueur": "Cocoa Liquor",
+            "beurre": "Cocoa Butter",
+            "poudre": "Cocoa Powder",
+            "tourteau": "Cocoa Cake",
+            "nibs": "Cocoa Nibs",
+            "masse": "Cocoa Mass",
+            "autre": "Other / Multiple products"
+        },
+        "description": "Describe your needs",
+        "description_placeholder": "Volumes, specifications, desired timelines...",
+        "submit": "Send my inquiry",
+        "success": "Inquiry sent successfully! We'll contact you within 24 hours.",
+        "error": "An error occurred. Please try again.",
+        "privacy_note": "By submitting this form, you accept our privacy policy. This site is protected by reCAPTCHA."
+    },
     "cta_banner": {
         "title": "Interested in our products?",
         "subtitle": "Get a personalized quote or request a sample.",
