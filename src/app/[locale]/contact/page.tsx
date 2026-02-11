@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -163,7 +164,9 @@ export default async function ContactPage({
 
                             {/* Right Column - Form */}
                             <div className="bg-white rounded-2xl p-6 lg:p-8 border border-neutral-200 shadow-elevation-2">
-                                <ContactForm />
+                                <Suspense fallback={<div>Loading form...</div>}>
+                                    <ContactForm />
+                                </Suspense>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -60,6 +61,16 @@ export function ContactForm() {
         null
     );
 
+    const searchParams = useSearchParams();
+    const subjectParam = searchParams.get("subject");
+
+    // Map URL params to valid form subjects
+    const getInitialSubject = () => {
+        if (!subjectParam) return "";
+        if (["specs", "quality"].includes(subjectParam)) return "technical";
+        return subjectParam; // quote, sample, etc.
+    };
+
     const {
         register,
         handleSubmit,
@@ -73,7 +84,7 @@ export function ContactForm() {
             email: "",
             company: "",
             phone: "",
-            subject: "",
+            subject: getInitialSubject(),
             message: "",
             consent: false,
         },

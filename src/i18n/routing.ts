@@ -27,7 +27,7 @@ export const routing = defineRouting({
         },
         "/qualite-laboratoire": {
             fr: "/qualite-laboratoire",
-            en: "/quality-lab",
+            en: "/quality",
         },
         "/tracabilite-conformite": {
             fr: "/tracabilite-conformite",
