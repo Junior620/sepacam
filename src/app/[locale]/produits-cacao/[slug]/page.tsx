@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { sanityFetch, getOptimizedImageUrl } from "@/lib/sanity";
 import { ProductHero } from "@/components/product/ProductHero";
 import { TechnicalSpecs } from "@/components/product/TechnicalSpecs";
+import { ApplicationsSection } from "@/components/product/ApplicationsSection";
 import {
     productBySlugQuery,
     productsQuery,
@@ -328,6 +329,13 @@ export default async function ProductDetailPage({
                     locale={locale}
                     sanitySpecs={sanityProduct?.technicalSpecs}
                     certifications={certifications}
+                />
+
+                {/* Applications & Use Cases */}
+                <ApplicationsSection
+                    productKey={staticData?.key || sanityProduct?.productType || ""}
+                    locale={locale}
+                    sanityApplications={applications}
                 />
 
                 {/* Documents */}
