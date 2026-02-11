@@ -161,7 +161,7 @@ export function LeadForm({
                 // Generate reCAPTCHA token
                 const recaptchaToken = await executeRecaptcha(`lead_${formType}`);
 
-                const res = await fetch("/api/lead", {
+                const res = await fetch("/api/forms", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
