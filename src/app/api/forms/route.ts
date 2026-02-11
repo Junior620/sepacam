@@ -10,6 +10,7 @@ import {
     contactFormSchema,
     qcFormSchema,
 } from "@/lib/schemas";
+import { sendFormEmails } from "@/lib/mail";
 
 // ─── Schema map ──────────────────────────────────────────
 const SCHEMA_MAP: Record<string, z.ZodType> = {
@@ -94,62 +95,7 @@ async function verifyRecaptcha(
     return { success: false, score: 0, action: "" };
 }
 
-// ─── Notification (Resend or console) ────────────────────
-async function sendNotification(
-    formType: string,
-    data: Record<string, unknown>,
-    ip: string
-) {
-    const resendKey = process.env.RESEND_API_KEY;
-    const notifyEmail = process.env.NOTIFICATION_EMAIL || "commercial@sepacam.com";
 
-    // Format the data for email
-    const fieldLines = Object.entries(data)
-        .filter(([key]) => !["recaptchaToken", "submittedAt"].includes(key))
-        .map(([key, val]) => `• ${key}: ${val}`)
-        .join("\n");
-
-    const subject = `[SEPACAM] Nouveau lead – ${formType.toUpperCase()} – ${(data.company as string) || "N/A"}`;
-    const textBody = `Nouveau lead reçu via le formulaire "${formType}"\n\nIP: ${ip}\nDate: ${data.submittedAt || new Date().toISOString()}\n\n${fieldLines}`;
-
-    // Try Resend if configured
-    if (resendKey) {
-        try {
-            const res = await fetch("https://api.resend.com/emails", {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${resendKey}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    from: "SEPACAM Forms <forms@sepacam.com>",
-                    to: [notifyEmail],
-                    subject,
-                    text: textBody,
-                }),
-            });
-
-            if (!res.ok) {
-                const err = await res.text();
-                console.error("[Resend] Failed to send notification:", err);
-            } else {
-                console.log("[Resend] Notification sent successfully");
-            }
-        } catch (err) {
-            console.error("[Resend] Error:", err);
-        }
-    }
-
-    // Always log to console as fallback
-    console.log("📩 New lead:", {
-        formType,
-        ip,
-        timestamp: data.submittedAt || new Date().toISOString(),
-        email: data.email,
-        company: data.company,
-        product: data.product,
-    });
-}
 
 // ─── POST handler ────────────────────────────────────────
 export async function POST(req: NextRequest) {
@@ -265,8 +211,9 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        // 7. Send notification
-        await sendNotification(formType, body, ip);
+        // 7. Send emails (notification + confirmation)
+        const locale = (body.locale as string) || "fr";
+        const emailResults = await sendFormEmails(formType, body, ip, locale);
 
         // 8. Return success
         return NextResponse.json(
@@ -274,6 +221,10 @@ export async function POST(req: NextRequest) {
                 success: true,
                 message: "Form submitted successfully",
                 formType,
+                emails: {
+                    notification: emailResults.notification.success,
+                    confirmation: emailResults.confirmation.success,
+                },
             },
             { status: 200 }
         );

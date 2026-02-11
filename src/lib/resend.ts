@@ -1,39 +1,28 @@
-import { Resend } from 'resend';
+import { Resend } from "resend";
 
-// Configure Resend using API key from environment variables
-const resendApiKey = process.env.RESEND_API_KEY;
+// ─── Singleton Resend client ─────────────────────────────
+let resendClient: Resend | null = null;
 
-if (!resendApiKey) {
-    console.warn('RESEND_API_KEY is not defined. Email sending will be mocked or fail.');
-}
+export function getResendClient(): Resend | null {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) return null;
 
-export const resend = new Resend(resendApiKey || 're_123'); // Default bogus key to prevent crash if missing
-
-export async function sendEmail({
-    to,
-    subject,
-    html,
-    replyTo = 'contact@sepacam.com',
-    from = 'SEPACAM <noreply@sepacam.com>'
-}: {
-    to: string | string[];
-    subject: string;
-    html: string;
-    replyTo?: string;
-    from?: string;
-}) {
-    try {
-        const data = await resend.emails.send({
-            from,
-            to,
-            subject,
-            html,
-            replyTo: replyTo,
-        });
-
-        return { success: true, data };
-    } catch (error) {
-        console.error('Error sending email:', error);
-        return { success: false, error };
+    if (!resendClient) {
+        resendClient = new Resend(apiKey);
     }
+    return resendClient;
 }
+
+// ─── Configuration ───────────────────────────────────────
+export const EMAIL_CONFIG = {
+    /** Sender address (must be verified in Resend dashboard) */
+    from: process.env.EMAIL_FROM || "SEPACAM <noreply@sepacam.com>",
+
+    /** SEPACAM team notification recipients */
+    notifyTo: (process.env.NOTIFICATION_EMAIL || "commercial@sepacam.com")
+        .split(",")
+        .map((e) => e.trim()),
+
+    /** Reply-to for team notifications */
+    replyTo: process.env.EMAIL_REPLY_TO || "commercial@sepacam.com",
+} as const;
