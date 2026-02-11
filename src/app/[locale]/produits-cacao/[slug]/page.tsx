@@ -10,6 +10,7 @@ import { TechnicalSpecs } from "@/components/product/TechnicalSpecs";
 import { ApplicationsSection } from "@/components/product/ApplicationsSection";
 import { PackagingMOQ } from "@/components/product/PackagingMOQ";
 import { DownloadableDocuments } from "@/components/product/DownloadableDocuments";
+import { ProductCTABar } from "@/components/product/ProductCTABar";
 import {
     productBySlugQuery,
     productsQuery,
@@ -358,6 +359,7 @@ export default async function ProductDetailPage({
                 />
             </main>
             <Footer />
+            <ProductCTABar productName={name} locale={locale} />
         </>
     );
 }

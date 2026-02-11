@@ -68,7 +68,7 @@ export function ProductHero({
     );
 
     return (
-        <section ref={sectionRef} className="py-12 lg:py-20 bg-white">
+        <section ref={sectionRef} data-product-hero className="py-12 lg:py-20 bg-white">
             <div className="container-main">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
                     {/* ── Image Side ── */}
