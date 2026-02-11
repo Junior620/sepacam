@@ -116,6 +116,21 @@
         },
         "cta": "See our CSR commitments"
     },
+    "origins_map": {
+        "badge": "Our Origins",
+        "title": "Cocoa Origins Map",
+        "subtitle": "Our supply chain covers Cameroon's main cocoa-producing regions, from farm to Douala port.",
+        "region_label": "Cocoa-growing region",
+        "production_label": "of production",
+        "hub_port": "Export shipping port",
+        "hub_factory": "Processing plant",
+        "legend": "Legend",
+        "legend_origin": "Cocoa production zone",
+        "legend_port": "Export port",
+        "legend_factory": "SEPACAM Factory",
+        "loading": "Loading map...",
+        "fallback_text": "Interactive map available with a configured Mapbox token."
+    },
     "insights": {
         "title": "Insights",
         "subtitle": "Market analysis, export trends and cocoa news.",

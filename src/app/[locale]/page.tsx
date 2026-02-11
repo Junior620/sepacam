@@ -8,6 +8,7 @@ import { ProcessTimeline } from "@/components/home/ProcessTimeline";
 import { ProductsSection, type SanityProduct } from "@/components/home/ProductsSection";
 import { QualitySection } from "@/components/home/QualitySection";
 import { TraceabilitySection } from "@/components/home/TraceabilitySection";
+import { OriginsMap } from "@/components/home/OriginsMap";
 import { CTABanner } from "@/components/home/CTABanner";
 import { sanityFetch } from "@/lib/sanity";
 import { latestProductsQuery } from "@/lib/sanity.queries";
@@ -36,6 +37,7 @@ export default async function HomePage({ params }: Props) {
                 <ProductsSection products={products} />
                 <QualitySection />
                 <TraceabilitySection />
+                <OriginsMap />
                 <CTABanner />
             </main>
             <Footer />

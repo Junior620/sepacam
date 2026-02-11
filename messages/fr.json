@@ -116,6 +116,21 @@
         },
         "cta": "Voir nos engagements RSE"
     },
+    "origins_map": {
+        "badge": "Nos Origines",
+        "title": "Carte des Origines du Cacao",
+        "subtitle": "Nos approvisionnements couvrent les principales régions cacaoyères du Cameroun, de la ferme au port de Douala.",
+        "region_label": "Région cacaoyère",
+        "production_label": "de la production",
+        "hub_port": "Port d'embarquement export",
+        "hub_factory": "Usine de transformation",
+        "legend": "Légende",
+        "legend_origin": "Zone de production cacao",
+        "legend_port": "Port d'export",
+        "legend_factory": "Usine SEPACAM",
+        "loading": "Chargement de la carte...",
+        "fallback_text": "Carte interactive disponible avec un token Mapbox configuré."
+    },
     "insights": {
         "title": "Insights",
         "subtitle": "Analyses de marché, tendances export et actualités du cacao.",
