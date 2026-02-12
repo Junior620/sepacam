@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { generateSeoMetadata } from "@/lib/seo";
+import {
+    ClipboardList, Ship, Package, ShieldCheck, Truck, BarChart3, Anchor
+} from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -38,32 +41,32 @@ export async function generateMetadata({
 
 const SERVICES = [
     {
-        icon: "📋",
+        icon: <ClipboardList className="w-6 h-6 text-blue-400" />,
         fr: { title: "Formalités douanières", desc: "Déclarations en douane import & export, régimes économiques, certificats d'origine et licences." },
         en: { title: "Customs Formalities", desc: "Import & export customs declarations, economic regimes, certificates of origin, and licenses." },
     },
     {
-        icon: "🚢",
+        icon: <Ship className="w-6 h-6 text-blue-400" />,
         fr: { title: "Fret maritime & aérien", desc: "Organisation du transport FCL/LCL, booking navire, suivi temps réel et coordination des escales." },
         en: { title: "Sea & Air Freight", desc: "FCL/LCL transport organization, vessel booking, real-time tracking, and port call coordination." },
     },
     {
-        icon: "📦",
+        icon: <Package className="w-6 h-6 text-blue-400" />,
         fr: { title: "Magasinage & Empotage", desc: "Entrepôts sous douane, empotage conteneurs, contrôle pondéral et mise à quai." },
         en: { title: "Warehousing & Stuffing", desc: "Bonded warehouses, container stuffing, weight control, and quayside delivery." },
     },
     {
-        icon: "🔒",
+        icon: <ShieldCheck className="w-6 h-6 text-blue-400" />,
         fr: { title: "Assurance & Conformité", desc: "Couverture assurance fret, conformité documentaire CEMAC/OHADA et suivi réglementaire." },
         en: { title: "Insurance & Compliance", desc: "Cargo insurance coverage, CEMAC/OHADA documentary compliance, and regulatory monitoring." },
     },
     {
-        icon: "🚛",
+        icon: <Truck className="w-6 h-6 text-blue-400" />,
         fr: { title: "Transport terrestre", desc: "Acheminement des marchandises entre zones de production, usines et le corridor portuaire de Douala." },
         en: { title: "Inland Transport", desc: "Goods transport between production areas, factories, and the Douala port corridor." },
     },
     {
-        icon: "📊",
+        icon: <BarChart3 className="w-6 h-6 text-blue-400" />,
         fr: { title: "Conseil & Optimisation", desc: "Audit de coûts logistiques, optimisation des Incoterms et accompagnement stratégique pour vos flux." },
         en: { title: "Advisory & Optimization", desc: "Logistics cost audit, Incoterms optimization, and strategic support for your flows." },
     },
@@ -129,7 +132,8 @@ export default async function TransitPage({
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                             <div>
                                 <Badge variant="outline" size="lg" className="mb-6 border-blue-400/40 text-blue-300">
-                                    🚢 {isFr ? "Commissionnaire Agréé" : "Licensed Forwarder"}
+                                    <Anchor className="w-4 h-4 inline mr-1" />
+                                    {isFr ? "Commissionnaire Agréé" : "Licensed Forwarder"}
                                 </Badge>
                                 <h1 className="font-heading text-h1-sm lg:text-h1 mb-6 leading-tight">
                                     {isFr
@@ -159,9 +163,9 @@ export default async function TransitPage({
                                         </div>
                                         <div className="space-y-4">
                                             {[
-                                                { route: "Douala → Rotterdam", type: "FCL 20'", status: "🟢" },
-                                                { route: "Douala → Le Havre", type: "FCL 40'", status: "🟡" },
-                                                { route: "Douala → Hamburg", type: "LCL", status: "🟢" },
+                                                { route: "Douala → Rotterdam", type: "FCL 20'", status: "active" },
+                                                { route: "Douala → Le Havre", type: "FCL 40'", status: "pending" },
+                                                { route: "Douala → Hamburg", type: "LCL", status: "active" },
                                             ].map((op, i) => (
                                                 <div key={i} className="flex items-center justify-between p-3 bg-slate-700/40 rounded-lg border border-slate-600/30">
                                                     <div>

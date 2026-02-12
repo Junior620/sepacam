@@ -4,6 +4,8 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { ReactNode } from "react";
+import { ShoppingBag, Package, Cylinder, Truck, Maximize2 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +23,7 @@ type PackagingOption = {
     type: "bag" | "box" | "drum" | "bulk";
     fr: string;
     en: string;
-    icon: string;
+    icon: ReactNode;
 };
 
 // ─── Packaging data per product ──────────────────────────
@@ -37,10 +39,10 @@ const PRODUCT_PACKAGING: Record<
 > = {
     liquor: {
         options: [
-            { size: "10 kg", type: "box", fr: "Carton doublé PE", en: "PE-lined carton", icon: "📦" },
-            { size: "25 kg", type: "bag", fr: "Sac kraft multi-couches", en: "Multi-layer kraft bag", icon: "🛍️" },
-            { size: "200 kg", type: "drum", fr: "Fût métallique", en: "Metal drum", icon: "🛢️" },
-            { size: "Vrac", type: "bulk", fr: "Citerne (liquide chaud)", en: "Tanker (hot liquid)", icon: "🚛" },
+            { size: "10 kg", type: "box", fr: "Carton doublé PE", en: "PE-lined carton", icon: <Package className="w-5 h-5 text-primary" /> },
+            { size: "25 kg", type: "bag", fr: "Sac kraft multi-couches", en: "Multi-layer kraft bag", icon: <ShoppingBag className="w-5 h-5 text-primary" /> },
+            { size: "200 kg", type: "drum", fr: "Fût métallique", en: "Metal drum", icon: <Cylinder className="w-5 h-5 text-primary" /> },
+            { size: "Vrac", type: "bulk", fr: "Citerne (liquide chaud)", en: "Tanker (hot liquid)", icon: <Truck className="w-5 h-5 text-primary" /> },
         ],
         moq: { value: 1, unit: "MT" },
         leadTime: "2-4",
@@ -49,9 +51,9 @@ const PRODUCT_PACKAGING: Record<
     },
     butter: {
         options: [
-            { size: "15 kg", type: "box", fr: "Carton doublé PE", en: "PE-lined carton", icon: "📦" },
-            { size: "25 kg", type: "box", fr: "Carton doublé PE", en: "PE-lined carton", icon: "📦" },
-            { size: "200 kg", type: "drum", fr: "Fût métallique", en: "Metal drum", icon: "🛢️" },
+            { size: "15 kg", type: "box", fr: "Carton doublé PE", en: "PE-lined carton", icon: <Package className="w-5 h-5 text-primary" /> },
+            { size: "25 kg", type: "box", fr: "Carton doublé PE", en: "PE-lined carton", icon: <Package className="w-5 h-5 text-primary" /> },
+            { size: "200 kg", type: "drum", fr: "Fût métallique", en: "Metal drum", icon: <Cylinder className="w-5 h-5 text-primary" /> },
         ],
         moq: { value: 1, unit: "MT" },
         leadTime: "2-4",
@@ -60,10 +62,10 @@ const PRODUCT_PACKAGING: Record<
     },
     powder: {
         options: [
-            { size: "10 kg", type: "bag", fr: "Sac papier kraft", en: "Kraft paper bag", icon: "🛍️" },
-            { size: "25 kg", type: "bag", fr: "Sac kraft multi-couches", en: "Multi-layer kraft bag", icon: "🛍️" },
-            { size: "500 kg", type: "bulk", fr: "Big bag (FIBC)", en: "Big bag (FIBC)", icon: "📐" },
-            { size: "1 MT", type: "bulk", fr: "Big bag (FIBC)", en: "Big bag (FIBC)", icon: "📐" },
+            { size: "10 kg", type: "bag", fr: "Sac papier kraft", en: "Kraft paper bag", icon: <ShoppingBag className="w-5 h-5 text-primary" /> },
+            { size: "25 kg", type: "bag", fr: "Sac kraft multi-couches", en: "Multi-layer kraft bag", icon: <ShoppingBag className="w-5 h-5 text-primary" /> },
+            { size: "500 kg", type: "bulk", fr: "Big bag (FIBC)", en: "Big bag (FIBC)", icon: <Maximize2 className="w-5 h-5 text-primary" /> },
+            { size: "1 MT", type: "bulk", fr: "Big bag (FIBC)", en: "Big bag (FIBC)", icon: <Maximize2 className="w-5 h-5 text-primary" /> },
         ],
         moq: { value: 1, unit: "MT" },
         leadTime: "2-4",
@@ -72,9 +74,9 @@ const PRODUCT_PACKAGING: Record<
     },
     cake: {
         options: [
-            { size: "25 kg", type: "bag", fr: "Sac kraft multi-couches", en: "Multi-layer kraft bag", icon: "🛍️" },
-            { size: "50 kg", type: "bag", fr: "Sac polypropylène tissé", en: "Woven polypropylene bag", icon: "🛍️" },
-            { size: "1 MT", type: "bulk", fr: "Big bag (FIBC)", en: "Big bag (FIBC)", icon: "📐" },
+            { size: "25 kg", type: "bag", fr: "Sac kraft multi-couches", en: "Multi-layer kraft bag", icon: <ShoppingBag className="w-5 h-5 text-primary" /> },
+            { size: "50 kg", type: "bag", fr: "Sac polypropylène tissé", en: "Woven polypropylene bag", icon: <ShoppingBag className="w-5 h-5 text-primary" /> },
+            { size: "1 MT", type: "bulk", fr: "Big bag (FIBC)", en: "Big bag (FIBC)", icon: <Maximize2 className="w-5 h-5 text-primary" /> },
         ],
         moq: { value: 5, unit: "MT" },
         leadTime: "1-2",
@@ -83,9 +85,9 @@ const PRODUCT_PACKAGING: Record<
     },
     nibs: {
         options: [
-            { size: "5 kg", type: "bag", fr: "Sac stand-up zip", en: "Stand-up zip bag", icon: "🛍️" },
-            { size: "10 kg", type: "box", fr: "Carton doublé PE", en: "PE-lined carton", icon: "📦" },
-            { size: "25 kg", type: "bag", fr: "Sac kraft multi-couches", en: "Multi-layer kraft bag", icon: "🛍️" },
+            { size: "5 kg", type: "bag", fr: "Sac stand-up zip", en: "Stand-up zip bag", icon: <ShoppingBag className="w-5 h-5 text-primary" /> },
+            { size: "10 kg", type: "box", fr: "Carton doublé PE", en: "PE-lined carton", icon: <Package className="w-5 h-5 text-primary" /> },
+            { size: "25 kg", type: "bag", fr: "Sac kraft multi-couches", en: "Multi-layer kraft bag", icon: <ShoppingBag className="w-5 h-5 text-primary" /> },
         ],
         moq: { value: 0.5, unit: "MT" },
         leadTime: "1-2",
@@ -101,11 +103,11 @@ const INCOTERMS = [
     { code: "EXW", fr: "Départ usine – Douala", en: "Ex Works – Douala Factory" },
 ];
 
-const TYPE_ICONS: Record<string, string> = {
-    bag: "🛍️",
-    box: "📦",
-    drum: "🛢️",
-    bulk: "🚛",
+const TYPE_ICONS: Record<string, ReactNode> = {
+    bag: <ShoppingBag className="w-5 h-5 text-primary" />,
+    box: <Package className="w-5 h-5 text-primary" />,
+    drum: <Cylinder className="w-5 h-5 text-primary" />,
+    bulk: <Truck className="w-5 h-5 text-primary" />,
 };
 
 export function PackagingMOQ({

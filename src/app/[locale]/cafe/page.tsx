@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { generateSeoMetadata } from "@/lib/seo";
+import {
+    Coffee, Leaf, Mountain, Microscope, MapPin, Ship
+} from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -41,7 +44,7 @@ export async function generateMetadata({
 const COFFEE_TYPES = [
     {
         key: "robusta",
-        emoji: "☕",
+        emoji: <Coffee className="w-6 h-6 text-amber-600" />,
         accentColor: "amber",
         fr: {
             title: "Robusta du Cameroun",
@@ -69,7 +72,7 @@ const COFFEE_TYPES = [
     },
     {
         key: "arabica",
-        emoji: "🌿",
+        emoji: <Leaf className="w-6 h-6 text-emerald-600" />,
         accentColor: "emerald",
         fr: {
             title: "Arabica des Hauts Plateaux",
@@ -133,7 +136,7 @@ export default async function CoffeePage({
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                             <div>
                                 <Badge variant="outline" size="lg" className="mb-6 border-amber-500/60 text-amber-200">
-                                    ☕ {isFr ? "Négoce & Export" : "Trading & Export"}
+                                    <Coffee className="w-4 h-4 inline-block mr-1.5" /> {isFr ? "Négoce & Export" : "Trading & Export"}
                                 </Badge>
                                 <h1 className="font-heading text-h1-sm lg:text-h1 mb-6 leading-tight">
                                     {isFr
@@ -164,7 +167,7 @@ export default async function CoffeePage({
                                 <div className="relative">
                                     <div className="absolute -inset-4 bg-gradient-to-br from-amber-500/20 to-orange-500/10 rounded-3xl blur-xl" />
                                     <div className="relative bg-gradient-to-br from-amber-900/80 to-stone-900/80 backdrop-blur-sm border border-amber-700/30 rounded-2xl p-8 shadow-2xl">
-                                        <div className="text-6xl mb-4">☕</div>
+                                        <div className="text-6xl mb-4"><Coffee className="w-14 h-14 text-amber-400" /></div>
                                         <h3 className="font-heading text-2xl font-bold mb-2">{isFr ? "Café Vert d'Origine" : "Origin Green Coffee"}</h3>
                                         <p className="text-amber-200/70 text-sm mb-6">{isFr ? "Cameroun – Afrique Centrale" : "Cameroon – Central Africa"}</p>
                                         <div className="grid grid-cols-2 gap-4">
@@ -240,7 +243,7 @@ export default async function CoffeePage({
                                         <div className="p-8 flex-grow flex flex-col -mt-4">
                                             {/* Altitude chip */}
                                             <div className="flex items-center gap-2 mb-5">
-                                                <span className="text-neutral-400">⛰️</span>
+                                                <span className="text-neutral-400"><Mountain className="w-4 h-4 inline-block" /></span>
                                                 <span className="text-sm font-semibold text-neutral-700">
                                                     {isFr ? "Altitude" : "Altitude"}: {coffee[lang].altitude}
                                                 </span>
@@ -362,17 +365,17 @@ export default async function CoffeePage({
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
                                 {
-                                    icon: "🔬",
+                                    icon: <Microscope className="w-8 h-8 text-primary" />,
                                     fr: { title: "Contrôle Qualité", desc: "Chaque lot est analysé avant export : taux d'humidité, nombre de défauts, et cup-test réalisés dans notre laboratoire." },
                                     en: { title: "Quality Control", desc: "Every lot is analyzed before export: moisture rate, defect count, and cup tests performed in our laboratory." },
                                 },
                                 {
-                                    icon: "📍",
+                                    icon: <MapPin className="w-8 h-8 text-primary" />,
                                     fr: { title: "Traçabilité Complète", desc: "Du producteur au conteneur : nous garantissons la traçabilité de chaque sac grâce à notre système digital intégré." },
                                     en: { title: "Full Traceability", desc: "From farmer to container: we guarantee traceability of every bag through our integrated digital system." },
                                 },
                                 {
-                                    icon: "🚢",
+                                    icon: <Ship className="w-8 h-8 text-primary" />,
                                     fr: { title: "Logistique Fiable", desc: "Expédition depuis le port de Douala avec une documentation export complète et un suivi en temps réel." },
                                     en: { title: "Reliable Logistics", desc: "Shipment from the port of Douala with complete export documentation and real-time tracking." },
                                 },
@@ -390,7 +393,7 @@ export default async function CoffeePage({
                 {/* ─── CTA ─── */}
                 <section className="relative py-24 bg-gradient-to-br from-amber-950 via-stone-900 to-neutral-900 text-white overflow-hidden">
                     <div className="absolute inset-0 opacity-5">
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[200px] select-none pointer-events-none">☕</div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none"><Coffee className="w-48 h-48 text-amber-400" /></div>
                     </div>
                     <div className="container-main relative z-10 text-center">
                         <h2 className="font-heading text-h2 mb-6">

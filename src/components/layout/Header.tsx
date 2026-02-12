@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Link, usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { Sparkles } from "lucide-react";
 import type { StaticPathnames } from "@/i18n/routing";
 
 type NavItem = {
@@ -90,8 +91,8 @@ export function Header() {
         <>
             <header
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                        ? "bg-white/95 backdrop-blur-md shadow-elevation-1"
-                        : "bg-white"
+                    ? "bg-white/95 backdrop-blur-md shadow-elevation-1"
+                    : "bg-white"
                     }`}
             >
                 <div className="container-main">
@@ -114,8 +115,8 @@ export function Header() {
                             <Link
                                 href="/produits-cacao"
                                 className={`px-4 py-2 rounded-lg text-small font-semibold transition-all ${isActive("/produits-cacao")
-                                        ? "bg-primary text-white"
-                                        : "text-primary hover:bg-primary/5"
+                                    ? "bg-primary text-white"
+                                    : "text-primary hover:bg-primary/5"
                                     }`}
                             >
                                 {t("products")}
@@ -125,8 +126,8 @@ export function Header() {
                             <div className="relative">
                                 <button
                                     className={`px-4 py-2 rounded-lg text-small font-medium transition-all flex items-center gap-1 ${isActive("/transformation") || isActive("/qualite-laboratoire") || isActive("/kakaora")
-                                            ? "text-primary bg-primary/5"
-                                            : "text-neutral-600 hover:text-primary hover:bg-neutral-50"
+                                        ? "text-primary bg-primary/5"
+                                        : "text-neutral-600 hover:text-primary hover:bg-neutral-50"
                                         }`}
                                     onClick={() => setActiveDropdown(activeDropdown === "cacao" ? null : "cacao")}
                                     onMouseEnter={() => setActiveDropdown("cacao")}
@@ -143,8 +144,8 @@ export function Header() {
                                 </button>
                                 <div
                                     className={`absolute top-full left-0 pt-2 transition-all duration-200 ${activeDropdown === "cacao"
-                                            ? "opacity-100 visible translate-y-0"
-                                            : "opacity-0 invisible -translate-y-2"
+                                        ? "opacity-100 visible translate-y-0"
+                                        : "opacity-0 invisible -translate-y-2"
                                         }`}
                                     onMouseLeave={() => setActiveDropdown(null)}
                                 >
@@ -152,8 +153,8 @@ export function Header() {
                                         <Link
                                             href="/transformation"
                                             className={`block px-4 py-2.5 text-small transition-colors ${isActive("/transformation")
-                                                    ? "bg-primary/5 text-primary font-medium"
-                                                    : "text-neutral-600 hover:bg-neutral-50 hover:text-primary"
+                                                ? "bg-primary/5 text-primary font-medium"
+                                                : "text-neutral-600 hover:bg-neutral-50 hover:text-primary"
                                                 }`}
                                         >
                                             {t("processing")}
@@ -161,8 +162,8 @@ export function Header() {
                                         <Link
                                             href="/qualite-laboratoire"
                                             className={`block px-4 py-2.5 text-small transition-colors ${isActive("/qualite-laboratoire")
-                                                    ? "bg-primary/5 text-primary font-medium"
-                                                    : "text-neutral-600 hover:bg-neutral-50 hover:text-primary"
+                                                ? "bg-primary/5 text-primary font-medium"
+                                                : "text-neutral-600 hover:bg-neutral-50 hover:text-primary"
                                                 }`}
                                         >
                                             {t("quality")}
@@ -170,11 +171,11 @@ export function Header() {
                                         <Link
                                             href="/kakaora"
                                             className={`block px-4 py-2.5 text-small font-semibold transition-colors ${isActive("/kakaora")
-                                                    ? "bg-accent/10 text-accent"
-                                                    : "text-accent hover:bg-accent/5"
+                                                ? "bg-accent/10 text-accent"
+                                                : "text-accent hover:bg-accent/5"
                                                 }`}
                                         >
-                                            KAKAORA ✨
+                                            KAKAORA <Sparkles className="w-3.5 h-3.5 inline-block ml-1 text-accent" />
                                         </Link>
                                     </div>
                                 </div>
@@ -184,8 +185,8 @@ export function Header() {
                             <div className="relative">
                                 <button
                                     className={`px-4 py-2 rounded-lg text-small font-medium transition-all flex items-center gap-1 ${isActive("/cafe") || isActive("/transit") || isActive("/services")
-                                            ? "text-primary bg-primary/5"
-                                            : "text-neutral-600 hover:text-primary hover:bg-neutral-50"
+                                        ? "text-primary bg-primary/5"
+                                        : "text-neutral-600 hover:text-primary hover:bg-neutral-50"
                                         }`}
                                     onClick={() => setActiveDropdown(activeDropdown === "activities" ? null : "activities")}
                                     onMouseEnter={() => setActiveDropdown("activities")}
@@ -202,8 +203,8 @@ export function Header() {
                                 </button>
                                 <div
                                     className={`absolute top-full left-0 pt-2 transition-all duration-200 ${activeDropdown === "activities"
-                                            ? "opacity-100 visible translate-y-0"
-                                            : "opacity-0 invisible -translate-y-2"
+                                        ? "opacity-100 visible translate-y-0"
+                                        : "opacity-0 invisible -translate-y-2"
                                         }`}
                                     onMouseLeave={() => setActiveDropdown(null)}
                                 >
@@ -213,8 +214,8 @@ export function Header() {
                                                 key={item.href}
                                                 href={item.href}
                                                 className={`block px-4 py-2.5 text-small transition-colors ${isActive(item.href)
-                                                        ? "bg-primary/5 text-primary font-medium"
-                                                        : "text-neutral-600 hover:bg-neutral-50 hover:text-primary"
+                                                    ? "bg-primary/5 text-primary font-medium"
+                                                    : "text-neutral-600 hover:bg-neutral-50 hover:text-primary"
                                                     }`}
                                             >
                                                 {item.label}
@@ -228,8 +229,8 @@ export function Header() {
                             <Link
                                 href="/a-propos"
                                 className={`px-4 py-2 rounded-lg text-small font-medium transition-all ${isActive("/a-propos")
-                                        ? "text-primary bg-primary/5"
-                                        : "text-neutral-600 hover:text-primary hover:bg-neutral-50"
+                                    ? "text-primary bg-primary/5"
+                                    : "text-neutral-600 hover:text-primary hover:bg-neutral-50"
                                     }`}
                             >
                                 {t("about")}
@@ -295,8 +296,8 @@ export function Header() {
                                     key={item.href}
                                     href={item.href}
                                     className={`block px-3 py-3 rounded-lg text-body font-medium transition-colors ${isActive(item.href)
-                                            ? "bg-primary/5 text-primary"
-                                            : "text-neutral-700 hover:bg-neutral-50"
+                                        ? "bg-primary/5 text-primary"
+                                        : "text-neutral-700 hover:bg-neutral-50"
                                         }`}
                                 >
                                     {item.label}
@@ -314,8 +315,8 @@ export function Header() {
                                     key={item.href}
                                     href={item.href}
                                     className={`block px-3 py-3 rounded-lg text-body font-medium transition-colors ${isActive(item.href)
-                                            ? "bg-primary/5 text-primary"
-                                            : "text-neutral-700 hover:bg-neutral-50"
+                                        ? "bg-primary/5 text-primary"
+                                        : "text-neutral-700 hover:bg-neutral-50"
                                         }`}
                                 >
                                     {item.label}
@@ -328,8 +329,8 @@ export function Header() {
                             <Link
                                 href="/a-propos"
                                 className={`block px-3 py-3 rounded-lg text-body font-medium transition-colors ${isActive("/a-propos")
-                                        ? "bg-primary/5 text-primary"
-                                        : "text-neutral-700 hover:bg-neutral-50"
+                                    ? "bg-primary/5 text-primary"
+                                    : "text-neutral-700 hover:bg-neutral-50"
                                     }`}
                             >
                                 {t("about")}

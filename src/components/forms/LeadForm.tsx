@@ -24,6 +24,8 @@ import { FormField, FormTextarea, FormSelect } from "@/components/forms/FormFiel
 import { ProductSelector } from "@/components/forms/ProductSelector";
 import { IncotermSelector } from "@/components/forms/IncotermSelector";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
+import type { ReactNode } from "react";
+import { ClipboardList, Package, Microscope, Handshake, Ship, Check } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────
 export type LeadFormProps = {
@@ -42,7 +44,7 @@ const FORM_TYPE_CONFIG: Record<
     {
         fr: string;
         en: string;
-        icon: string;
+        icon: ReactNode;
         color: string;
         description: { fr: string; en: string };
     }
@@ -50,7 +52,7 @@ const FORM_TYPE_CONFIG: Record<
     quote: {
         fr: "Demande de devis",
         en: "Quote Request",
-        icon: "📋",
+        icon: <ClipboardList className="w-5 h-5" />,
         color: "bg-primary/10 text-primary",
         description: {
             fr: "Obtenez un devis personnalisé sous 24h",
@@ -60,7 +62,7 @@ const FORM_TYPE_CONFIG: Record<
     sample: {
         fr: "Demande d'échantillon",
         en: "Sample Request",
-        icon: "📦",
+        icon: <Package className="w-5 h-5" />,
         color: "bg-accent/10 text-accent",
         description: {
             fr: "Recevez un échantillon gratuit pour vos tests",
@@ -70,7 +72,7 @@ const FORM_TYPE_CONFIG: Record<
     specs: {
         fr: "Spécifications sur mesure",
         en: "Custom Specifications",
-        icon: "🔬",
+        icon: <Microscope className="w-5 h-5" />,
         color: "bg-blue-50 text-blue-600",
         description: {
             fr: "Demandez des spécifications adaptées à votre application",
@@ -80,7 +82,7 @@ const FORM_TYPE_CONFIG: Record<
     partnership: {
         fr: "Partenariat commercial",
         en: "Commercial Partnership",
-        icon: "🤝",
+        icon: <Handshake className="w-5 h-5" />,
         color: "bg-purple-50 text-purple-600",
         description: {
             fr: "Devenez distributeur, agent ou partenaire SEPACAM",
@@ -90,7 +92,7 @@ const FORM_TYPE_CONFIG: Record<
     transit: {
         fr: "Transit & Logistique",
         en: "Transit & Logistics",
-        icon: "🚢",
+        icon: <Ship className="w-5 h-5" />,
         color: "bg-amber-50 text-amber-600",
         description: {
             fr: "Confiez votre logistique à nos experts du port de Douala",
@@ -467,7 +469,7 @@ export function LeadForm({
                                                         }
                                                     `}
                                                 >
-                                                    {selected && "✓ "}
+                                                    {selected && <><Check className="w-3 h-3 inline-block mr-0.5" /> </>}
                                                     {cert.label}
                                                 </button>
                                             );

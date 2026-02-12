@@ -4,6 +4,11 @@ import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { ReactNode } from "react";
+import {
+    Candy, IceCreamCone, Coffee, Droplets, Pill, Bath,
+    CakeSlice, Factory, Beef, Sprout, Salad, Beer, Package
+} from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,7 +24,7 @@ type ApplicationCategory = "all" | "food" | "cosmetic" | "pharma" | "industrial"
 type UseCase = {
     id: string;
     category: ApplicationCategory;
-    icon: string;
+    icon: ReactNode;
     fr: { title: string; description: string };
     en: { title: string; description: string };
 };
@@ -30,35 +35,35 @@ const PRODUCT_APPLICATIONS: Record<string, UseCase[]> = {
         {
             id: "chocolate",
             category: "food",
-            icon: "🍫",
+            icon: <Candy className="w-7 h-7 text-amber-700" />,
             fr: { title: "Chocolaterie", description: "Base pour tablettes, bonbons, ganaches et couvertures." },
             en: { title: "Chocolate Making", description: "Base for bars, bonbons, ganaches and couvertures." },
         },
         {
             id: "confectionery",
             category: "food",
-            icon: "🍬",
+            icon: <Candy className="w-7 h-7 text-pink-500" />,
             fr: { title: "Confiserie", description: "Enrobage, praliné et fourrages pour confiseries haut de gamme." },
             en: { title: "Confectionery", description: "Coating, pralines and fillings for premium confectionery." },
         },
         {
             id: "bakery",
             category: "food",
-            icon: "🥐",
+            icon: <CakeSlice className="w-7 h-7 text-amber-600" />,
             fr: { title: "Pâtisserie & Boulangerie", description: "Viennoiseries, gâteaux, mousses et crèmes." },
             en: { title: "Pastry & Bakery", description: "Pastries, cakes, mousses and creams." },
         },
         {
             id: "icecream",
             category: "food",
-            icon: "🍦",
+            icon: <IceCreamCone className="w-7 h-7 text-pink-400" />,
             fr: { title: "Glaces & Sorbets", description: "Arôme chocolat intense pour crèmes glacées artisanales." },
             en: { title: "Ice Cream & Sorbet", description: "Intense chocolate flavour for artisanal ice creams." },
         },
         {
             id: "beverage",
             category: "food",
-            icon: "☕",
+            icon: <Coffee className="w-7 h-7 text-amber-800" />,
             fr: { title: "Boissons chocolatées", description: "Base pour chocolats chauds haut de gamme et boissons." },
             en: { title: "Hot Chocolate Drinks", description: "Base for premium hot chocolate and beverages." },
         },
@@ -67,35 +72,35 @@ const PRODUCT_APPLICATIONS: Record<string, UseCase[]> = {
         {
             id: "chocolate",
             category: "food",
-            icon: "🍫",
+            icon: <Candy className="w-7 h-7 text-amber-700" />,
             fr: { title: "Chocolaterie fine", description: "Texture fondante et brillance pour chocolats premium." },
             en: { title: "Fine Chocolate", description: "Melt-in-mouth texture and gloss for premium chocolate." },
         },
         {
             id: "cosmetics",
             category: "cosmetic",
-            icon: "🧴",
+            icon: <Droplets className="w-7 h-7 text-pink-500" />,
             fr: { title: "Cosmétique naturelle", description: "Crèmes, baumes, savons et soins pour la peau." },
             en: { title: "Natural Cosmetics", description: "Creams, balms, soaps and skincare products." },
         },
         {
             id: "pharma",
             category: "pharma",
-            icon: "💊",
+            icon: <Pill className="w-7 h-7 text-blue-500" />,
             fr: { title: "Pharmaceutique", description: "Excipient pour suppositoires et enrobages de comprimés." },
             en: { title: "Pharmaceutical", description: "Excipient for suppositories and tablet coatings." },
         },
         {
             id: "confectionery",
             category: "food",
-            icon: "🍬",
+            icon: <Candy className="w-7 h-7 text-pink-500" />,
             fr: { title: "Confiserie", description: "Agent de texture et de brillance pour enrobages." },
             en: { title: "Confectionery", description: "Texture and gloss agent for coatings." },
         },
         {
             id: "bodycare",
             category: "cosmetic",
-            icon: "🛁",
+            icon: <Bath className="w-7 h-7 text-purple-500" />,
             fr: { title: "Soins corporels", description: "Beurres corporels, lip balms et produits capillaires." },
             en: { title: "Body Care", description: "Body butters, lip balms and hair products." },
         },
@@ -104,42 +109,42 @@ const PRODUCT_APPLICATIONS: Record<string, UseCase[]> = {
         {
             id: "beverages",
             category: "food",
-            icon: "☕",
+            icon: <Coffee className="w-7 h-7 text-amber-800" />,
             fr: { title: "Boissons chocolatées", description: "Poudre instantanée, cacao chaud et mélanges protéinés." },
             en: { title: "Chocolate Beverages", description: "Instant powder, hot cocoa and protein blends." },
         },
         {
             id: "bakery",
             category: "food",
-            icon: "🥐",
+            icon: <CakeSlice className="w-7 h-7 text-amber-600" />,
             fr: { title: "Pâtisserie", description: "Gâteaux, brownies, cookies et desserts chocolatés." },
             en: { title: "Pastry", description: "Cakes, brownies, cookies and chocolate desserts." },
         },
         {
             id: "dairy",
             category: "food",
-            icon: "🥛",
+            icon: <Droplets className="w-7 h-7 text-blue-300" />,
             fr: { title: "Produits laitiers", description: "Yaourts, crèmes dessert et laits aromatisés." },
             en: { title: "Dairy Products", description: "Yoghurts, dessert creams and flavoured milks." },
         },
         {
             id: "icecream",
             category: "food",
-            icon: "🍦",
+            icon: <IceCreamCone className="w-7 h-7 text-pink-400" />,
             fr: { title: "Glaces", description: "Saveur cacao pour glaces industrielles et artisanales." },
             en: { title: "Ice Cream", description: "Cocoa flavour for industrial and artisanal ice cream." },
         },
         {
             id: "cereal",
             category: "food",
-            icon: "🥣",
+            icon: <Coffee className="w-7 h-7 text-amber-600" />,
             fr: { title: "Céréales & Snacks", description: "Enrobage et aromatisation de barres et céréales." },
             en: { title: "Cereals & Snacks", description: "Coating and flavouring for bars and cereals." },
         },
         {
             id: "cosmetics",
             category: "cosmetic",
-            icon: "🧴",
+            icon: <Droplets className="w-7 h-7 text-pink-500" />,
             fr: { title: "Cosmétique", description: "Masques, gommages et soins à base de cacao." },
             en: { title: "Cosmetics", description: "Masks, scrubs and cocoa-based skincare." },
         },
@@ -148,21 +153,21 @@ const PRODUCT_APPLICATIONS: Record<string, UseCase[]> = {
         {
             id: "powder_production",
             category: "industrial",
-            icon: "🏭",
+            icon: <Factory className="w-7 h-7 text-amber-700" />,
             fr: { title: "Production de poudre", description: "Matière première pour la fabrication de poudre de cacao." },
             en: { title: "Powder Production", description: "Raw material for cocoa powder manufacturing." },
         },
         {
             id: "animal_feed",
             category: "industrial",
-            icon: "🐄",
+            icon: <Beef className="w-7 h-7 text-red-600" />,
             fr: { title: "Alimentation animale", description: "Complément riche en fibres et protéines pour le bétail." },
             en: { title: "Animal Feed", description: "Fibre and protein-rich supplement for livestock." },
         },
         {
             id: "fertilizer",
             category: "industrial",
-            icon: "🌱",
+            icon: <Sprout className="w-7 h-7 text-green-500" />,
             fr: { title: "Engrais organique", description: "Amendement riche en azote pour l'agriculture durable." },
             en: { title: "Organic Fertilizer", description: "Nitrogen-rich amendment for sustainable agriculture." },
         },
@@ -171,35 +176,35 @@ const PRODUCT_APPLICATIONS: Record<string, UseCase[]> = {
         {
             id: "chocolate",
             category: "food",
-            icon: "🍫",
+            icon: <Candy className="w-7 h-7 text-amber-700" />,
             fr: { title: "Chocolaterie artisanale", description: "Inclusion croquante pour tablettes bean-to-bar." },
             en: { title: "Craft Chocolate", description: "Crunchy inclusion for bean-to-bar tablets." },
         },
         {
             id: "bakery",
             category: "food",
-            icon: "🥐",
+            icon: <CakeSlice className="w-7 h-7 text-amber-600" />,
             fr: { title: "Pâtisserie", description: "Topping pour gâteaux, muffins et granolas." },
             en: { title: "Pastry", description: "Topping for cakes, muffins and granolas." },
         },
         {
             id: "superfood",
             category: "food",
-            icon: "🥗",
+            icon: <Salad className="w-7 h-7 text-green-500" />,
             fr: { title: "Super-aliment", description: "Snack santé riche en antioxydants et magnésium." },
             en: { title: "Superfood", description: "Healthy snack rich in antioxidants and magnesium." },
         },
         {
             id: "brewing",
             category: "food",
-            icon: "🍺",
+            icon: <Beer className="w-7 h-7 text-amber-500" />,
             fr: { title: "Brasserie artisanale", description: "Infusion cacao pour bières stout et porter." },
             en: { title: "Craft Brewing", description: "Cocoa infusion for stout and porter beers." },
         },
         {
             id: "cosmetics",
             category: "cosmetic",
-            icon: "🧴",
+            icon: <Droplets className="w-7 h-7 text-pink-500" />,
             fr: { title: "Cosmétique", description: "Gommages exfoliants et soins texturés." },
             en: { title: "Cosmetics", description: "Exfoliating scrubs and textured skincare." },
         },

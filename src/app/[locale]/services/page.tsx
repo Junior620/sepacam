@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { generateSeoMetadata } from "@/lib/seo";
+import {
+    HardHat, ShieldCheck, Sparkles, Zap, FileText, Factory, RefreshCcw
+} from "lucide-react";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FAQPage } from "schema-dts";
 
@@ -41,7 +44,7 @@ export async function generateMetadata({
 const SERVICES = [
     {
         key: "renovation",
-        icon: "🏗️",
+        icon: <HardHat className="w-7 h-7 text-primary" />,
         color: "from-orange-500 to-amber-600",
         shadowColor: "shadow-orange-500/20",
         tagColor: "bg-orange-100 text-orange-700 border-orange-200",
@@ -70,7 +73,7 @@ const SERVICES = [
     },
     {
         key: "pest",
-        icon: "🛡️",
+        icon: <ShieldCheck className="w-7 h-7 text-primary" />,
         color: "from-emerald-500 to-teal-600",
         shadowColor: "shadow-emerald-500/20",
         tagColor: "bg-emerald-100 text-emerald-700 border-emerald-200",
@@ -99,7 +102,7 @@ const SERVICES = [
     },
     {
         key: "cleaning",
-        icon: "✨",
+        icon: <Sparkles className="w-7 h-7 text-primary" />,
         color: "from-blue-500 to-indigo-600",
         shadowColor: "shadow-blue-500/20",
         tagColor: "bg-blue-100 text-blue-700 border-blue-200",
@@ -130,22 +133,22 @@ const SERVICES = [
 
 const ADVANTAGES = [
     {
-        icon: "⚡",
+        icon: <Zap className="w-5 h-5 text-primary" />,
         fr: { title: "Réactivité", desc: "Intervention sous 48h sur la zone Douala–Yaoundé" },
         en: { title: "Responsiveness", desc: "Intervention within 48h in the Douala–Yaoundé area" },
     },
     {
-        icon: "📝",
+        icon: <FileText className="w-5 h-5 text-primary" />,
         fr: { title: "Devis gratuit", desc: "Estimation détaillée sans engagement" },
         en: { title: "Free quote", desc: "Detailed estimate with no commitment" },
     },
     {
-        icon: "🏭",
+        icon: <Factory className="w-5 h-5 text-primary" />,
         fr: { title: "Expérience industrielle", desc: "Habitués aux exigences des sites agroalimentaires" },
         en: { title: "Industrial experience", desc: "Accustomed to food industry site requirements" },
     },
     {
-        icon: "🔄",
+        icon: <RefreshCcw className="w-5 h-5 text-primary" />,
         fr: { title: "Contrats flexibles", desc: "Ponctuel ou récurrent, adapté à votre budget" },
         en: { title: "Flexible contracts", desc: "One-off or recurring, adapted to your budget" },
     },

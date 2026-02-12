@@ -6,12 +6,14 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
+import type { ReactNode } from "react";
+import { Bean, FlaskConical, CircleDot, Droplets, Cookie } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 type ProcessStep = {
     id: string;
-    icon: string; // Emoji for now, can be replaced with SVG
+    icon: ReactNode;
     color: string;
 };
 
@@ -21,11 +23,11 @@ export function ProcessTimeline() {
     const [activeStep, setActiveStep] = useState<string | null>(null);
 
     const steps: ProcessStep[] = [
-        { id: "beans", icon: "🫘", color: "bg-[#5D4037]" },
-        { id: "liquor", icon: "🥃", color: "bg-[#3E2723]" },
-        { id: "butter", icon: "🧈", color: "bg-[#F5DEB3]" },
-        { id: "powder", icon: "🧂", color: "bg-[#795548]" },
-        { id: "cake", icon: "🥮", color: "bg-[#4E342E]" },
+        { id: "beans", icon: <Bean className="w-10 h-10 text-white" />, color: "bg-[#5D4037]" },
+        { id: "liquor", icon: <FlaskConical className="w-10 h-10 text-white" />, color: "bg-[#3E2723]" },
+        { id: "butter", icon: <Droplets className="w-10 h-10 text-amber-800" />, color: "bg-[#F5DEB3]" },
+        { id: "powder", icon: <CircleDot className="w-10 h-10 text-white" />, color: "bg-[#795548]" },
+        { id: "cake", icon: <Cookie className="w-10 h-10 text-white" />, color: "bg-[#4E342E]" },
     ];
 
     useGSAP(
@@ -113,7 +115,7 @@ export function ProcessTimeline() {
                                     step.color,
                                     activeStep === step.id ? "ring-4 ring-primary/20" : ""
                                 )}>
-                                    <span className="scale-100 group-hover:rotate-12 transition-transform duration-300">
+                                    <span className="group-hover:rotate-12 transition-transform duration-300">
                                         {step.icon}
                                     </span>
                                 </div>

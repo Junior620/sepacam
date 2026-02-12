@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import type { Metadata } from "next";
 import { ContactMap } from "./ContactMap";
 import { generateSeoMetadata } from "@/lib/seo";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 // Dynamic import for ContactForm (heavy: framer-motion + react-hook-form + zod)
 const ContactForm = dynamic(
@@ -42,13 +43,13 @@ export async function generateMetadata({
 
 const CONTACT_METHODS = [
     {
-        icon: "✉️",
+        icon: <Mail className="w-5 h-5 text-primary" />,
         label: "Email",
         value: "contact@sepacam.com",
         href: "mailto:contact@sepacam.com",
     },
     {
-        icon: "📞",
+        icon: <Phone className="w-5 h-5 text-primary" />,
         fr: { label: "Téléphone" },
         en: { label: "Phone" },
         label: "",
@@ -56,7 +57,7 @@ const CONTACT_METHODS = [
         href: "tel:+237600000000",
     },
     {
-        icon: "📍",
+        icon: <MapPin className="w-5 h-5 text-primary" />,
         fr: { label: "Adresse" },
         en: { label: "Address" },
         label: "",
@@ -173,7 +174,7 @@ export default async function ContactPage({
                                     </div>
                                     <div className="bg-white px-5 py-3 border-t border-neutral-100">
                                         <p className="text-xs text-neutral-500">
-                                            📍 SEPACAM — Douala, Cameroun
+                                            <MapPin className="w-3.5 h-3.5 inline-block mr-1" /> SEPACAM — Douala, Cameroun
                                         </p>
                                     </div>
                                 </div>

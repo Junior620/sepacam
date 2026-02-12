@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { generateSeoMetadata } from "@/lib/seo";
+import {
+    Target, MapPin, Sprout, Handshake, Candy, Coffee, Ship, HardHat, Telescope
+} from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -40,28 +43,28 @@ export async function generateMetadata({
 
 const VALUES = [
     {
-        icon: "🎯",
+        icon: <Target className="w-6 h-6 text-primary" />,
         color: "bg-red-50 border-red-100",
         iconBg: "bg-red-100",
         fr: { title: "Qualité", desc: "Contrôle rigoureux à chaque étape : de la réception des fèves à l'embarquement du conteneur." },
         en: { title: "Quality", desc: "Rigorous control at every stage: from bean reception to container loading." },
     },
     {
-        icon: "📍",
+        icon: <MapPin className="w-6 h-6 text-primary" />,
         color: "bg-blue-50 border-blue-100",
         iconBg: "bg-blue-100",
         fr: { title: "Traçabilité", desc: "Suivi digital complet du producteur au client final, lot par lot." },
         en: { title: "Traceability", desc: "Complete digital tracking from farmer to end customer, lot by lot." },
     },
     {
-        icon: "🌱",
+        icon: <Sprout className="w-6 h-6 text-primary" />,
         color: "bg-green-50 border-green-100",
         iconBg: "bg-green-100",
         fr: { title: "Durabilité", desc: "Respect de l'environnement, rémunération équitable des producteurs et impact social positif." },
         en: { title: "Sustainability", desc: "Environmental respect, fair producer compensation, and positive social impact." },
     },
     {
-        icon: "🤝",
+        icon: <Handshake className="w-6 h-6 text-primary" />,
         color: "bg-amber-50 border-amber-100",
         iconBg: "bg-amber-100",
         fr: { title: "Partenariat", desc: "Relations de long terme basées sur la confiance, la transparence et l'engagement mutuel." },
@@ -122,22 +125,22 @@ const TEAM = [
 
 const ACTIVITY_PILLARS = [
     {
-        icon: "🍫",
+        icon: <Candy className="w-5 h-5 text-primary" />,
         fr: { title: "Transformation Cacao", desc: "Fèves → masse, beurre, poudre, tourteaux, nibs" },
         en: { title: "Cocoa Processing", desc: "Beans → mass, butter, powder, cake, nibs" },
     },
     {
-        icon: "☕",
+        icon: <Coffee className="w-5 h-5 text-primary" />,
         fr: { title: "Négoce Café", desc: "Robusta & Arabica : sélection, préparation, export" },
         en: { title: "Coffee Trading", desc: "Robusta & Arabica: selection, preparation, export" },
     },
     {
-        icon: "🚢",
+        icon: <Ship className="w-5 h-5 text-primary" />,
         fr: { title: "Transit & Logistique", desc: "Commissionnaire agréé, fret et dédouanement" },
         en: { title: "Transit & Logistics", desc: "Licensed forwarder, freight, and clearance" },
     },
     {
-        icon: "🏗️",
+        icon: <HardHat className="w-5 h-5 text-primary" />,
         fr: { title: "Services", desc: "Rénovation, dératisation, nettoyage industriel" },
         en: { title: "Services", desc: "Renovation, pest control, industrial cleaning" },
     },
@@ -215,7 +218,7 @@ export default async function AboutPage({
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                             {/* Mission */}
                             <div className="bg-neutral-50 rounded-2xl p-8 lg:p-10 border border-neutral-100">
-                                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-3xl mb-6">🎯</div>
+                                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6"><Target className="w-7 h-7 text-primary" /></div>
                                 <h2 className="font-heading text-h3 text-neutral-900 mb-4">
                                     {isFr ? "Notre Mission" : "Our Mission"}
                                 </h2>
@@ -233,7 +236,7 @@ export default async function AboutPage({
 
                             {/* Vision */}
                             <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 lg:p-10 border border-primary/10">
-                                <div className="w-14 h-14 bg-accent/20 rounded-2xl flex items-center justify-center text-3xl mb-6">🔭</div>
+                                <div className="w-14 h-14 bg-accent/20 rounded-2xl flex items-center justify-center mb-6"><Telescope className="w-7 h-7 text-accent" /></div>
                                 <h2 className="font-heading text-h3 text-neutral-900 mb-4">
                                     {isFr ? "Notre Vision" : "Our Vision"}
                                 </h2>

@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { generateSeoMetadata } from "@/lib/seo";
+import {
+    FlaskConical, Eye, Beaker, Scan, CheckCircle2, Check
+} from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -42,31 +45,31 @@ export async function generateMetadata({
 const QC_STEPS = [
     {
         key: "sampling",
-        icon: "🧪",
+        icon: <FlaskConical className="w-6 h-6 text-primary" />,
         fr: { title: "Échantillonnage", desc: "Prélèvement représentatif selon la norme ISO 24333 sur 30% des sacs de chaque lot entrant." },
         en: { title: "Sampling", desc: "Representative sampling per ISO 24333 standard on 30% of bags in every incoming lot." },
     },
     {
         key: "physical",
-        icon: "👁️",
+        icon: <Eye className="w-6 h-6 text-primary" />,
         fr: { title: "Analyse Physique", desc: "Test de coupe (cut-test) sur 300 fèves : grainage, taux de moisissure, ardoisé, mité et germination." },
         en: { title: "Physical Analysis", desc: "Cut-test on 300 beans: bean count, mold rate, slaty, insect damaged and germination." },
     },
     {
         key: "chemical",
-        icon: "⚗️",
+        icon: <Beaker className="w-6 h-6 text-primary" />,
         fr: { title: "Analyse Chimique", desc: "Mesure précise de l'humidité (humicap), du pH et de la teneur en matière grasse (Soxhlet)." },
         en: { title: "Chemical Analysis", desc: "Precise measurement of moisture (humicap), pH and fat content (Soxhlet)." },
     },
     {
         key: "sensory",
-        icon: "👃",
+        icon: <Scan className="w-6 h-6 text-primary" />,
         fr: { title: "Test Sensoriel", desc: "Évaluation organoleptique par notre panel d'experts pour détecter les faux-goûts (fumé, acide)." },
         en: { title: "Sensory Test", desc: "Organoleptic evaluation by our expert panel to detect off-flavors (smoky, acidic)." },
     },
     {
         key: "release",
-        icon: "✅",
+        icon: <CheckCircle2 className="w-6 h-6 text-primary" />,
         fr: { title: "Libération du Lot", desc: "Émission du Bulletin d'Analyse (COA) et validation informatique pour l'export ou l'usine." },
         en: { title: "Lot Release", desc: "Issuance of Certificate of Analysis (COA) and digital validation for export or factory." },
     },
@@ -230,7 +233,7 @@ export default async function QualityPage({
                                         { fr: "Traçabilité des tests", en: "Test traceability" },
                                     ].map((item, i) => (
                                         <li key={i} className="flex items-center gap-3">
-                                            <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs">✓</div>
+                                            <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary"><Check className="w-3 h-3" /></div>
                                             <span className="font-medium text-neutral-700">{item[lang]}</span>
                                         </li>
                                     ))}

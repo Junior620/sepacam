@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { generateSeoMetadata } from "@/lib/seo";
+import {
+    TreePine, ShieldCheck, Handshake
+} from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -67,19 +70,19 @@ const COMPLIANCE_CARDS = [
         key: "eudr",
         fr: { title: "Conformité EUDR", desc: "Prêt pour le Règlement Européen contre la Déforestation. Nous fournissons les coordonnées GPS et les preuves de légalité foncière pour chaque lot." },
         en: { title: "EUDR Compliance", desc: "Ready for the EU Deforestation Regulation. We provide GPS coordinates and proof of land legality for every shipment." },
-        icon: "🌲",
+        icon: <TreePine className="w-6 h-6 text-primary" />,
     },
     {
         key: "fs",
         fr: { title: "Sécurité Alimentaire", desc: "Strict respect des limites de contaminants (HAP, Mosh/Moah, Pesticides) et métaux lourds selon les normes UE/USA." },
         en: { title: "Food Safety", desc: "Strict adherence to contaminant limits (PAH, Mosh/Moah, Pesticides) and heavy metals per EU/USA standards." },
-        icon: "🛡️",
+        icon: <ShieldCheck className="w-6 h-6 text-primary" />,
     },
     {
         key: "social",
         fr: { title: "Responsabilité Sociale", desc: "Audits réguliers pour garantir l'absence de travail des enfants et le respect des droits des travailleurs (CLMRS)." },
         en: { title: "Social Responsibility", desc: "Regular audits to ensure no child labor and respect for workers' rights (CLMRS)." },
-        icon: "🤝",
+        icon: <Handshake className="w-6 h-6 text-primary" />,
     },
 ];
 

@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { generateSeoMetadata } from "@/lib/seo";
+import {
+    Scale, Users, Sprout, FileText, ScrollText
+} from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -42,19 +45,19 @@ export async function generateMetadata({
 const PILLARS = [
     {
         key: "equity",
-        icon: "⚖️",
+        icon: <Scale className="w-6 h-6 text-primary" />,
         fr: { title: "Équité & Revenus", desc: "Nous payons des primes de qualité directement aux fermiers et préfinançons les campagnes pour éviter l'endettement abusif." },
         en: { title: "Equity & Income", desc: "We pay quality premiums directly to farmers and pre-finance campaigns to prevent predatory debt." },
     },
     {
         key: "women",
-        icon: "👩‍🌾",
+        icon: <Users className="w-6 h-6 text-primary" />,
         fr: { title: "Autonomisation des Femmes", desc: "Soutien aux associations féminines via la distribution de plants et des formations à la gestion financière." },
         en: { title: "Women Empowerment", desc: "Support for women's associations through seedling distribution and financial management training." },
     },
     {
         key: "youth",
-        icon: "🌱",
+        icon: <Sprout className="w-6 h-6 text-primary" />,
         fr: { title: "Jeunesse & Avenir", desc: "Programmes d'entrepreneuriat agricole pour rendre la cacao-culture attractive aux nouvelles générations." },
         en: { title: "Youth & Future", desc: "Agricultural entrepreneurship programs to make cocoa farming attractive to new generations." },
     },
@@ -216,7 +219,7 @@ export default async function SustainabilityPage({
                             <Link href="/code-conduite" className="group">
                                 <div className="p-6 rounded-xl border border-neutral-200 hover:border-primary hover:shadow-md transition-all text-left">
                                     <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center text-2xl group-hover:bg-primary/10 transition-colors">📄</div>
+                                        <div className="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors"><FileText className="w-6 h-6 text-neutral-600" /></div>
                                         <div>
                                             <h3 className="font-bold text-neutral-900 group-hover:text-primary transition-colors">Code of Conduct</h3>
                                             <p className="text-xs text-neutral-500">PDF • 2.4 MB</p>
@@ -227,7 +230,7 @@ export default async function SustainabilityPage({
                             <Link href="/code-conduite" className="group">
                                 <div className="p-6 rounded-xl border border-neutral-200 hover:border-primary hover:shadow-md transition-all text-left">
                                     <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center text-2xl group-hover:bg-primary/10 transition-colors">📜</div>
+                                        <div className="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors"><ScrollText className="w-6 h-6 text-neutral-600" /></div>
                                         <div>
                                             <h3 className="font-bold text-neutral-900 group-hover:text-primary transition-colors">Supplier Ethics</h3>
                                             <p className="text-xs text-neutral-500">PDF • 1.8 MB</p>

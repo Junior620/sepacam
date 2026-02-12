@@ -8,6 +8,13 @@ import { Link } from "@/i18n/navigation";
 import { ProductCTABar } from "@/components/product/ProductCTABar";
 import type { Metadata } from "next";
 import { generateSeoMetadata } from "@/lib/seo";
+import type { ReactNode } from "react";
+import {
+    Package, Microscope, Sparkles, Flame, Wind, Cog, Target, CircleDot,
+    Factory, Bean, Globe, CheckCircle2, Thermometer, Crosshair,
+    Beaker, Snowflake, Cylinder, Truck, Ship, ClipboardList,
+    FileText, PackageCheck, ArrowRight, Eye, FlaskConical, Check
+} from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -43,56 +50,56 @@ export async function generateMetadata({
 const PROCESS_STEPS = [
     {
         key: "reception",
-        icon: "📦",
+        icon: <Package className="w-6 h-6 text-primary" />,
         number: "01",
         fr: { title: "Réception & Stockage", desc: "Les fèves de cacao arrivent à notre usine de Bonabéri (Douala). Chaque lot est pesé, identifié et stocké dans des conditions contrôlées (température, humidité) pour préserver la qualité.", detail: "Traçabilité du champ à l'usine" },
         en: { title: "Reception & Storage", desc: "Cocoa beans arrive at our Bonabéri plant (Douala). Each lot is weighed, identified and stored under controlled conditions (temperature, humidity) to preserve quality.", detail: "Farm-to-factory traceability" },
     },
     {
         key: "quality_control",
-        icon: "🔬",
+        icon: <Microscope className="w-6 h-6 text-primary" />,
         number: "02",
         fr: { title: "Contrôle Qualité Entrant", desc: "Notre laboratoire interne analyse chaque lot : taux d'humidité (max 8%), grainage, taux de moisissure, corps étrangers, et test organoleptique (cut test).", detail: "Rejet des lots non conformes" },
         en: { title: "Incoming Quality Control", desc: "Our in-house lab analyzes each lot: moisture content (max 8%), grading, mold rate, foreign matter, and organoleptic testing (cut test).", detail: "Non-conforming lots rejected" },
     },
     {
         key: "cleaning",
-        icon: "✨",
+        icon: <Sparkles className="w-6 h-6 text-primary" />,
         number: "03",
         fr: { title: "Nettoyage & Tri", desc: "Passage en crible vibrant, dépierrage, tri magnétique et aspiration pour éliminer toutes impuretés. Les fèves sont calibrées par taille pour un traitement homogène.", detail: "Élimination des déchets & impuretés" },
         en: { title: "Cleaning & Sorting", desc: "Vibrating screen, destoning, magnetic sorting and aspiration to remove all impurities. Beans are calibrated by size for uniform processing.", detail: "Waste & impurity removal" },
     },
     {
         key: "roasting",
-        icon: "🔥",
+        icon: <Flame className="w-6 h-6 text-primary" />,
         number: "04",
         fr: { title: "Torréfaction", desc: "Torréfaction contrôlée entre 120°C et 150°C pendant 20-40 minutes. Cette étape développe les arômes, réduit l'humidité à 2-3% et facilite le décorticage.", detail: "Profils d'arômes personnalisables" },
         en: { title: "Roasting", desc: "Controlled roasting between 120°C and 150°C for 20-40 minutes. This step develops flavors, reduces moisture to 2-3% and facilitates winnowing.", detail: "Customizable flavor profiles" },
     },
     {
         key: "winnowing",
-        icon: "🌪️",
+        icon: <Wind className="w-6 h-6 text-primary" />,
         number: "05",
         fr: { title: "Concassage & Vannage", desc: "Les fèves torréfiées sont concassées puis les coques sont séparées des nibs (grué de cacao) par aspiration. Le grué est le cœur pur de la fève.", detail: "Rendement grué > 82%" },
         en: { title: "Cracking & Winnowing", desc: "Roasted beans are cracked then shells are separated from nibs (cocoa nibs) by aspiration. The nibs are the pure heart of the bean.", detail: "Nib yield > 82%" },
     },
     {
         key: "grinding",
-        icon: "⚙️",
+        icon: <Cog className="w-6 h-6 text-primary" />,
         number: "06",
         fr: { title: "Broyage & Affinage", desc: "Le grué passe dans des broyeurs à cylindres puis des raffineurs pour obtenir la liqueur de cacao (pâte fine, 50-55% de matière grasse). Finesse < 25 microns.", detail: "Liqueur = base de tous les produits" },
         en: { title: "Grinding & Refining", desc: "Nibs pass through roller mills then refiners to produce cocoa liquor (fine paste, 50-55% fat content). Fineness < 25 microns.", detail: "Liquor = base for all products" },
     },
     {
         key: "pressing",
-        icon: "🎯",
+        icon: <Target className="w-6 h-6 text-primary" />,
         number: "07",
         fr: { title: "Pressage Hydraulique", desc: "La liqueur est pressée à haute pression pour séparer le beurre de cacao (phase liquide dorée) du tourteau de cacao (galette sèche résiduelle).", detail: "Beurre naturel ou désodorisé" },
         en: { title: "Hydraulic Pressing", desc: "Liquor is pressed at high pressure to separate cocoa butter (golden liquid phase) from cocoa cake (dry residual cake).", detail: "Natural or deodorized butter" },
     },
     {
         key: "powder",
-        icon: "🟤",
+        icon: <CircleDot className="w-6 h-6 text-primary" />,
         number: "08",
         fr: { title: "Pulvérisation & Tamisage", desc: "Le tourteau est broyé et tamisé pour produire la poudre de cacao (10-12% ou 20-22% de matière grasse). Couleur, pH et granulométrie sont contrôlés.", detail: "Poudre naturelle ou alcalinisée" },
         en: { title: "Pulverizing & Sieving", desc: "Cake is ground and sieved to produce cocoa powder (10-12% or 20-22% fat). Color, pH and particle size are controlled.", detail: "Natural or alkalized powder" },
@@ -100,44 +107,44 @@ const PROCESS_STEPS = [
 ];
 
 const CAPACITY_STATS = [
-    { key: "capacity", value: "5 000", unit: { fr: "tonnes / an", en: "MT / year" }, icon: "🏭" },
-    { key: "beans", value: "20 000", unit: { fr: "tonnes fèves traitées", en: "MT beans processed" }, icon: "🫘" },
-    { key: "products", value: "6", unit: { fr: "produits finis", en: "finished products" }, icon: "📦" },
-    { key: "lab", value: "24h", unit: { fr: "résultats d'analyse", en: "analysis results" }, icon: "🔬" },
-    { key: "export", value: "30+", unit: { fr: "pays livrés", en: "countries served" }, icon: "🌍" },
-    { key: "certif", value: "100%", unit: { fr: "lots traçables", en: "traceable lots" }, icon: "✅" },
+    { key: "capacity", value: "5 000", unit: { fr: "tonnes / an", en: "MT / year" }, icon: <Factory className="w-6 h-6 text-white/80" /> },
+    { key: "beans", value: "20 000", unit: { fr: "tonnes fèves traitées", en: "MT beans processed" }, icon: <Bean className="w-6 h-6 text-white/80" /> },
+    { key: "products", value: "6", unit: { fr: "produits finis", en: "finished products" }, icon: <Package className="w-6 h-6 text-white/80" /> },
+    { key: "lab", value: "24h", unit: { fr: "résultats d'analyse", en: "analysis results" }, icon: <Microscope className="w-6 h-6 text-white/80" /> },
+    { key: "export", value: "30+", unit: { fr: "pays livrés", en: "countries served" }, icon: <Globe className="w-6 h-6 text-white/80" /> },
+    { key: "certif", value: "100%", unit: { fr: "lots traçables", en: "traceable lots" }, icon: <CheckCircle2 className="w-6 h-6 text-white/80" /> },
 ];
 
 const EQUIPMENT = [
     {
         fr: { name: "Ligne de torréfaction", detail: "Capacité 2T/h, contrôle PLC, profils programmables" },
         en: { name: "Roasting line", detail: "2T/h capacity, PLC control, programmable profiles" },
-        icon: "🔥",
+        icon: <Flame className="w-5 h-5 text-primary" />,
     },
     {
         fr: { name: "Broyeurs à cylindres", detail: "3 passes d'affinage, finesse < 25μm" },
         en: { name: "Roller mills", detail: "3 refining passes, fineness < 25μm" },
-        icon: "⚙️",
+        icon: <Cog className="w-5 h-5 text-primary" />,
     },
     {
         fr: { name: "Presse hydraulique", detail: "Pression 400-600 bar, extraction optimale" },
         en: { name: "Hydraulic press", detail: "400-600 bar pressure, optimal extraction" },
-        icon: "🎯",
+        icon: <Target className="w-5 h-5 text-primary" />,
     },
     {
         fr: { name: "Atomiseur à poudre", detail: "Granulométrie contrôlée, tamisage 200 mesh" },
         en: { name: "Powder atomizer", detail: "Controlled granulometry, 200 mesh sieving" },
-        icon: "🟤",
+        icon: <CircleDot className="w-5 h-5 text-primary" />,
     },
     {
         fr: { name: "Laboratoire QC", detail: "Spectrophotomètre, humidimètre, pH-mètre" },
         en: { name: "QC Laboratory", detail: "Spectrophotometer, moisture meter, pH meter" },
-        icon: "🔬",
+        icon: <Microscope className="w-5 h-5 text-primary" />,
     },
     {
         fr: { name: "Stockage climatisé", detail: "Cuves inox, silos ventilés, température contrôlée" },
         en: { name: "Climate-controlled storage", detail: "Stainless steel tanks, ventilated silos, temperature control" },
-        icon: "❄️",
+        icon: <Snowflake className="w-5 h-5 text-primary" />,
     },
 ];
 
@@ -168,53 +175,53 @@ const PACKAGING_OPTIONS = [
     {
         fr: { name: "Fûts métalliques", detail: "200 kg net, doublure PE, cerclage", products: "Liqueur, Beurre" },
         en: { name: "Metal drums", detail: "200 kg net, PE liner, banding", products: "Liquor, Butter" },
-        icon: "🛢️",
+        icon: <Cylinder className="w-5 h-5 text-primary" />,
     },
     {
         fr: { name: "Cartons / Kraft", detail: "25 kg net, sac PE intérieur, palettisé", products: "Poudre, Tourteau" },
         en: { name: "Cartons / Kraft", detail: "25 kg net, inner PE bag, palletized", products: "Powder, Cake" },
-        icon: "📦",
+        icon: <Package className="w-5 h-5 text-primary" />,
     },
     {
         fr: { name: "Sacs Big Bag", detail: "500 kg – 1 MT, sur palette, filmé", products: "Tourteau, Grué" },
         en: { name: "Big Bags", detail: "500 kg – 1 MT, on pallet, wrapped", products: "Cake, Nibs" },
-        icon: "🎒",
+        icon: <Package className="w-5 h-5 text-primary" />,
     },
     {
         fr: { name: "Conteneur citerne", detail: "Flexitank 20T, pour beurre liquide", products: "Beurre (fondu)" },
         en: { name: "Tank container", detail: "20T Flexitank, for liquid butter", products: "Butter (melted)" },
-        icon: "🚛",
+        icon: <Truck className="w-5 h-5 text-primary" />,
     },
 ];
 
 const LOGISTICS_STEPS = [
     {
-        icon: "🏭",
+        icon: <Factory className="w-5 h-5 text-primary" />,
         fr: { title: "Production", desc: "Transformation dans notre usine de Bonabéri (Douala)" },
         en: { title: "Production", desc: "Processing at our Bonabéri plant (Douala)" },
     },
     {
-        icon: "📋",
+        icon: <ClipboardList className="w-5 h-5 text-primary" />,
         fr: { title: "Documentation", desc: "Certificats COA, phytosanitaire, EUR.1, certificat d'origine" },
         en: { title: "Documentation", desc: "COA certificates, phytosanitary, EUR.1, certificate of origin" },
     },
     {
-        icon: "🚚",
+        icon: <Truck className="w-5 h-5 text-primary" />,
         fr: { title: "Transport intérieur", desc: "Acheminement vers le port autonome de Douala" },
         en: { title: "Inland transport", desc: "Delivery to the autonomous port of Douala" },
     },
     {
-        icon: "📦",
+        icon: <PackageCheck className="w-5 h-5 text-primary" />,
         fr: { title: "Empotage", desc: "Chargement en conteneur 20' ou 40' sous supervision" },
         en: { title: "Container stuffing", desc: "Loading in 20' or 40' containers under supervision" },
     },
     {
-        icon: "🚢",
+        icon: <Ship className="w-5 h-5 text-primary" />,
         fr: { title: "Expédition", desc: "Embarquement via les principales compagnies maritimes" },
         en: { title: "Shipping", desc: "Dispatched via major shipping lines" },
     },
     {
-        icon: "✅",
+        icon: <CheckCircle2 className="w-5 h-5 text-primary" />,
         fr: { title: "Livraison", desc: "Suivi en temps réel, incoterms FOB / CIF / CFR" },
         en: { title: "Delivery", desc: "Real-time tracking, FOB / CIF / CFR incoterms" },
     },
@@ -252,7 +259,8 @@ export default async function TransformationPage({
                     <div className="container-main relative z-10">
                         <div className="max-w-4xl">
                             <Badge variant="primary" size="lg" className="mb-6">
-                                {isFr ? "🏭 Agro-Industrie" : "🏭 Agro-Industry"}
+                                <Factory className="w-4 h-4 inline mr-1" />
+                                {isFr ? "Agro-Industrie" : "Agro-Industry"}
                             </Badge>
 
                             <h1 className="font-heading text-h1-sm lg:text-5xl xl:text-6xl text-neutral-900 mb-6 leading-tight">
@@ -359,7 +367,7 @@ export default async function TransformationPage({
                                                                 {data.desc}
                                                             </p>
                                                             <span className="inline-flex items-center gap-1 text-xs font-medium text-primary bg-primary/5 px-2.5 py-1 rounded-full">
-                                                                ✓ {data.detail}
+                                                                <Check className="w-3 h-3 inline" /> {data.detail}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -378,16 +386,16 @@ export default async function TransformationPage({
                         <div className="mt-16 p-6 bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl border border-primary/10">
                             <div className="flex flex-wrap items-center justify-center gap-3 text-sm">
                                 {[
-                                    { fr: "Fèves brutes", en: "Raw beans", emoji: "🫘" },
-                                    { fr: "Grué", en: "Nibs", emoji: "🟫" },
-                                    { fr: "Liqueur", en: "Liquor", emoji: "🫕" },
-                                    { fr: "Beurre", en: "Butter", emoji: "🧈" },
-                                    { fr: "Tourteau", en: "Cake", emoji: "🟤" },
-                                    { fr: "Poudre", en: "Powder", emoji: "☕" },
+                                    { fr: "Fèves brutes", en: "Raw beans", icon: <Bean className="w-4 h-4 text-primary" /> },
+                                    { fr: "Grué", en: "Nibs", icon: <CircleDot className="w-4 h-4 text-amber-700" /> },
+                                    { fr: "Liqueur", en: "Liquor", icon: <FlaskConical className="w-4 h-4 text-amber-800" /> },
+                                    { fr: "Beurre", en: "Butter", icon: <CircleDot className="w-4 h-4 text-amber-400" /> },
+                                    { fr: "Tourteau", en: "Cake", icon: <CircleDot className="w-4 h-4 text-amber-900" /> },
+                                    { fr: "Poudre", en: "Powder", icon: <CircleDot className="w-4 h-4 text-amber-600" /> },
                                 ].map((item, i, arr) => (
                                     <span key={item.en} className="flex items-center gap-1">
                                         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-lg shadow-sm border border-neutral-100 font-medium text-neutral-700">
-                                            <span>{item.emoji}</span>
+                                            <span>{item.icon}</span>
                                             <span>{item[lang]}</span>
                                         </span>
                                         {i < arr.length - 1 && (
@@ -483,7 +491,7 @@ export default async function TransformationPage({
                             {/* Quality metrics visual */}
                             <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 border border-neutral-200">
                                 <h3 className="font-heading font-semibold text-neutral-900 mb-6 text-center">
-                                    {isFr ? "📊 Paramètres analysés" : "📊 Analyzed parameters"}
+                                    {isFr ? "Paramètres analysés" : "Analyzed parameters"}
                                 </h3>
                                 <div className="space-y-4">
                                     {[
@@ -557,7 +565,7 @@ export default async function TransformationPage({
                         <div className="bg-white rounded-2xl border border-neutral-200 overflow-hidden">
                             <div className="px-6 py-4 bg-primary/5 border-b border-neutral-200">
                                 <h3 className="font-heading font-semibold text-neutral-900">
-                                    {isFr ? "📦 Quantités Minimum de Commande (MOQ)" : "📦 Minimum Order Quantities (MOQ)"}
+                                    {isFr ? "Quantités Minimum de Commande (MOQ)" : "Minimum Order Quantities (MOQ)"}
                                 </h3>
                             </div>
                             <div className="overflow-x-auto">

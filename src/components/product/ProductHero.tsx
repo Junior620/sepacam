@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { Check } from "lucide-react";
 
 gsap.registerPlugin();
 
@@ -209,7 +210,7 @@ export function ProductHero({
                                 <div className="flex flex-wrap gap-2">
                                     {certifications.map((cert) => (
                                         <Badge key={cert} variant="outline">
-                                            ✓ {cert}
+                                            <Check className="w-3.5 h-3.5 inline-block mr-1" /> {cert}
                                         </Badge>
                                     ))}
                                 </div>

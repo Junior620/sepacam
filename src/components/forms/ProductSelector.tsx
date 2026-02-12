@@ -8,6 +8,10 @@ import {
 } from "react-hook-form";
 import { AnimatePresence, motion } from "framer-motion";
 import { PRODUCT_OPTIONS } from "@/lib/schemas";
+import type { ReactNode } from "react";
+import {
+    FlaskConical, CircleDot, Cookie, Nut, Candy, Package
+} from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────
 export type ProductSelectorProps = {
@@ -21,15 +25,14 @@ export type ProductSelectorProps = {
     className?: string;
 };
 
-// ─── Product icons ───────────────────────────────────────
-const PRODUCT_ICONS: Record<string, string> = {
-    liqueur: "🫕",
-    beurre: "🧈",
-    poudre: "🟤",
-    tourteau: "🟫",
-    nibs: "🌰",
-    masse: "🍫",
-    other: "📦",
+const PRODUCT_ICONS: Record<string, ReactNode> = {
+    liqueur: <FlaskConical className="w-5 h-5 text-primary" />,
+    beurre: <CircleDot className="w-5 h-5 text-amber-400" />,
+    poudre: <CircleDot className="w-5 h-5 text-amber-700" />,
+    tourteau: <Cookie className="w-5 h-5 text-amber-900" />,
+    nibs: <Nut className="w-5 h-5 text-amber-600" />,
+    masse: <Candy className="w-5 h-5 text-amber-800" />,
+    other: <Package className="w-5 h-5 text-neutral-500" />,
 };
 
 export function ProductSelector({
@@ -92,7 +95,7 @@ export function ProductSelector({
                     {selectedProduct ? (
                         <>
                             <span className="text-lg">
-                                {PRODUCT_ICONS[selectedProduct.value] || "📦"}
+                                {PRODUCT_ICONS[selectedProduct.value] || <Package className="w-5 h-5 text-neutral-500" />}
                             </span>
                             <span className="text-neutral-900">
                                 {selectedProduct[lang]}
@@ -157,7 +160,7 @@ export function ProductSelector({
                                         >
                                             <span className="text-lg">
                                                 {PRODUCT_ICONS[product.value] ||
-                                                    "📦"}
+                                                    <Package className="w-5 h-5 text-neutral-500" />}
                                             </span>
                                             <span>{product[lang]}</span>
                                             {isSelected && (
