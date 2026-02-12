@@ -1,12 +1,18 @@
 import { Suspense } from "react";
 import { setRequestLocale } from "next-intl/server";
-import { ContactForm } from "@/components/forms/ContactForm";
+import dynamic from "next/dynamic";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/Badge";
 import type { Metadata } from "next";
 import { ContactMap } from "./ContactMap";
 import { generateSeoMetadata } from "@/lib/seo";
+
+// Dynamic import for ContactForm (heavy: framer-motion + react-hook-form + zod)
+const ContactForm = dynamic(
+    () => import("@/components/forms/ContactForm").then((m) => m.ContactForm),
+    { loading: () => <div className="h-96 animate-pulse bg-neutral-100 rounded-2xl" /> }
+);
 
 // ═══════════════════════════════════════════════════════════
 // METADATA

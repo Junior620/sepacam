@@ -42,3 +42,42 @@ export const trackLeadGen = (method: "email" | "phone" | "form") => {
         method: method,
     });
 };
+
+// ─── Server-side analytics (via /api/analytics) ──────────
+export const trackServerEvent = async (
+    eventName: string,
+    params?: EventParams
+) => {
+    try {
+        await fetch("/api/analytics", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                event: eventName,
+                params,
+                page: typeof window !== "undefined" ? window.location.pathname : undefined,
+                locale: typeof document !== "undefined" ? document.documentElement.lang : undefined,
+            }),
+            keepalive: true, // Ensure event is sent even on page unload
+        });
+    } catch {
+        // Silently fail — analytics should never break UX
+        if (process.env.NODE_ENV === "development") {
+            console.warn(`[Analytics] Server event failed: ${eventName}`);
+        }
+    }
+};
+
+export const trackPageView = (path: string, title?: string) => {
+    trackEvent("page_view", {
+        page_path: path,
+        page_title: title || "",
+    });
+};
+
+export const trackProductView = (productSlug: string, productName: string) => {
+    trackEvent("view_item", {
+        item_id: productSlug,
+        item_name: productName,
+    });
+};
