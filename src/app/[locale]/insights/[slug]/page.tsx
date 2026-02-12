@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { sanityFetch, getOptimizedImageUrl } from "@/lib/sanity";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Article, WithContext } from "schema-dts";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { articleBySlugQuery, articlesQuery } from "@/lib/sanity.queries";
 import type { Metadata } from "next";
 import { generateSeoMetadata } from "@/lib/seo";
@@ -107,6 +108,19 @@ export default async function ArticlePage({
         <>
             <Header />
             <main className="pt-[var(--header-height)] pb-20">
+                {/* Breadcrumb */}
+                <div className="bg-neutral-50 border-b border-neutral-200 mb-8">
+                    <div className="container-main py-4">
+                        <Breadcrumbs
+                            items={[
+                                { label: locale === "fr" ? "Accueil" : "Home", href: "/", isCurrent: false },
+                                { label: "Insights", href: "/insights", isCurrent: false },
+                                { label: article.title, href: `/insights/${slug}`, isCurrent: true }
+                            ]}
+                        />
+                    </div>
+                </div>
+
                 <article className="container-main max-w-4xl mx-auto mt-12">
                     <header className="mb-12 text-center">
                         <div className="text-sm text-neutral-500 mb-4 uppercase tracking-wider">

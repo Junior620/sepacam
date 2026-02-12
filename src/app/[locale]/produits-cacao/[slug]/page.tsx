@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { sanityFetch, getOptimizedImageUrl } from "@/lib/sanity";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Product, WithContext } from "schema-dts";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ProductHero } from "@/components/product/ProductHero";
 import { TechnicalSpecs } from "@/components/product/TechnicalSpecs";
 import { ApplicationsSection } from "@/components/product/ApplicationsSection";
@@ -298,17 +299,13 @@ export default async function ProductDetailPage({
                 {/* Breadcrumb */}
                 <div className="bg-neutral-50 border-b border-neutral-200">
                     <div className="container-main py-4">
-                        <nav className="flex items-center gap-2 text-small text-neutral-500">
-                            <Link href="/" className="hover:text-primary transition-colors">
-                                {isFr ? "Accueil" : "Home"}
-                            </Link>
-                            <span className="text-neutral-300">/</span>
-                            <Link href="/produits-cacao" className="hover:text-primary transition-colors">
-                                {isFr ? "Produits Cacao" : "Cocoa Products"}
-                            </Link>
-                            <span className="text-neutral-300">/</span>
-                            <span className="text-neutral-900 font-medium">{name}</span>
-                        </nav>
+                        <Breadcrumbs
+                            items={[
+                                { label: isFr ? "Accueil" : "Home", href: "/", isCurrent: false },
+                                { label: isFr ? "Produits Cacao" : "Cocoa Products", href: "/produits-cacao", isCurrent: false },
+                                { label: name, href: `/produits-cacao/${slug}`, isCurrent: true }
+                            ]}
+                        />
                     </div>
                 </div>
 
