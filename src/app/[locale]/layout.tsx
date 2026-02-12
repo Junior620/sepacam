@@ -7,6 +7,8 @@ import { routing } from "@/i18n/routing";
 import "../globals.css";
 import { Analytics } from "@/components/ui/Analytics";
 import Script from "next/script";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { Organization, WebSite } from "schema-dts";
 
 // Font configurations
 const inter = Inter({
@@ -180,6 +182,45 @@ export default async function LocaleLayout({
                     {children}
                     <Analytics />
                 </NextIntlClientProvider>
+
+                {/* Structured Data */}
+                <JsonLd<Organization>
+                    data={{
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        name: "SEPACAM",
+                        url: "https://sepacam.com",
+                        logo: "https://sepacam.com/logo.png",
+                        sameAs: [
+                            "https://www.linkedin.com/company/sepacam",
+                            "https://twitter.com/sepacam"
+                        ],
+                        contactPoint: {
+                            "@type": "ContactPoint",
+                            telephone: "+237-699-00-00-00", // Placeholder
+                            contactType: "sales",
+                            areaServed: ["CM", "FR", "US", "DE", "NL"],
+                            availableLanguage: ["French", "English"]
+                        },
+                        address: {
+                            "@type": "PostalAddress",
+                            streetAddress: "Zone Industrielle de Bonabéri",
+                            addressLocality: "Douala",
+                            addressRegion: "Littoral",
+                            postalCode: "BP 1234",
+                            addressCountry: "CM"
+                        }
+                    }}
+                />
+                <JsonLd<WebSite>
+                    data={{
+                        "@context": "https://schema.org",
+                        "@type": "WebSite",
+                        name: "SEPACAM",
+                        url: "https://sepacam.com",
+                    }}
+                />
+
                 {/* reCAPTCHA v3 – loaded globally, consumed by useRecaptcha hook */}
                 {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
                     <Script

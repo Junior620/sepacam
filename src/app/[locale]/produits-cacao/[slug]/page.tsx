@@ -5,6 +5,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { sanityFetch, getOptimizedImageUrl } from "@/lib/sanity";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { Product, WithContext } from "schema-dts";
 import { ProductHero } from "@/components/product/ProductHero";
 import { TechnicalSpecs } from "@/components/product/TechnicalSpecs";
 import { ApplicationsSection } from "@/components/product/ApplicationsSection";
@@ -360,6 +362,31 @@ export default async function ProductDetailPage({
             </main>
             <Footer />
             <ProductCTABar productName={name} locale={locale} />
+
+            <JsonLd<Product>
+                data={{
+                    "@context": "https://schema.org",
+                    "@type": "Product",
+                    name: name,
+                    description: description,
+                    image: heroImageUrl ? [heroImageUrl] : [],
+                    brand: {
+                        "@type": "Brand",
+                        name: "SEPACAM"
+                    },
+                    offers: {
+                        "@type": "Offer",
+                        url: `https://sepacam.com/${locale}/produits-cacao/${slug}`,
+                        priceCurrency: "EUR",
+                        price: "0", // Request for quote
+                        availability: "https://schema.org/InStock",
+                        seller: {
+                            "@type": "Organization",
+                            name: "SEPACAM"
+                        }
+                    }
+                }}
+            />
         </>
     );
 }
