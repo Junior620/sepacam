@@ -11,6 +11,7 @@ import Script from "next/script";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Organization, WebSite } from "schema-dts";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
+import { SkipLink } from "@/components/a11y/SkipLink";
 
 // Font configurations
 const inter = Inter({
@@ -181,6 +182,7 @@ export default async function LocaleLayout({
             </head>
             <body className="font-body antialiased">
                 <NextIntlClientProvider messages={messages} locale={locale}>
+                    <SkipLink />
                     {children}
                     <Suspense fallback={null}>
                         <Analytics />

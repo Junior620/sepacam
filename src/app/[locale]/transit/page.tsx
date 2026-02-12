@@ -11,6 +11,9 @@ import {
 } from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════
+// ISR: revalidate every 24 hours
+export const revalidate = 86400;
+
 // METADATA
 // ═══════════════════════════════════════════════════════════
 
@@ -119,7 +122,7 @@ export default async function TransitPage({
     return (
         <>
             <Header />
-            <main className="pt-[var(--header-height)]">
+            <main id="main-content" className="pt-[var(--header-height)]">
 
                 {/* ─── HERO ─── */}
                 <section className="relative py-24 lg:py-36 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white overflow-hidden">

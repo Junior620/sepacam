@@ -11,6 +11,9 @@ import {
 } from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════
+// ISR: revalidate every 24 hours
+export const revalidate = 86400;
+
 // METADATA
 // ═══════════════════════════════════════════════════════════
 
@@ -124,7 +127,7 @@ export default async function CoffeePage({
     return (
         <>
             <Header />
-            <main className="pt-[var(--header-height)]">
+            <main id="main-content" className="pt-[var(--header-height)]">
 
                 {/* ─── HERO ─── */}
                 <section className="relative py-24 lg:py-36 bg-gradient-to-br from-amber-950 via-amber-900 to-stone-900 text-white overflow-hidden">

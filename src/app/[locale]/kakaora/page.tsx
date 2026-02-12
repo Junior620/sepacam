@@ -6,6 +6,9 @@ import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/Badge";
 import type { Metadata } from "next";
 
+// ISR: revalidate every 24 hours
+export const revalidate = 86400;
+
 export async function generateMetadata({
     params,
 }: {
@@ -32,7 +35,7 @@ export default async function KakaoraPage({
     return (
         <>
             <Header />
-            <main className="pt-[var(--header-height)]">
+            <main id="main-content" className="pt-[var(--header-height)]">
                 <section className="section-spacing bg-neutral-900 text-white">
                     <div className="container-main">
                         <div className="max-w-3xl">

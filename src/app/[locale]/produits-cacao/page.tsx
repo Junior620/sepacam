@@ -6,6 +6,9 @@ import { Badge } from "@/components/ui/Badge";
 import { Card, CardImage, CardBody } from "@/components/ui/Card";
 import type { Metadata } from "next";
 
+// ISR: revalidate every 1 hour (CMS-driven)
+export const revalidate = 3600;
+
 export async function generateMetadata({
     params,
 }: {
@@ -67,7 +70,7 @@ export default async function ProductsCatalogPage({
     return (
         <>
             <Header />
-            <main className="pt-[var(--header-height)]">
+            <main id="main-content" className="pt-[var(--header-height)]">
                 {/* Hero Section */}
                 <section className="section-spacing gradient-hero">
                     <div className="container-main">

@@ -22,6 +22,12 @@
         "about": "About",
         "contact": "Contact"
     },
+    "a11y": {
+        "skip_to_content": "Skip to main content",
+        "toggle_menu": "Toggle menu",
+        "main_navigation": "Main navigation",
+        "footer_navigation": "Footer navigation"
+    },
     "poles": {
         "title": "Our business lines",
         "agro": {

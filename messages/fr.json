@@ -22,6 +22,12 @@
         "about": "À propos",
         "contact": "Contact"
     },
+    "a11y": {
+        "skip_to_content": "Aller au contenu principal",
+        "toggle_menu": "Ouvrir/Fermer le menu",
+        "main_navigation": "Navigation principale",
+        "footer_navigation": "Navigation de pied de page"
+    },
     "poles": {
         "title": "Nos pôles d'activité",
         "agro": {

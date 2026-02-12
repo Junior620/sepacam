@@ -107,7 +107,7 @@ export default async function ArticlePage({
     return (
         <>
             <Header />
-            <main className="pt-[var(--header-height)] pb-20">
+            <main id="main-content" className="pt-[var(--header-height)] pb-20">
                 {/* Breadcrumb */}
                 <div className="bg-neutral-50 border-b border-neutral-200 mb-8">
                     <div className="container-main py-4">

@@ -1,22 +1,41 @@
 import { setRequestLocale } from "next-intl/server";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+// Static imports for above-fold content
 import { HeroSection } from "@/components/home/HeroSection";
 import { PolesSection } from "@/components/home/PolesSection";
-import { StatsSection } from "@/components/home/StatsSection";
-import { ProductsSection, type SanityProduct } from "@/components/home/ProductsSection";
-import { QualitySection } from "@/components/home/QualitySection";
-import { TraceabilitySection } from "@/components/home/TraceabilitySection";
-import { KeyFigures } from "@/components/home/KeyFigures";
 import { CTABanner } from "@/components/home/CTABanner";
-import { sanityFetch } from "@/lib/sanity";
+import { KeyFigures } from "@/components/home/KeyFigures";
+
+// Dynamic imports for below-fold content
 import { latestProductsQuery } from "@/lib/sanity.queries";
+import { sanityFetch } from "@/lib/sanity";
+import type { SanityProduct } from "@/components/home/ProductsSection";
 import dynamic from "next/dynamic";
 
-// Dynamic imports for heavy below-fold components (code splitting)
 const ProcessTimeline = dynamic(
     () => import("@/components/home/ProcessTimeline").then((m) => m.ProcessTimeline),
     { loading: () => <div className="h-96 animate-pulse bg-neutral-100" /> }
+);
+
+const StatsSection = dynamic(
+    () => import("@/components/home/StatsSection").then((m) => m.StatsSection),
+    { loading: () => <div className="h-64 animate-pulse bg-neutral-900" /> }
+);
+
+const ProductsSection = dynamic(
+    () => import("@/components/home/ProductsSection").then((m) => m.ProductsSection),
+    { loading: () => <div className="h-[600px] animate-pulse bg-neutral-50" /> }
+);
+
+const QualitySection = dynamic(
+    () => import("@/components/home/QualitySection").then((m) => m.QualitySection),
+    { loading: () => <div className="h-[500px] animate-pulse bg-white" /> }
+);
+
+const TraceabilitySection = dynamic(
+    () => import("@/components/home/TraceabilitySection").then((m) => m.TraceabilitySection),
+    { loading: () => <div className="h-[600px] animate-pulse bg-neutral-900" /> }
 );
 
 const OriginsMap = dynamic(
@@ -45,7 +64,7 @@ export default async function HomePage({ params }: Props) {
     return (
         <>
             <Header />
-            <main>
+            <main id="main-content">
                 <HeroSection />
                 <PolesSection />
                 <StatsSection />

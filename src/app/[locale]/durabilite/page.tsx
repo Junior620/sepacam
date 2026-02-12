@@ -12,6 +12,9 @@ import {
 } from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════
+// ISR: revalidate every 24 hours
+export const revalidate = 86400;
+
 // METADATA
 // ═══════════════════════════════════════════════════════════
 
@@ -87,7 +90,7 @@ export default async function SustainabilityPage({
     return (
         <>
             <Header />
-            <main className="pt-[var(--header-height)]">
+            <main id="main-content" className="pt-[var(--header-height)]">
 
                 {/* HERO */}
                 <section className="relative py-20 lg:py-32 bg-emerald-900 text-white overflow-hidden">

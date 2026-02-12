@@ -10,6 +10,9 @@ import {
     Target, MapPin, Sprout, Handshake, Candy, Coffee, Ship, HardHat, Telescope
 } from "lucide-react";
 
+// Fully static — no ISR revalidation needed
+export const revalidate = false;
+
 // ═══════════════════════════════════════════════════════════
 // METADATA
 // ═══════════════════════════════════════════════════════════
@@ -163,7 +166,7 @@ export default async function AboutPage({
     return (
         <>
             <Header />
-            <main className="pt-[var(--header-height)]">
+            <main id="main-content" className="pt-[var(--header-height)]">
 
                 {/* ─── HERO ─── */}
                 <section className="relative py-24 lg:py-36 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-dark text-white overflow-hidden">

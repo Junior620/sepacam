@@ -16,6 +16,9 @@ const ContactForm = dynamic(
 );
 
 // ═══════════════════════════════════════════════════════════
+// ISR: revalidate every 24 hours
+export const revalidate = 86400;
+
 // METADATA
 // ═══════════════════════════════════════════════════════════
 
@@ -89,7 +92,7 @@ export default async function ContactPage({
     return (
         <>
             <Header />
-            <main className="pt-[var(--header-height)]">
+            <main id="main-content" className="pt-[var(--header-height)]">
 
                 {/* ─── HERO ─── */}
                 <section className="relative py-16 lg:py-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-dark text-white overflow-hidden">

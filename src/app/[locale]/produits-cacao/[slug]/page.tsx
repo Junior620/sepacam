@@ -295,7 +295,7 @@ export default async function ProductDetailPage({
     return (
         <>
             <Header />
-            <main className="pt-[var(--header-height)]">
+            <main id="main-content" className="pt-[var(--header-height)]">
                 {/* Breadcrumb */}
                 <div className="bg-neutral-50 border-b border-neutral-200">
                     <div className="container-main py-4">

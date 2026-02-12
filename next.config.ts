@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
+import bundleAnalyzer from "@next/bundle-analyzer";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig: NextConfig = {
   // Image optimization
@@ -25,28 +29,54 @@ const nextConfig: NextConfig = {
   // Security headers
   async headers() {
     return [
+      // Security headers (all routes)
       {
         source: "/:path*",
         headers: [
+          { key: "X-DNS-Prefetch-Control", value: "on" },
+          { key: "X-XSS-Protection", value: "1; mode=block" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "origin-when-cross-origin" },
+        ],
+      },
+      // Static assets (fingerprinted by Next.js — safe to cache forever)
+      {
+        source: "/_next/static/:path*",
+        headers: [
           {
-            key: "X-DNS-Prefetch-Control",
-            value: "on",
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
+        ],
+      },
+      // Optimized images
+      {
+        source: "/_next/image/:path*",
+        headers: [
           {
-            key: "X-XSS-Protection",
-            value: "1; mode=block",
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
           },
+        ],
+      },
+      // Public static files (favicon, manifest, robots, etc.)
+      {
+        source: "/:file(manifest.webmanifest|robots.txt|sitemap.xml|favicon.ico)",
+        headers: [
           {
-            key: "X-Frame-Options",
-            value: "SAMEORIGIN",
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
           },
+        ],
+      },
+      // Font files
+      {
+        source: "/fonts/:path*",
+        headers: [
           {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "Referrer-Policy",
-            value: "origin-when-cross-origin",
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },
@@ -75,4 +105,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withNextIntl(nextConfig);
+export default withBundleAnalyzer(withNextIntl(nextConfig));

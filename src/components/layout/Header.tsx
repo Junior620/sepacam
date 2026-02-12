@@ -17,6 +17,7 @@ type NavItem = {
 
 export function Header() {
     const t = useTranslations("nav");
+    const tA11y = useTranslations("a11y");
     const pathname = usePathname();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -110,7 +111,11 @@ export function Header() {
                         </Link>
 
                         {/* Desktop Navigation */}
-                        <nav className="hidden lg:flex items-center gap-1" ref={dropdownRef}>
+                        <nav
+                            className="hidden lg:flex items-center gap-1"
+                            ref={dropdownRef}
+                            aria-label={tA11y("main_navigation")}
+                        >
                             {/* Cacao Products - Primary CTA */}
                             <Link
                                 href="/produits-cacao"
@@ -251,7 +256,9 @@ export function Header() {
                         <button
                             className="lg:hidden p-2 -mr-2 relative z-50"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            aria-label="Toggle menu"
+                            aria-label={tA11y("toggle_menu")}
+                            aria-expanded={isMobileMenuOpen}
+                            aria-controls="mobile-menu"
                         >
                             <div className="w-6 h-6 flex flex-col justify-center items-center gap-1.5">
                                 <span

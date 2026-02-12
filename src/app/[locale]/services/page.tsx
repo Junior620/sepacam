@@ -13,6 +13,9 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { FAQPage } from "schema-dts";
 
 // ═══════════════════════════════════════════════════════════
+// ISR: revalidate every 24 hours
+export const revalidate = 86400;
+
 // METADATA
 // ═══════════════════════════════════════════════════════════
 
@@ -171,7 +174,7 @@ export default async function ServicesPage({
     return (
         <>
             <Header />
-            <main className="pt-[var(--header-height)]">
+            <main id="main-content" className="pt-[var(--header-height)]">
 
                 {/* ─── HERO ─── */}
                 <section className="relative py-24 lg:py-32 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 text-white overflow-hidden">
