@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import { generateSeoMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { FAQPage } from "schema-dts";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -294,6 +296,45 @@ export default async function ServicesPage({
 
             </main>
             <Footer />
+
+            <JsonLd<FAQPage>
+                data={{
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    mainEntity: [
+                        {
+                            "@type": "Question",
+                            name: isFr ? "Quels types de bâtiments rénovez-vous ?" : "What types of buildings do you renovate?",
+                            acceptedAnswer: {
+                                "@type": "Answer",
+                                text: isFr
+                                    ? "Nous rénovons principalement des espaces industriels, entrepôts de cacao, bureaux administratifs et installations portuaires."
+                                    : "We mainly renovate industrial spaces, cocoa warehouses, administrative offices, and port facilities."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            name: isFr ? "Vos produits de dératisation sont-ils sûrs ?" : "Are your pest control products safe?",
+                            acceptedAnswer: {
+                                "@type": "Answer",
+                                text: isFr
+                                    ? "Oui, nous utilisons des produits certifiés conformes aux normes de l'industrie alimentaire, garantissant la sécurité des stocks de cacao."
+                                    : "Yes, we use certified products compliant with food industry standards, guaranteeing the safety of cocoa stocks."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            name: isFr ? "Intervenez-vous le week-end ?" : "Do you work on weekends?",
+                            acceptedAnswer: {
+                                "@type": "Answer",
+                                text: isFr
+                                    ? "Absolument. Nos équipes de nettoyage et maintenance peuvent intervenir 24/7 pour ne pas perturber vos opérations."
+                                    : "Absolutely. Our cleaning and maintenance teams can operate 24/7 to avoid disrupting your operations."
+                            }
+                        }
+                    ]
+                }}
+            />
         </>
     );
 }

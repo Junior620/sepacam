@@ -9,6 +9,7 @@ import { Analytics } from "@/components/ui/Analytics";
 import Script from "next/script";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Organization, WebSite } from "schema-dts";
+import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 
 // Font configurations
 const inter = Inter({
@@ -220,6 +221,8 @@ export default async function LocaleLayout({
                         url: "https://sepacam.com",
                     }}
                 />
+
+                <BreadcrumbSchema />
 
                 {/* reCAPTCHA v3 – loaded globally, consumed by useRecaptcha hook */}
                 {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
