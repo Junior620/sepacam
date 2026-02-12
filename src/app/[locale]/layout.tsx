@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
+import { Suspense } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -179,9 +180,11 @@ export default async function LocaleLayout({
                 <meta name="theme-color" content="#1B5E3B" />
             </head>
             <body className="font-body antialiased">
-                <NextIntlClientProvider messages={messages}>
+                <NextIntlClientProvider messages={messages} locale={locale}>
                     {children}
-                    <Analytics />
+                    <Suspense fallback={null}>
+                        <Analytics />
+                    </Suspense>
                 </NextIntlClientProvider>
 
                 {/* Structured Data */}
@@ -222,7 +225,9 @@ export default async function LocaleLayout({
                     }}
                 />
 
-                <BreadcrumbSchema />
+                <Suspense fallback={null}>
+                    <BreadcrumbSchema />
+                </Suspense>
 
                 {/* reCAPTCHA v3 – loaded globally, consumed by useRecaptcha hook */}
                 {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
