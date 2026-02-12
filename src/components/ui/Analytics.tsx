@@ -1,6 +1,7 @@
 'use client';
 
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import Script from 'next/script';
 
 // IDs from environment variables
@@ -12,6 +13,9 @@ export function Analytics() {
         <>
             {/* Google Analytics 4 */}
             {gaId && <GoogleAnalytics gaId={gaId} />}
+
+            {/* Vercel Analytics */}
+            <VercelAnalytics />
 
             {/* Plausible Analytics (Privacy-focused) */}
             <Script

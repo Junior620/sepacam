@@ -17,6 +17,7 @@
     "@sanity/image-url": "^2.0.3",
     "@sanity/vision": "^5.8.1",
     "@types/mapbox-gl": "^3.4.1",
+    "@vercel/analytics": "^1.6.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.33.0",

@@ -6,13 +6,27 @@ type EventParams = {
     [key: string]: string | number | boolean;
 };
 
+// Extend window interface for Plausible
+declare global {
+    interface Window {
+        plausible?: (eventName: string, options?: { props?: EventParams }) => void;
+    }
+}
+
 export const trackEvent = (eventName: string, params?: EventParams) => {
+    // Google Analytics 4
     if (typeof window !== "undefined" && process.env.NEXT_PUBLIC_GA4_ID) {
         sendGAEvent("event", eventName, params || {});
-        // Also log to console in dev
-        if (process.env.NODE_ENV === "development") {
-            console.log(`[Analytics] Tracked event: ${eventName}`, params);
-        }
+    }
+
+    // Plausible Analytics
+    if (typeof window !== "undefined" && window.plausible) {
+        window.plausible(eventName, { props: params });
+    }
+
+    // Dev Logging
+    if (process.env.NODE_ENV === "development") {
+        console.log(`[Analytics] Tracked event: ${eventName}`, params);
     }
 };
 
