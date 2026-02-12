@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
+import { trackFormSubmit } from "@/lib/analytics";
 
 // Zod schema for form validation
 const contactFormSchema = z.object({
@@ -98,9 +99,11 @@ export function ContactForm() {
             console.log("Form data:", data);
             await new Promise((resolve) => setTimeout(resolve, 1500));
             setSubmitStatus("success");
+            trackFormSubmit("contact_form", true);
             reset();
         } catch {
             setSubmitStatus("error");
+            trackFormSubmit("contact_form", false);
         }
     };
 
