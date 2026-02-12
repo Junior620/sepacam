@@ -185,6 +185,9 @@ export default async function LocaleLayout({
                     <Suspense fallback={null}>
                         <Analytics />
                     </Suspense>
+                    <Suspense fallback={null}>
+                        <BreadcrumbSchema />
+                    </Suspense>
                 </NextIntlClientProvider>
 
                 {/* Structured Data */}
@@ -225,9 +228,6 @@ export default async function LocaleLayout({
                     }}
                 />
 
-                <Suspense fallback={null}>
-                    <BreadcrumbSchema />
-                </Suspense>
 
                 {/* reCAPTCHA v3 – loaded globally, consumed by useRecaptcha hook */}
                 {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
