@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/Badge";
 import type { Metadata } from "next";
 import { ContactMap } from "./ContactMap";
+import { generateSeoMetadata } from "@/lib/seo";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -19,14 +20,14 @@ export async function generateMetadata({
     const { locale } = await params;
     const isFr = locale === "fr";
 
-    return {
-        title: isFr
-            ? "Contactez SEPACAM | Demande de Cotation & Information"
-            : "Contact SEPACAM | Quote Request & Information",
+    return generateSeoMetadata({
+        locale,
+        title: isFr ? "Contactez SEPACAM | Demande de Cotation" : "Contact SEPACAM | Quote Request",
         description: isFr
             ? "Contactez SEPACAM à Douala, Cameroun. Demande de cotation cacao, café, transit ou services. Réponse sous 24-48h."
             : "Contact SEPACAM in Douala, Cameroon. Request a quote for cocoa, coffee, transit, or services. Response within 24-48h.",
-    };
+        path: "/contact",
+    });
 }
 
 // ═══════════════════════════════════════════════════════════

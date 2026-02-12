@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
+import { generateSeoMetadata } from "@/lib/seo";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -19,17 +20,19 @@ export async function generateMetadata({
     const { locale } = await params;
     const isFr = locale === "fr";
 
-    return {
-        title: isFr
-            ? "Durabilité & Éthique | Impact Social et Environnemental - SEPACAM"
-            : "Sustainability & Ethics | Social and Environmental Impact - SEPACAM",
+    return generateSeoMetadata({
+        locale,
+        title: isFr ? "Durabilité & Éthique | Impact Social et Environnemental" : "Sustainability & Ethics | Social and Environmental Impact",
         description: isFr
             ? "Au-delà de la conformité : notre engagement pour un cacao équitable, la protection des forêts et le développement des communautés locales."
             : "Beyond compliance: our commitment to fair cocoa, forest protection, and local community development.",
+        path: "/durabilite",
+        pathFr: "/durabilite",
+        pathEn: "/sustainability",
         keywords: isFr
             ? ["cacao durable", "RSE cameroun", "agroforesterie", "femmes cacao", "code de conduite"]
             : ["sustainable cocoa", "CSR cameroon", "agroforestry", "women in cocoa", "code of conduct"],
-    };
+    });
 }
 
 // ═══════════════════════════════════════════════════════════

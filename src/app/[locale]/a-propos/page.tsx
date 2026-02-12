@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
+import { generateSeoMetadata } from "@/lib/seo";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -18,17 +19,19 @@ export async function generateMetadata({
     const { locale } = await params;
     const isFr = locale === "fr";
 
-    return {
-        title: isFr
-            ? "À Propos de SEPACAM | Notre Histoire & Mission"
-            : "About SEPACAM | Our History & Mission",
+    return generateSeoMetadata({
+        locale,
+        title: isFr ? "À Propos de SEPACAM | Notre Histoire & Mission" : "About SEPACAM | Our History & Mission",
         description: isFr
             ? "Découvrez SEPACAM : entreprise camerounaise de transformation de cacao, négoce de café, transit et services. Notre histoire, mission, équipe et valeurs."
             : "Discover SEPACAM: Cameroonian cocoa processing, coffee trading, transit, and services company. Our history, mission, team, and values.",
+        path: "/a-propos",
+        pathFr: "/a-propos",
+        pathEn: "/about",
         keywords: isFr
             ? ["SEPACAM", "à propos", "cacao cameroun", "entreprise Douala", "transformation cacao"]
             : ["SEPACAM", "about", "cameroon cocoa", "Douala company", "cocoa processing"],
-    };
+    });
 }
 
 // ═══════════════════════════════════════════════════════════

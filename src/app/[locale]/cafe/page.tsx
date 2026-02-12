@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
+import { generateSeoMetadata } from "@/lib/seo";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -18,17 +19,19 @@ export async function generateMetadata({
     const { locale } = await params;
     const isFr = locale === "fr";
 
-    return {
-        title: isFr
-            ? "Café Camerounais | Robusta & Arabica Premium - SEPACAM"
-            : "Cameroon Coffee | Premium Robusta & Arabica - SEPACAM",
+    return generateSeoMetadata({
+        locale,
+        title: isFr ? "Café Camerounais | Robusta & Arabica Premium" : "Cameroon Coffee | Premium Robusta & Arabica",
         description: isFr
-            ? "Exportateur de café vert du Cameroun. Robusta (Grade 1 & 2) du bassin du Moungo et Arabica des hauts plateaux volcaniques. Qualité contrôlée, traçabilité complète."
-            : "Green coffee exporter from Cameroon. Robusta (Grade 1 & 2) from the Moungo basin and Arabica from volcanic highlands. Quality controlled, full traceability.",
+            ? "Exportateur de café vert du Cameroun. Robusta (Grade 1 & 2) du bassin du Moungo et Arabica des hauts plateaux volcaniques."
+            : "Green coffee exporter from Cameroon. Robusta (Grade 1 & 2) from the Moungo basin and Arabica from volcanic highlands.",
+        path: "/cafe",
+        pathFr: "/cafe",
+        pathEn: "/coffee",
         keywords: isFr
             ? ["café cameroun", "robusta cameroun", "arabica cameroun", "export café vert", "café origine"]
             : ["cameroon coffee", "cameroon robusta", "cameroon arabica", "green coffee export", "origin coffee"],
-    };
+    });
 }
 
 // ═══════════════════════════════════════════════════════════

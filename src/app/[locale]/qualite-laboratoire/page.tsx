@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
+import { generateSeoMetadata } from "@/lib/seo";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -19,17 +20,19 @@ export async function generateMetadata({
     const { locale } = await params;
     const isFr = locale === "fr";
 
-    return {
-        title: isFr
-            ? "Qualité & Laboratoire | Certifications et Analyses - SEPACAM"
-            : "Quality & Laboratory | Certifications and Analysis - SEPACAM",
+    return generateSeoMetadata({
+        locale,
+        title: isFr ? "Qualité & Laboratoire | Certifications et Analyses" : "Quality & Laboratory | Certifications and Analysis",
         description: isFr
             ? "Découvrez notre laboratoire de contrôle qualité : méthodologie rigoureuse, analyses physico-chimiques, et traçabilité complète de chaque lot de cacao."
             : "Discover our quality control laboratory: rigorous methodology, physicochemical analysis, and complete traceability of every cocoa lot.",
+        path: "/qualite-laboratoire",
+        pathFr: "/qualite-laboratoire",
+        pathEn: "/quality",
         keywords: isFr
             ? ["laboratoire cacao", "contrôle qualité", "analyse cacao", "coa cacao", "traçabilité cacao"]
             : ["cocoa laboratory", "quality control", "cocoa analysis", "cocoa coa", "cocoa traceability"],
-    };
+    });
 }
 
 // ═══════════════════════════════════════════════════════════

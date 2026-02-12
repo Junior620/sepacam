@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import { ProductCTABar } from "@/components/product/ProductCTABar";
 import type { Metadata } from "next";
+import { generateSeoMetadata } from "@/lib/seo";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -20,17 +21,19 @@ export async function generateMetadata({
     const { locale } = await params;
     const isFr = locale === "fr";
 
-    return {
-        title: isFr
-            ? "Transformation du Cacao | Processus Industriel - SEPACAM"
-            : "Cocoa Processing | Industrial Process - SEPACAM",
+    return generateSeoMetadata({
+        locale,
+        title: isFr ? "Transformation du Cacao | Processus Industriel" : "Cocoa Processing | Industrial Process",
         description: isFr
             ? "Découvrez le processus industriel de transformation du cacao chez SEPACAM : de la fève aux produits semi-finis (liqueur, beurre, poudre, tourteau). Capacité 5 000 T/an."
             : "Discover SEPACAM's industrial cocoa processing: from beans to semi-finished products (liquor, butter, powder, cake). 5,000 MT/year capacity.",
+        path: "/transformation",
+        pathFr: "/transformation-cacao",
+        pathEn: "/cocoa-processing",
         keywords: isFr
             ? ["transformation cacao", "processus industriel", "cacao cameroun", "usine cacao", "semi-fini cacao"]
             : ["cocoa processing", "industrial process", "cameroon cocoa", "cocoa plant", "semi-finished cocoa"],
-    };
+    });
 }
 
 // ═══════════════════════════════════════════════════════════

@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
+import { generateSeoMetadata } from "@/lib/seo";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -18,17 +19,17 @@ export async function generateMetadata({
     const { locale } = await params;
     const isFr = locale === "fr";
 
-    return {
-        title: isFr
-            ? "Services aux Entreprises | Rénovation, Dératisation, Nettoyage - SEPACAM"
-            : "Business Services | Renovation, Pest Control, Cleaning - SEPACAM",
+    return generateSeoMetadata({
+        locale,
+        title: isFr ? "Services aux Entreprises | Rénovation, Dératisation, Nettoyage" : "Business Services | Renovation, Pest Control, Cleaning",
         description: isFr
             ? "SEPACAM propose des services professionnels aux entreprises : rénovation de bâtiments, dératisation & désinsectisation, et nettoyage industriel au Cameroun."
             : "SEPACAM offers professional business services: building renovation, pest control, and industrial cleaning in Cameroon.",
+        path: "/services",
         keywords: isFr
             ? ["services entreprises cameroun", "rénovation bâtiment", "dératisation", "nettoyage industriel", "SEPACAM services"]
             : ["business services cameroon", "building renovation", "pest control", "industrial cleaning", "SEPACAM services"],
-    };
+    });
 }
 
 // ═══════════════════════════════════════════════════════════

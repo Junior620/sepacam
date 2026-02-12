@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
+import { generateSeoMetadata } from "@/lib/seo";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -18,17 +19,17 @@ export async function generateMetadata({
     const { locale } = await params;
     const isFr = locale === "fr";
 
-    return {
-        title: isFr
-            ? "Transit & Logistique | Commissionnaire Agréé - SEPACAM"
-            : "Transit & Logistics | Licensed Freight Forwarder - SEPACAM",
+    return generateSeoMetadata({
+        locale,
+        title: isFr ? "Transit & Logistique | Commissionnaire Agréé" : "Transit & Logistics | Licensed Freight Forwarder",
         description: isFr
             ? "Commissionnaire de transit agréé au Cameroun. Formalités douanières, embarquement, suivi de conteneurs et logistique portuaire à Douala."
             : "Licensed freight forwarder in Cameroon. Customs clearance, shipping, container tracking, and port logistics in Douala.",
+        path: "/transit",
         keywords: isFr
             ? ["transit cameroun", "commissionnaire douane", "logistique Douala", "dédouanement", "fret maritime"]
             : ["cameroon transit", "customs broker", "Douala logistics", "customs clearance", "sea freight"],
-    };
+    });
 }
 
 // ═══════════════════════════════════════════════════════════

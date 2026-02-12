@@ -64,6 +64,13 @@ export async function generateMetadata({
                 siteName: "SEPACAM",
                 locale: "fr_FR",
                 type: "website",
+                images: [{ url: `${siteUrl}/images/og-default.jpg`, width: 1200, height: 630, alt: "SEPACAM - Cacao Cameroun" }],
+            },
+            twitter: {
+                card: "summary_large_image",
+                title: "SEPACAM - Cacao Transformé du Cameroun",
+                description: "Cacao camerounais transformé, traçable et conforme export.",
+                images: [`${siteUrl}/images/og-default.jpg`],
             },
         },
         en: {
@@ -92,6 +99,13 @@ export async function generateMetadata({
                 siteName: "SEPACAM",
                 locale: "en_US",
                 type: "website",
+                images: [{ url: `${siteUrl}/images/og-default.jpg`, width: 1200, height: 630, alt: "SEPACAM - Cameroon Cocoa" }],
+            },
+            twitter: {
+                card: "summary_large_image",
+                title: "SEPACAM - Processed Cameroon Cocoa",
+                description: "Cameroonian cocoa processed, traceable, and export-compliant.",
+                images: [`${siteUrl}/images/og-default.jpg`],
             },
         },
     };

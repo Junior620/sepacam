@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
+import { generateSeoMetadata } from "@/lib/seo";
 
 // ═══════════════════════════════════════════════════════════
 // METADATA
@@ -19,17 +20,19 @@ export async function generateMetadata({
     const { locale } = await params;
     const isFr = locale === "fr";
 
-    return {
-        title: isFr
-            ? "Traçabilité & Conformité | EUDR, Sécurité Alimentaire - SEPACAM"
-            : "Traceability & Compliance | EUDR, Food Safety - SEPACAM",
+    return generateSeoMetadata({
+        locale,
+        title: isFr ? "Traçabilité & Conformité | EUDR, Sécurité Alimentaire" : "Traceability & Compliance | EUDR, Food Safety",
         description: isFr
             ? "Engagement total pour une traçabilité du champ à l'usine. Conformité EUDR, absence de déforestation et respect des standards internationaux."
             : "Total commitment to farm-to-factory traceability. EUDR compliance, zero deforestation, and adherence to international standards.",
+        path: "/tracabilite-conformite",
+        pathFr: "/tracabilite-conformite",
+        pathEn: "/traceability",
         keywords: isFr
             ? ["traçabilité cacao", "EUDR cameroun", "cacao durable", "conformité export", "géolocalisation parcelles"]
             : ["cocoa traceability", "EUDR cameroon", "sustainable cocoa", "export compliance", "plot geolocation"],
-    };
+    });
 }
 
 // ═══════════════════════════════════════════════════════════
