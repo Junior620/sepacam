@@ -45,31 +45,6 @@ export function StatsSection() {
     useGSAP(
         () => {
             // Animate header
-            gsap.from(".stats-header", {
-                opacity: 0,
-                y: 30,
-                duration: 0.8,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 80%",
-                },
-            });
-
-            // Animate stat cards with stagger
-            gsap.from(".stat-card", {
-                opacity: 0,
-                y: 40,
-                scale: 0.95,
-                duration: 0.6,
-                stagger: 0.12,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 75%",
-                },
-            });
-
             // Count-up animation for numbers
             const counters = gsap.utils.toArray<HTMLElement>(".stat-counter");
             counters.forEach((counter) => {
@@ -84,9 +59,9 @@ export function StatsSection() {
                         ease: "power2.out",
                         snap: { innerText: 1 },
                         scrollTrigger: {
-                            trigger: counter,
+                            trigger: sectionRef.current,
                             start: "top 85%",
-                            toggleActions: "play none none reverse",
+                            toggleActions: "play none none none",
                         },
                     }
                 );
@@ -111,7 +86,7 @@ export function StatsSection() {
             <div className="container-main relative z-10">
                 {/* Section Header */}
                 <div className="stats-header text-center mb-14 lg:mb-18">
-                    <h2 className="font-heading text-h2-sm lg:text-h2 text-white mb-4">
+                    <h2 className="font-heading text-h2-sm lg:text-h2 text-white mb-4" style={{ color: '#ffffff' }}>
                         {t("title")}
                     </h2>
                     <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
