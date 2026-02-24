@@ -1,16 +1,21 @@
 {
     "title": "SEPACAM - Cacao du Cameroun",
     "hero": {
-        "title": "Du cacao camerounais transformé, tracé, conforme export",
-        "subtitle": "SEPACAM transforme le cacao camerounais en produits fiables, traçables et conformes aux standards internationaux.",
+        "title": "Cacao camerounais transformé, traçable et prêt pour l'export",
+        "subtitle": "Liquor, butter, powder et cake — contrôles qualité, COA par lot, logistique export.",
         "cta_primary": "Demander un devis",
-        "cta_secondary": "Demander un échantillon"
+        "cta_secondary": "Demander un échantillon",
+        "cta_specs": "Recevoir les spécifications (PDF)",
+        "product_proof": "Liquor • Butter • Powder • Cake — Specs disponibles sur demande.",
+        "compliance_proof": "COA par lot • Traçabilité complète • Documentation export",
+        "docs_available": "Documents disponibles : COA • TDS • Certifications"
     },
     "nav": {
         "home": "Accueil",
         "processing": "Transformation",
         "products": "Produits Cacao",
         "quality": "Qualité & Laboratoire",
+        "quality_traceability": "Qualité & Traçabilité",
         "traceability": "Traçabilité",
         "sustainability": "Durabilité",
         "kakaora": "KAKAORA",
@@ -30,31 +35,35 @@
     },
     "poles": {
         "title": "Nos pôles d'activité",
+        "subtitle": "SEPACAM opère autour de la transformation cacao, avec des services logistiques et opérationnels complémentaires.",
         "agro": {
-            "title": "Agro-Industrie",
-            "description": "Transformation du cacao camerounais en produits export-ready: liqueur, beurre, poudre, tourteau et grué."
+            "title": "Transformation cacao",
+            "badge": "Activité principale",
+            "description": "Cacao transformé export-ready : liqueur, beurre, poudre, tourteau et grué. COA par lot, traçabilité et documentation export.",
+            "cta_primary": "Voir les produits cacao",
+            "cta_secondary": "Demander un échantillon"
         },
         "transit": {
-            "title": "Transit",
-            "description": "Services de transit import/export, formalités douanières et accompagnement logistique au port de Douala."
+            "title": "Transit export",
+            "description": "Transit import/export, formalités douanières, accompagnement logistique au port de Douala.",
+            "cta": "Obtenir un devis transit"
         },
         "services": {
-            "title": "Prestations de services",
-            "description": "Rénovation intérieure/extérieure, désinsectisation et nettoyage professionnel pour entreprises."
+            "title": "Services aux entreprises",
+            "description": "Rénovation, désinsectisation, nettoyage professionnel — intervention pour sites et bureaux.",
+            "cta": "Demander un devis services"
         }
     },
     "stats": {
         "title": "SEPACAM en chiffres",
         "producers": {
-            "value": "500+",
-            "label": "Producteurs partenaires",
-            "note": "À confirmer"
+            "value": "2000+",
+            "label": "Producteurs partenaires"
         },
         "capacity": {
-            "value": "2,000",
-            "label": "Tonnes/an",
-            "unit": "T",
-            "note": "À confirmer"
+            "value": "2000",
+            "label": "Tonnes par an",
+            "unit": "T"
         },
         "regions": {
             "value": "5",
@@ -338,7 +347,7 @@
     "meta": {
         "home": {
             "title": "SEPACAM - Transformation et Export de Cacao Camerounais | B2B",
-            "description": "SEPACAM : Leader agro-industriel au Cameroun. Transformation de fèves de cacao (Liqueur, Beurre, Poudre) et services export B2B. Qualité certifiée ISO 22000."
+            "description": "SEPACAM : Leader agro-industriel au Cameroun. Transformation de fèves de cacao (Liqueur, Beurre, Poudre) et services export B2B. COA par lot, traçabilité complète."
         },
         "contact": {
             "title": "Contactez SEPACAM | Devis Cacao & Services Export",

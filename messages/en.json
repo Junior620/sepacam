@@ -1,16 +1,21 @@
 {
     "title": "SEPACAM - Cameroon Cocoa",
     "hero": {
-        "title": "Processed, traceable, export-compliant Cameroon cocoa",
-        "subtitle": "SEPACAM transforms Cameroonian cocoa into reliable, traceable products compliant with international standards.",
+        "title": "Cameroonian cocoa — processed, traceable & export-ready",
+        "subtitle": "Liquor, butter, powder & cake — quality controls, per-batch COA, export logistics.",
         "cta_primary": "Request a quote",
-        "cta_secondary": "Request a sample"
+        "cta_secondary": "Request a sample",
+        "cta_specs": "Get specifications (PDF)",
+        "product_proof": "Liquor • Butter • Powder • Cake — Specs available on request.",
+        "compliance_proof": "Per-batch COA • Full traceability • Export documentation",
+        "docs_available": "Documents available: COA • TDS • Certifications"
     },
     "nav": {
         "home": "Home",
         "processing": "Processing",
         "products": "Cocoa Products",
         "quality": "Quality & Lab",
+        "quality_traceability": "Quality & Traceability",
         "traceability": "Traceability",
         "sustainability": "Sustainability",
         "kakaora": "KAKAORA",
@@ -30,31 +35,35 @@
     },
     "poles": {
         "title": "Our business lines",
+        "subtitle": "SEPACAM operates around cocoa processing, with complementary logistics and operational services.",
         "agro": {
-            "title": "Agro-Industry",
-            "description": "Processing Cameroonian cocoa into export-ready products: liquor, butter, powder, cake and nibs."
+            "title": "Cocoa processing",
+            "badge": "Core business",
+            "description": "Export-ready processed cocoa: liquor, butter, powder, cake and nibs. Per-batch COA, traceability and export documentation.",
+            "cta_primary": "View cocoa products",
+            "cta_secondary": "Request a sample"
         },
         "transit": {
-            "title": "Transit",
-            "description": "Import/export transit services, customs formalities and logistics support at the Port of Douala."
+            "title": "Export transit",
+            "description": "Import/export transit, customs formalities, logistics support at the port of Douala.",
+            "cta": "Get a transit quote"
         },
         "services": {
-            "title": "Service Provider",
-            "description": "Interior/exterior renovation, pest control and professional cleaning for businesses."
+            "title": "Business services",
+            "description": "Renovation, pest control, professional cleaning — on-site and office interventions.",
+            "cta": "Request a service quote"
         }
     },
     "stats": {
         "title": "SEPACAM in numbers",
         "producers": {
-            "value": "500+",
-            "label": "Partner producers",
-            "note": "To be confirmed"
+            "value": "2000+",
+            "label": "Partner producers"
         },
         "capacity": {
-            "value": "2,000",
-            "label": "Tons/year",
-            "unit": "T",
-            "note": "To be confirmed"
+            "value": "2000",
+            "label": "Tons per year",
+            "unit": "T"
         },
         "regions": {
             "value": "5",
@@ -338,7 +347,7 @@
     "meta": {
         "home": {
             "title": "SEPACAM - Cameroon Cocoa Processing & Export | B2B",
-            "description": "SEPACAM: Leading agro-industry in Cameroon. Cocoa bean processing (Liquor, Butter, Powder) and B2B export services. ISO 22000 certified quality."
+            "description": "SEPACAM: Leading agro-industry in Cameroon. Cocoa bean processing (Liquor, Butter, Powder) and B2B export services. Per-batch COA, full traceability."
         },
         "contact": {
             "title": "Contact SEPACAM | Cocoa Quote & Export Services",

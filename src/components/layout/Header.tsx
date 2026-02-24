@@ -71,10 +71,9 @@ export function Header() {
     };
 
     // CACAO-FIRST Navigation Structure
-    const cocoaItems: NavItem[] = [
-        { href: "/produits-cacao", label: t("products") },
-        { href: "/transformation", label: t("processing") },
+    const qualityItems: NavItem[] = [
         { href: "/qualite-laboratoire", label: t("quality") },
+        { href: "/tracabilite-conformite", label: t("traceability") },
         { href: "/kakaora", label: "KAKAORA" },
     ];
 
@@ -82,10 +81,6 @@ export function Header() {
         { href: "/cafe", label: t("coffee") },
         { href: "/transit", label: t("transit") },
         { href: "/services", label: t("services") },
-    ];
-
-    const aboutItems: NavItem[] = [
-        { href: "/a-propos", label: t("about") },
     ];
 
     return (
@@ -116,7 +111,7 @@ export function Header() {
                             ref={dropdownRef}
                             aria-label={tA11y("main_navigation")}
                         >
-                            {/* Cacao Products - Primary CTA */}
+                            {/* Produits cacao - Primary */}
                             <Link
                                 href="/produits-cacao"
                                 className={`px-4 py-2 rounded-lg text-small font-semibold transition-all ${isActive("/produits-cacao")
@@ -127,19 +122,30 @@ export function Header() {
                                 {t("products")}
                             </Link>
 
-                            {/* Cacao Dropdown */}
+                            {/* Transformation - Direct link */}
+                            <Link
+                                href="/transformation"
+                                className={`px-4 py-2 rounded-lg text-small font-medium transition-all ${isActive("/transformation")
+                                    ? "text-primary bg-primary/5"
+                                    : "text-neutral-600 hover:text-primary hover:bg-neutral-50"
+                                    }`}
+                            >
+                                {t("processing")}
+                            </Link>
+
+                            {/* Qualité & Traçabilité Dropdown */}
                             <div className="relative">
                                 <button
-                                    className={`px-4 py-2 rounded-lg text-small font-medium transition-all flex items-center gap-1 ${isActive("/transformation") || isActive("/qualite-laboratoire") || isActive("/kakaora")
+                                    className={`px-4 py-2 rounded-lg text-small font-medium transition-all flex items-center gap-1 ${isActive("/qualite-laboratoire") || isActive("/tracabilite-conformite") || isActive("/kakaora")
                                         ? "text-primary bg-primary/5"
                                         : "text-neutral-600 hover:text-primary hover:bg-neutral-50"
                                         }`}
-                                    onClick={() => setActiveDropdown(activeDropdown === "cacao" ? null : "cacao")}
-                                    onMouseEnter={() => setActiveDropdown("cacao")}
+                                    onClick={() => setActiveDropdown(activeDropdown === "quality" ? null : "quality")}
+                                    onMouseEnter={() => setActiveDropdown("quality")}
                                 >
-                                    Cacao
+                                    {t("quality_traceability")}
                                     <svg
-                                        className={`w-4 h-4 transition-transform ${activeDropdown === "cacao" ? "rotate-180" : ""}`}
+                                        className={`w-4 h-4 transition-transform ${activeDropdown === "quality" ? "rotate-180" : ""}`}
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
@@ -148,40 +154,31 @@ export function Header() {
                                     </svg>
                                 </button>
                                 <div
-                                    className={`absolute top-full left-0 pt-2 transition-all duration-200 ${activeDropdown === "cacao"
+                                    className={`absolute top-full left-0 pt-2 transition-all duration-200 ${activeDropdown === "quality"
                                         ? "opacity-100 visible translate-y-0"
                                         : "opacity-0 invisible -translate-y-2"
                                         }`}
                                     onMouseLeave={() => setActiveDropdown(null)}
                                 >
-                                    <div className="bg-white rounded-xl shadow-elevation-3 border border-neutral-200 py-2 min-w-[200px]">
-                                        <Link
-                                            href="/transformation"
-                                            className={`block px-4 py-2.5 text-small transition-colors ${isActive("/transformation")
-                                                ? "bg-primary/5 text-primary font-medium"
-                                                : "text-neutral-600 hover:bg-neutral-50 hover:text-primary"
-                                                }`}
-                                        >
-                                            {t("processing")}
-                                        </Link>
-                                        <Link
-                                            href="/qualite-laboratoire"
-                                            className={`block px-4 py-2.5 text-small transition-colors ${isActive("/qualite-laboratoire")
-                                                ? "bg-primary/5 text-primary font-medium"
-                                                : "text-neutral-600 hover:bg-neutral-50 hover:text-primary"
-                                                }`}
-                                        >
-                                            {t("quality")}
-                                        </Link>
-                                        <Link
-                                            href="/kakaora"
-                                            className={`block px-4 py-2.5 text-small font-semibold transition-colors ${isActive("/kakaora")
-                                                ? "bg-accent/10 text-accent"
-                                                : "text-accent hover:bg-accent/5"
-                                                }`}
-                                        >
-                                            KAKAORA <Sparkles className="w-3.5 h-3.5 inline-block ml-1 text-accent" />
-                                        </Link>
+                                    <div className="bg-white rounded-xl shadow-elevation-3 border border-neutral-200 py-2 min-w-[220px]">
+                                        {qualityItems.map((item) => (
+                                            <Link
+                                                key={item.href}
+                                                href={item.href}
+                                                className={`block px-4 py-2.5 text-small transition-colors ${item.href === "/kakaora"
+                                                    ? (isActive(item.href)
+                                                        ? "bg-accent/10 text-accent font-semibold"
+                                                        : "text-accent font-semibold hover:bg-accent/5")
+                                                    : (isActive(item.href)
+                                                        ? "bg-primary/5 text-primary font-medium"
+                                                        : "text-neutral-600 hover:bg-neutral-50 hover:text-primary")
+                                                    }`}
+                                            >
+                                                {item.href === "/kakaora" ? (
+                                                    <>KAKAORA <Sparkles className="w-3.5 h-3.5 inline-block ml-1 text-accent" /></>
+                                                ) : item.label}
+                                            </Link>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
@@ -296,9 +293,34 @@ export function Header() {
                         {/* Cacao Section */}
                         <div className="mb-6">
                             <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-2 px-3">
-                                {t("products")}
+                                Cacao
                             </p>
-                            {cocoaItems.map((item) => (
+                            <Link
+                                href="/produits-cacao"
+                                className={`block px-3 py-3 rounded-lg text-body font-medium transition-colors ${isActive("/produits-cacao")
+                                    ? "bg-primary/5 text-primary"
+                                    : "text-neutral-700 hover:bg-neutral-50"
+                                    }`}
+                            >
+                                {t("products")}
+                            </Link>
+                            <Link
+                                href="/transformation"
+                                className={`block px-3 py-3 rounded-lg text-body font-medium transition-colors ${isActive("/transformation")
+                                    ? "bg-primary/5 text-primary"
+                                    : "text-neutral-700 hover:bg-neutral-50"
+                                    }`}
+                            >
+                                {t("processing")}
+                            </Link>
+                        </div>
+
+                        {/* Qualité & Traçabilité Section */}
+                        <div className="mb-6">
+                            <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-2 px-3">
+                                {t("quality_traceability")}
+                            </p>
+                            {qualityItems.map((item) => (
                                 <Link
                                     key={item.href}
                                     href={item.href}
